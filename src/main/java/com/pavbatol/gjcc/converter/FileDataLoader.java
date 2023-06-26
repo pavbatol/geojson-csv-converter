@@ -19,9 +19,12 @@ import java.util.*;
 @Slf4j
 public class FileDataLoader {
     private static final String COMMA = ",";
-    private static final String CLEAR_SIGNAL = "---";
+    private static final String RESET_SIGNAL = "---";
     private static final String STOP_SIGNAL = "XXX";
-    private final String OUTPUT_PATH = "output.csv";
+    public static final String RESET_COMMAND_RECEIVED = "Reset command received";
+    public static final String EXIT_COMMAND_RECEIVED = "Exit command received";
+    private final String OUTPUT_FILE = "output.csv";
+    private final String OUTPUT_DIR = "output";
 
     private final Properties properties = AppConfig.getInstance().getProperty();
     private final String countriesFilePath = properties.getProperty("app.data.file-path.countries");
@@ -200,25 +203,24 @@ public class FileDataLoader {
      * @param filePaths Paths to json format files from which to read data
      */
     private void loadCities(final Integer limit, String... filePaths) {
-        Path pathOut = Paths.get(OUTPUT_PATH);
+        Path pathOut = Paths.get(OUTPUT_DIR, OUTPUT_FILE);
+        creatDirectoryIfNotExists(pathOut.getParent());
 
-
-        while (!stop) {
+        while (true) {
             builder = new StringBuilder();
             fields = new HashMap<>();
-//            allFields = false;
 
             exitMenu();
             allFieldsMenu();
-            String allFieldsInput = scanner.nextLine();
+            String allFieldsInput = scanner.nextLine().trim();
             if (STOP_SIGNAL.equals(allFieldsInput)) {
                 return;
-            }
-            if (CLEAR_SIGNAL.equals(allFieldsInput)) {
+            } else if (RESET_SIGNAL.equals(allFieldsInput)) {
                 continue;
             }
             allFields = !"0".equals(allFieldsInput);
 
+            ReturnStatus status = null;
             for (String filePath : filePaths) {
                 Path path = Path.of(filePath.trim());
                 log.debug("Path to loud Cities: {}", path);
@@ -227,15 +229,22 @@ public class FileDataLoader {
                 try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()));
                      BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8)
                 ) {
-
-                    rootParser(jsonParser, limit, path);
-
+                    status = rootParser(jsonParser, limit, path);
+                    if (status != ReturnStatus.OK) {
+                        log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
+                        break;
+                    }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
 
                 builder.append("\n");
 
+            }
+            if (status == ReturnStatus.RESET) {
+                continue;
+            } else if (status == ReturnStatus.STOP) {
+                return;
             }
 
             System.out.println(builder.toString());
@@ -249,30 +258,33 @@ public class FileDataLoader {
         }
     }
 
-    private void rootParser(JsonParser jsonParser, final Integer limit, Path path) throws IOException {
+    private ReturnStatus rootParser(JsonParser jsonParser, final Integer limit, Path path) throws IOException {
+        ReturnStatus status = null;
         while (jsonParser.nextToken() != null) {
             if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && "features".equals(jsonParser.currentName())) {
-
                 int count = 0;
                 while (jsonParser.nextToken() != JsonToken.END_ARRAY && (limit == null || count < limit)) {
                     count++;
-
-                    targetParser(jsonParser);
-
+                    status = targetParser(jsonParser);
+                    if (status != ReturnStatus.OK) {
+                        log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
+                        break;
+                    }
                     if (builder.lastIndexOf(COMMA) == builder.length() - 1) {
                         builder.deleteCharAt(builder.length() - 1);
                     }
                     builder.append("\n");
-
                 }
-
+                if (status != ReturnStatus.OK) {
+                    return status;
+                }
                 log.debug("Loaded cities number: {} from: {}", count, path);
-
             }
         }
+        return ReturnStatus.OK;
     }
 
-    private void targetParser(JsonParser jsonParser) throws IOException {
+    private ReturnStatus targetParser(JsonParser jsonParser) throws IOException {
         while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
             if (jsonParser.currentToken() != JsonToken.FIELD_NAME) {
                 continue;
@@ -302,7 +314,16 @@ public class FileDataLoader {
                                 fields.put(propsFieldName, propsFieldName);
                             } else {
                                 fieldDetectedMenu(propsFieldName, jsonParser.getValueAsString());
-                                String customName = scanner.nextLine().trim().replace("\n", "");
+                                String customName = scanner.nextLine().trim();
+
+                                if (STOP_SIGNAL.equals(customName)) {
+                                    log.debug(EXIT_COMMAND_RECEIVED);
+                                    return ReturnStatus.STOP;
+                                } else if (RESET_SIGNAL.equals(customName)) {
+                                    log.debug(RESET_COMMAND_RECEIVED);
+                                    return ReturnStatus.RESET;
+                                }
+
                                 if ("".equals(customName)) {
                                     fields.put(propsFieldName, propsFieldName);
                                 } else if ("-".equals(customName)) {
@@ -370,12 +391,23 @@ public class FileDataLoader {
             }
 
         }
+        return ReturnStatus.OK;
+    }
+
+    private void creatDirectoryIfNotExists(Path path) {
+        if (!Files.exists(path)) {
+            try {
+                Files.createDirectories(path);
+            } catch (IOException e) {
+                throw new RuntimeException("Directory creation error");
+            }
+        }
     }
 
     private static void exitMenu() {
         System.out.println("-----------------------");
         System.out.println("At any stage, you can:");
-        System.out.println("Enter " + CLEAR_SIGNAL + " to start over");
+        System.out.println("Enter " + RESET_SIGNAL + " to start over");
         System.out.println("Enter " + STOP_SIGNAL + " to exit");
         System.out.println("-----------------------");
     }
