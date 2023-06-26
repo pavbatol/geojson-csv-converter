@@ -27,176 +27,14 @@ public class FileDataLoader {
     private final String OUTPUT_DIR = "output";
 
     private final Properties properties = AppConfig.getInstance().getProperty();
-    private final String countriesFilePath = properties.getProperty("app.data.file-path.countries");
-    private final String highSchoolsFilePath = properties.getProperty("app.data.file-path.high-schools");
     private final String citiesFilePath = properties.getProperty("app.data.file-path.cities");
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private boolean stop;
     private boolean allFields;
-    private Map<String, String> fields;
+    private int fieldIndex;
+//    private Map<String, String> fields;
+    private Map<String, Field> fields;
     private StringBuilder builder;
     private final Scanner scanner = new Scanner(System.in);
-
-    /**
-     * @param limit     Number of entries in the file. Set null for all records.
-     * @param filePaths Paths to json format files from which to read data
-     */
-    public void loadCities_OLD(final Integer limit, String... filePaths) {
-
-        Scanner scanner = new Scanner(System.in);
-        Map<String, String> fields = new HashMap<>();
-
-        allFieldsMenu();
-        String allFieldsInput = scanner.nextLine();
-        final boolean allFields = "1".equals(allFieldsInput);
-
-        List<String> collect = Arrays.stream(filePaths)
-                .map(filePath -> {
-                    Path path = Path.of(filePath.trim());
-                    log.debug("Path to loud Cities: {}", path);
-
-                    JsonFactory jsonFactory = objectMapper.getFactory();
-                    try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()))) {
-
-                        StringBuilder builder = new StringBuilder();
-
-                        while (jsonParser.nextToken() != null) {
-                            if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && "features".equals(jsonParser.currentName())) {
-                                String featureId;
-                                String featureCountry;
-                                String featureRegion;
-                                String featureDistrict;
-                                String featureName;
-                                String featureOfficialStatus;
-                                String featureIsInCountryCode;
-                                double featureLongitude = .0;
-                                double featureLatitude = .0;
-
-                                int count = 0;
-                                while (jsonParser.nextToken() != JsonToken.END_ARRAY && (limit == null || count < limit)) {
-                                    count++;
-                                    while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
-                                        if (jsonParser.currentToken() != JsonToken.FIELD_NAME) {
-                                            continue;
-                                        }
-                                        String subFieldName = jsonParser.getCurrentName();
-                                        jsonParser.nextToken();
-                                        switch (subFieldName) {
-                                            case "id":
-                                                featureId = jsonParser.getValueAsString();
-                                                builder.append("id=").append(featureId).append(COMMA);
-                                                break;
-                                            case "properties":
-                                                while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
-                                                    String propsFieldName = jsonParser.getCurrentName();
-                                                    jsonParser.nextToken();
-
-                                                    if (propsFieldName.startsWith("name:")
-                                                            && !"name:ru".equals(propsFieldName)
-                                                            && !"name:en".equals(propsFieldName)
-                                                            && !"name:".equals(propsFieldName)) {
-                                                        continue;
-                                                    }
-
-                                                    if (!fields.containsKey(propsFieldName)) {
-                                                        if (allFields) {
-                                                            fields.put(propsFieldName, propsFieldName);
-                                                        } else {
-                                                            fieldDetectedMenu(propsFieldName, jsonParser.getValueAsString());
-                                                            String customName = scanner.nextLine().trim().replace("\n", "");
-                                                            if ("".equals(customName)) {
-                                                                fields.put(propsFieldName, propsFieldName);
-                                                            } else if ("-".equals(customName)) {
-                                                                fields.put(propsFieldName, null);
-                                                            } else {
-                                                                fields.put(propsFieldName, customName);
-                                                            }
-                                                        }
-                                                    }
-
-                                                    switch (propsFieldName) {
-                                                        case "@id":
-                                                            featureId = jsonParser.getValueAsString();
-                                                            builder.append("@id=").append(featureId).append(COMMA);
-                                                            break;
-                                                        case "addr:country":
-                                                            featureCountry = jsonParser.getValueAsString();
-                                                            builder.append("country=").append(featureCountry).append(COMMA);
-                                                            break;
-                                                        case "addr:region":
-                                                            featureRegion = jsonParser.getValueAsString();
-                                                            builder.append("region=").append(featureRegion).append(COMMA);
-                                                            break;
-                                                        case "addr:district":
-                                                            featureDistrict = jsonParser.getValueAsString();
-                                                            builder.append("district=").append(featureDistrict).append(COMMA);
-                                                            break;
-                                                        case "name":
-                                                            featureName = jsonParser.getValueAsString();
-                                                            builder.append("name=").append(featureName).append(COMMA);
-                                                            break;
-                                                        case "official_status":
-                                                            featureOfficialStatus = jsonParser.getValueAsString();
-                                                            builder.append("official_status=").append(featureOfficialStatus).append(COMMA);
-                                                            break;
-                                                        case "is_in:country_code":
-                                                            featureIsInCountryCode = jsonParser.getValueAsString();
-                                                            builder.append("is_in:country_code=").append(featureIsInCountryCode).append(COMMA);
-                                                            break;
-                                                    }
-                                                }
-                                                break;
-                                            case "geometry":
-                                                while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
-                                                    String geomFieldName = jsonParser.getCurrentName();
-                                                    jsonParser.nextToken();
-                                                    if ("coordinates".equals(geomFieldName)) {
-                                                        int i = 0;
-                                                        while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
-                                                            double coord = jsonParser.getDoubleValue();
-                                                            if (i == 0) {
-                                                                featureLongitude = coord;
-                                                            } else {
-                                                                featureLatitude = coord;
-                                                            }
-                                                            i++;
-                                                        }
-                                                        builder.append("longitude=").append(featureLongitude).append(COMMA)
-                                                                .append("latitude=").append(featureLatitude).append(COMMA);
-                                                    }
-                                                }
-                                                break;
-                                        }
-
-                                    }
-
-                                    if (builder.lastIndexOf(COMMA) == builder.length() - 1) {
-                                        builder.deleteCharAt(builder.length() - 1);
-                                    }
-                                    builder.append("\n");
-
-                                }
-                                log.debug("Loaded cities number: {} from: {}", count, path);
-                            }
-                        }
-
-                        return builder.toString();
-
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                })
-                .toList();
-
-        collect.forEach(System.out::println);
-
-        System.out.println();
-        fields.forEach((s, s2) -> {
-            if (s2 != null) {
-                System.out.println(s + " = " + s2);
-            }
-        });
-    }
 
     /**
      * @param limit     Number of entries in the file. Set null for all records.
@@ -209,6 +47,7 @@ public class FileDataLoader {
         while (true) {
             builder = new StringBuilder();
             fields = new HashMap<>();
+            fieldIndex = 0;
 
             exitMenu();
             allFieldsMenu();
@@ -223,13 +62,13 @@ public class FileDataLoader {
             ReturnStatus status = null;
             for (String filePath : filePaths) {
                 Path path = Path.of(filePath.trim());
-                log.debug("Path to loud Cities: {}", path);
+                log.debug("Path to loud features: {}", path);
 
                 JsonFactory jsonFactory = objectMapper.getFactory();
                 try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()));
                      BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8)
                 ) {
-                    status = rootParser(jsonParser, limit, path);
+                    status = rootParser(jsonParser, limit);
                     if (status != ReturnStatus.OK) {
                         log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
                         break;
@@ -258,7 +97,7 @@ public class FileDataLoader {
         }
     }
 
-    private ReturnStatus rootParser(JsonParser jsonParser, final Integer limit, Path path) throws IOException {
+    private ReturnStatus rootParser(JsonParser jsonParser, final Integer limit) throws IOException {
         ReturnStatus status = null;
         while (jsonParser.nextToken() != null) {
             if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && "features".equals(jsonParser.currentName())) {
@@ -278,7 +117,7 @@ public class FileDataLoader {
                 if (status != ReturnStatus.OK) {
                     return status;
                 }
-                log.debug("Loaded cities number: {} from: {}", count, path);
+                log.debug("Loaded features number: {}", count);
             }
         }
         return ReturnStatus.OK;
@@ -295,6 +134,9 @@ public class FileDataLoader {
             switch (subFieldName) {
                 case "id":
                     featureValue = jsonParser.getValueAsString();
+                    if (!fields.containsKey(subFieldName)) {
+                        fields.put(subFieldName, new Field(subFieldName, fieldIndex++));
+                    }
                     builder.append("id=").append(featureValue).append(COMMA);
                     break;
                 case "properties":
@@ -311,7 +153,7 @@ public class FileDataLoader {
 
                         if (!fields.containsKey(propsFieldName)) {
                             if (allFields) {
-                                fields.put(propsFieldName, propsFieldName);
+                                fields.put(propsFieldName, new Field(propsFieldName, fieldIndex++));
                             } else {
                                 fieldDetectedMenu(propsFieldName, jsonParser.getValueAsString());
                                 String customName = scanner.nextLine().trim();
@@ -325,11 +167,11 @@ public class FileDataLoader {
                                 }
 
                                 if ("".equals(customName)) {
-                                    fields.put(propsFieldName, propsFieldName);
+                                    fields.put(propsFieldName, new Field(propsFieldName, fieldIndex++));
                                 } else if ("-".equals(customName)) {
                                     fields.put(propsFieldName, null);
                                 } else {
-                                    fields.put(propsFieldName, customName);
+                                    fields.put(propsFieldName, new Field(customName, fieldIndex++));
                                 }
                             }
                         }
@@ -382,6 +224,14 @@ public class FileDataLoader {
                                     featureLatitude = coord;
                                 }
                                 i++;
+                            }
+                            String longitude = "longitude";
+                            String latitude = "latitude";
+                            if (!fields.containsKey(longitude)) {
+                                fields.put(longitude, new Field(longitude, fieldIndex++));
+                            }
+                            if (!fields.containsKey(latitude)) {
+                                fields.put(latitude, new Field(latitude, fieldIndex++));
                             }
                             builder.append("longitude=").append(featureLongitude).append(COMMA)
                                     .append("latitude=").append(featureLatitude).append(COMMA);

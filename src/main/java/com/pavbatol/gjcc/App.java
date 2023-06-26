@@ -13,5 +13,6 @@ public class App {
 
         FileDataLoader fileDataLoader = new FileDataLoader();
         fileDataLoader.run(5);
+//        fileDataLoader.run(null);
     }
 }
