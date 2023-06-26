@@ -7,116 +7,50 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pavbatol.gjcc.config.AppConfig;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 @Slf4j
 public class FileDataLoader {
-
-    public static final String COMMERCIAL = "НЕГОСУДАРСТВЕННЫЙ";
-    public static final String STATE = "ГОСУДАРСТВЕННЫЙ";
-    public static final String MUNICIPAL = "МУНИЦИПАЛЬНЫЙ";
+    private static final String COMMA = ",";
+    private static final String CLEAR_SIGNAL = "---";
+    private static final String STOP_SIGNAL = "XXX";
+    private final String OUTPUT_PATH = "output.csv";
 
     private final Properties properties = AppConfig.getInstance().getProperty();
     private final String countriesFilePath = properties.getProperty("app.data.file-path.countries");
     private final String highSchoolsFilePath = properties.getProperty("app.data.file-path.high-schools");
     private final String citiesFilePath = properties.getProperty("app.data.file-path.cities");
     private final ObjectMapper objectMapper = new ObjectMapper();
-
-//    public void loadCountries() {
-//        String correctModulePath = getModulePath();
-//        Path path = Path.of(correctModulePath, countriesFilePath);
-//        log.debug("-Path to loud Countries: {}", path);
-//
-//        try (BufferedReader br = Files.newBufferedReader(path)) {
-//            List<Country> countries = new ArrayList<>();
-//            String line = br.readLine();
-//            while ((line = br.readLine()) != null) {
-//                String[] parts = line.split(",");
-//                if (parts[0] != null && !parts[0].trim().isEmpty()) {
-//                    String code = parts[0].trim();
-//                    if (!countryRepository.existsByCode(code)) {
-//                        Country country = new Country()
-//                                .setCode(code)
-//                                .setNameEn(parts.length < 2 || parts[1].trim().isEmpty() ? parts[0].trim() : parts[1].trim())
-//                                .setNameRu(parts.length < 3 || parts[2].trim().isEmpty() ? parts[0].trim() : parts[2].trim());
-//                        countries.add(country);
-//                    }
-//                }
-//            }
-//            if (!countries.isEmpty()) {
-//                countryRepository.saveAll(countries);
-//                log.debug("-The directory of countries has been loaded in the amount of {}", countries.size());
-//            } else {
-//                log.debug("-No new countries to load");
-//            }
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
-//    public void loadHighSchools() {
-//        String correctModulePath = getModulePath();
-//        Path path = Path.of(correctModulePath, highSchoolsFilePath);
-//        log.debug("-Path to loud High-schools: {}", path);
-//
-//        try (InputStream inp = new FileInputStream(path.toString())) {
-//            DataFormatter dataFormatter = new DataFormatter();
-//            Workbook workbook = WorkbookFactory.create(inp);
-//            Sheet sheet = workbook.getSheetAt(0);
-//            List<HighSchool> schools = StreamSupport.stream(sheet.spliterator(), false)
-//                    .skip(1)
-//                    .filter(row -> row.getCell(0) != null)
-//                    .map(row -> {
-//                        String name = row.getCell(0).getStringCellValue().trim();
-//                        int indexEnd = name.indexOf("_x00");
-//                        name = indexEnd == -1 ? name : name.substring(0, indexEnd);
-//                        return new HighSchool()
-//                                .setName(name)
-//                                .setType(row.getCell(1) != null ? getSchoolType(row.getCell(1).getStringCellValue()) : SchoolType.UNKNOWN)
-//                                .setRegion(row.getCell(2) != null ? row.getCell(2).getStringCellValue().trim() : null)
-//                                .setCity(row.getCell(3) != null ? row.getCell(3).getStringCellValue().trim() : null)
-//                                .setPhone(row.getCell(4) != null ? dataFormatter.formatCellValue(row.getCell(4)).trim() : null)
-//                                .setWebsite(row.getCell(7) != null ? row.getCell(7).getStringCellValue().trim() : null);
-//                    })
-//                    .filter(Objects::nonNull)
-//                    .collect(Collectors.toMap(HighSchool::getName, Function.identity(), (a, b) -> a))
-//                    .values().stream()
-//                    .toList();
-//
-//            List<String> existingNames = highSchoolRepository.findAllByNameIn(schools.stream()
-//                    .map(HighSchool::getName)
-//                    .filter(Objects::nonNull)
-//                    .collect(Collectors.toSet()));
-//
-//            List<HighSchool> schoolsToSave = schools.stream()
-//                    .filter(Objects::nonNull)
-//                    .filter(highSchool -> highSchool.getName() != null)
-//                    .filter(highSchool -> !existingNames.contains(highSchool.getName()))
-//                    .toList();
-//
-//            if (!schoolsToSave.isEmpty()) {
-//                highSchoolRepository.saveAll(schoolsToSave);
-//                log.debug("-The directory of schools has been loaded in the amount of {}", schoolsToSave.size());
-//            } else {
-//                log.debug("-No new schools to load");
-//            }
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    private boolean stop;
+    private boolean allFields;
+    private Map<String, String> fields;
+    private StringBuilder builder;
+    private final Scanner scanner = new Scanner(System.in);
 
     /**
      * @param limit     Number of entries in the file. Set null for all records.
      * @param filePaths Paths to json format files from which to read data
      */
-    public void loadCities(Integer limit, String... filePaths) {
+    public void loadCities_OLD(final Integer limit, String... filePaths) {
+
+        Scanner scanner = new Scanner(System.in);
+        Map<String, String> fields = new HashMap<>();
+
+        allFieldsMenu();
+        String allFieldsInput = scanner.nextLine();
+        final boolean allFields = "1".equals(allFieldsInput);
+
         List<String> collect = Arrays.stream(filePaths)
                 .map(filePath -> {
                     Path path = Path.of(filePath.trim());
-                    log.debug("-Path to loud Cities: {}", path);
+                    log.debug("Path to loud Cities: {}", path);
 
                     JsonFactory jsonFactory = objectMapper.getFactory();
                     try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()))) {
@@ -145,38 +79,66 @@ public class FileDataLoader {
                                         String subFieldName = jsonParser.getCurrentName();
                                         jsonParser.nextToken();
                                         switch (subFieldName) {
+                                            case "id":
+                                                featureId = jsonParser.getValueAsString();
+                                                builder.append("id=").append(featureId).append(COMMA);
+                                                break;
                                             case "properties":
                                                 while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
                                                     String propsFieldName = jsonParser.getCurrentName();
                                                     jsonParser.nextToken();
+
+                                                    if (propsFieldName.startsWith("name:")
+                                                            && !"name:ru".equals(propsFieldName)
+                                                            && !"name:en".equals(propsFieldName)
+                                                            && !"name:".equals(propsFieldName)) {
+                                                        continue;
+                                                    }
+
+                                                    if (!fields.containsKey(propsFieldName)) {
+                                                        if (allFields) {
+                                                            fields.put(propsFieldName, propsFieldName);
+                                                        } else {
+                                                            fieldDetectedMenu(propsFieldName, jsonParser.getValueAsString());
+                                                            String customName = scanner.nextLine().trim().replace("\n", "");
+                                                            if ("".equals(customName)) {
+                                                                fields.put(propsFieldName, propsFieldName);
+                                                            } else if ("-".equals(customName)) {
+                                                                fields.put(propsFieldName, null);
+                                                            } else {
+                                                                fields.put(propsFieldName, customName);
+                                                            }
+                                                        }
+                                                    }
+
                                                     switch (propsFieldName) {
                                                         case "@id":
                                                             featureId = jsonParser.getValueAsString();
-                                                            builder.append("@id=").append(featureId);
+                                                            builder.append("@id=").append(featureId).append(COMMA);
                                                             break;
                                                         case "addr:country":
                                                             featureCountry = jsonParser.getValueAsString();
-                                                            builder.append(", country=").append(featureCountry);
+                                                            builder.append("country=").append(featureCountry).append(COMMA);
                                                             break;
                                                         case "addr:region":
                                                             featureRegion = jsonParser.getValueAsString();
-                                                            builder.append(", region=").append(featureRegion);
+                                                            builder.append("region=").append(featureRegion).append(COMMA);
                                                             break;
                                                         case "addr:district":
                                                             featureDistrict = jsonParser.getValueAsString();
-                                                            builder.append(", district=").append(featureDistrict);
+                                                            builder.append("district=").append(featureDistrict).append(COMMA);
                                                             break;
                                                         case "name":
                                                             featureName = jsonParser.getValueAsString();
-                                                            builder.append(", name=").append(featureName);
+                                                            builder.append("name=").append(featureName).append(COMMA);
                                                             break;
                                                         case "official_status":
                                                             featureOfficialStatus = jsonParser.getValueAsString();
-                                                            builder.append(", official_status=").append(featureOfficialStatus);
+                                                            builder.append("official_status=").append(featureOfficialStatus).append(COMMA);
                                                             break;
                                                         case "is_in:country_code":
                                                             featureIsInCountryCode = jsonParser.getValueAsString();
-                                                            builder.append(", is_in:country_code=").append(featureIsInCountryCode);
+                                                            builder.append("is_in:country_code=").append(featureIsInCountryCode).append(COMMA);
                                                             break;
                                                     }
                                                 }
@@ -196,16 +158,22 @@ public class FileDataLoader {
                                                             }
                                                             i++;
                                                         }
-                                                        builder.append(", longitude=").append(featureLongitude)
-                                                                .append(", latitude=").append(featureLatitude)
-                                                                .append("\n");
+                                                        builder.append("longitude=").append(featureLongitude).append(COMMA)
+                                                                .append("latitude=").append(featureLatitude).append(COMMA);
                                                     }
                                                 }
                                                 break;
                                         }
+
                                     }
+
+                                    if (builder.lastIndexOf(COMMA) == builder.length() - 1) {
+                                        builder.deleteCharAt(builder.length() - 1);
+                                    }
+                                    builder.append("\n");
+
                                 }
-                                log.debug("-Loaded cities number: {} from file: {}", count, path);
+                                log.debug("Loaded cities number: {} from: {}", count, path);
                             }
                         }
 
@@ -219,11 +187,211 @@ public class FileDataLoader {
 
         collect.forEach(System.out::println);
 
+        System.out.println();
+        fields.forEach((s, s2) -> {
+            if (s2 != null) {
+                System.out.println(s + " = " + s2);
+            }
+        });
+    }
+
+    /**
+     * @param limit     Number of entries in the file. Set null for all records.
+     * @param filePaths Paths to json format files from which to read data
+     */
+    private void loadCities(final Integer limit, String... filePaths) {
+        Path pathOut = Paths.get(OUTPUT_PATH);
+
+
+        while (!stop) {
+            builder = new StringBuilder();
+            fields = new HashMap<>();
+//            allFields = false;
+
+            exitMenu();
+            allFieldsMenu();
+            String allFieldsInput = scanner.nextLine();
+            if (STOP_SIGNAL.equals(allFieldsInput)) {
+                return;
+            }
+            if (CLEAR_SIGNAL.equals(allFieldsInput)) {
+                continue;
+            }
+            allFields = !"0".equals(allFieldsInput);
+
+            for (String filePath : filePaths) {
+                Path path = Path.of(filePath.trim());
+                log.debug("Path to loud Cities: {}", path);
+
+                JsonFactory jsonFactory = objectMapper.getFactory();
+                try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()));
+                     BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8)
+                ) {
+
+                    rootParser(jsonParser, limit, path);
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                builder.append("\n");
+
+            }
+
+            System.out.println(builder.toString());
+
+            fields.forEach((s, s2) -> {
+                if (s2 != null) {
+                    System.out.println(s + " = " + s2);
+                }
+            });
+
+        }
+    }
+
+    private void rootParser(JsonParser jsonParser, final Integer limit, Path path) throws IOException {
+        while (jsonParser.nextToken() != null) {
+            if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && "features".equals(jsonParser.currentName())) {
+
+                int count = 0;
+                while (jsonParser.nextToken() != JsonToken.END_ARRAY && (limit == null || count < limit)) {
+                    count++;
+
+                    targetParser(jsonParser);
+
+                    if (builder.lastIndexOf(COMMA) == builder.length() - 1) {
+                        builder.deleteCharAt(builder.length() - 1);
+                    }
+                    builder.append("\n");
+
+                }
+
+                log.debug("Loaded cities number: {} from: {}", count, path);
+
+            }
+        }
+    }
+
+    private void targetParser(JsonParser jsonParser) throws IOException {
+        while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
+            if (jsonParser.currentToken() != JsonToken.FIELD_NAME) {
+                continue;
+            }
+            String featureValue;
+            String subFieldName = jsonParser.getCurrentName();
+            jsonParser.nextToken();
+            switch (subFieldName) {
+                case "id":
+                    featureValue = jsonParser.getValueAsString();
+                    builder.append("id=").append(featureValue).append(COMMA);
+                    break;
+                case "properties":
+                    while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
+                        String propsFieldName = jsonParser.getCurrentName();
+                        jsonParser.nextToken();
+
+                        if (propsFieldName.startsWith("name:")
+                                && !"name:ru".equals(propsFieldName)
+                                && !"name:en".equals(propsFieldName)
+                                && !"name:".equals(propsFieldName)) {
+                            continue;
+                        }
+
+                        if (!fields.containsKey(propsFieldName)) {
+                            if (allFields) {
+                                fields.put(propsFieldName, propsFieldName);
+                            } else {
+                                fieldDetectedMenu(propsFieldName, jsonParser.getValueAsString());
+                                String customName = scanner.nextLine().trim().replace("\n", "");
+                                if ("".equals(customName)) {
+                                    fields.put(propsFieldName, propsFieldName);
+                                } else if ("-".equals(customName)) {
+                                    fields.put(propsFieldName, null);
+                                } else {
+                                    fields.put(propsFieldName, customName);
+                                }
+                            }
+                        }
+
+                        switch (propsFieldName) {
+                            case "@id":
+                                featureValue = jsonParser.getValueAsString();
+                                builder.append("@id=").append(featureValue).append(COMMA);
+                                break;
+                            case "addr:country":
+                                featureValue = jsonParser.getValueAsString();
+                                builder.append("country=").append(featureValue).append(COMMA);
+                                break;
+                            case "addr:region":
+                                featureValue = jsonParser.getValueAsString();
+                                builder.append("region=").append(featureValue).append(COMMA);
+                                break;
+                            case "addr:district":
+                                featureValue = jsonParser.getValueAsString();
+                                builder.append("district=").append(featureValue).append(COMMA);
+                                break;
+                            case "name":
+                                featureValue = jsonParser.getValueAsString();
+                                builder.append("name=").append(featureValue).append(COMMA);
+                                break;
+                            case "official_status":
+                                featureValue = jsonParser.getValueAsString();
+                                builder.append("official_status=").append(featureValue).append(COMMA);
+                                break;
+                            case "is_in:country_code":
+                                featureValue = jsonParser.getValueAsString();
+                                builder.append("is_in:country_code=").append(featureValue).append(COMMA);
+                                break;
+                        }
+                    }
+                    break;
+                case "geometry":
+                    while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
+                        String geomFieldName = jsonParser.getCurrentName();
+                        jsonParser.nextToken();
+                        if ("coordinates".equals(geomFieldName)) {
+                            double featureLongitude = .0;
+                            double featureLatitude = .0;
+                            int i = 0;
+                            while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
+                                double coord = jsonParser.getDoubleValue();
+                                if (i == 0) {
+                                    featureLongitude = coord;
+                                } else {
+                                    featureLatitude = coord;
+                                }
+                                i++;
+                            }
+                            builder.append("longitude=").append(featureLongitude).append(COMMA)
+                                    .append("latitude=").append(featureLatitude).append(COMMA);
+                        }
+                    }
+                    break;
+            }
+
+        }
+    }
+
+    private static void exitMenu() {
+        System.out.println("-----------------------");
+        System.out.println("At any stage, you can:");
+        System.out.println("Enter " + CLEAR_SIGNAL + " to start over");
+        System.out.println("Enter " + STOP_SIGNAL + " to exit");
+        System.out.println("-----------------------");
+    }
+
+    private void fieldDetectedMenu(String fieldName, String examole) throws IOException {
+        System.out.println("Field detected: " + fieldName + " (example of a value: " + examole + ")");
+        System.out.println("Press Enter to leave as is; Or enter your name; Or type \"-\" to skip; Or enter \"all\" to load all fields as is");
+    }
+
+    private void allFieldsMenu() {
+        System.out.println("Which fields to save?");
+        System.out.println("\tSelectively: 0");
+        System.out.println("\tAll: 1 (or any other)");
     }
 
     public void run(Integer limit) {
-//        loadCountries();
-//        loadHighSchools();
         loadCities(limit, citiesFilePath.split(","));
     }
 }
