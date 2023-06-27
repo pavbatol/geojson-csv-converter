@@ -30,8 +30,8 @@ public class FileDataLoader {
     private final String citiesFilePath = properties.getProperty("app.data.file-path.cities");
     private final ObjectMapper objectMapper = new ObjectMapper();
     private boolean allFields;
-    private int fieldIndex;
-//    private Map<String, String> fields;
+    private int nextFieldIndex;
+    private List<String> csvLineParts;
     private Map<String, Field> fields;
     private StringBuilder builder;
     private final Scanner scanner = new Scanner(System.in);
@@ -46,8 +46,9 @@ public class FileDataLoader {
 
         while (true) {
             builder = new StringBuilder();
-            fields = new HashMap<>();
-            fieldIndex = 0;
+            fields = new HashMap<>(133, 0.75f);
+            csvLineParts = new ArrayList<>(100);
+            nextFieldIndex = 0;
 
             exitMenu();
             allFieldsMenu();
@@ -86,13 +87,13 @@ public class FileDataLoader {
                 return;
             }
 
-            System.out.println(builder.toString());
+//            System.out.println(builder.toString());
 
-            fields.forEach((s, s2) -> {
-                if (s2 != null) {
-                    System.out.println(s + " = " + s2);
-                }
-            });
+//            fields.forEach((s, s2) -> {
+//                if (s2 != null) {
+//                    System.out.println(s + " = " + s2);
+//                }
+//            });
 
         }
     }
@@ -113,6 +114,9 @@ public class FileDataLoader {
                         builder.deleteCharAt(builder.length() - 1);
                     }
                     builder.append("\n");
+
+                    csvLineParts.forEach(System.out::print); System.out.println();
+
                 }
                 if (status != ReturnStatus.OK) {
                     return status;
@@ -124,6 +128,9 @@ public class FileDataLoader {
     }
 
     private ReturnStatus targetParser(JsonParser jsonParser) throws IOException {
+
+        csvLineParts.clear();
+
         while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
             if (jsonParser.currentToken() != JsonToken.FIELD_NAME) {
                 continue;
@@ -135,8 +142,13 @@ public class FileDataLoader {
                 case "id":
                     featureValue = jsonParser.getValueAsString();
                     if (!fields.containsKey(subFieldName)) {
-                        fields.put(subFieldName, new Field(subFieldName, fieldIndex++));
+                        fields.put(subFieldName, new Field(subFieldName, nextFieldIndex++));
                     }
+
+                    if (fields.get(subFieldName) != null) {
+                        setCsvLinePart(fields.get(subFieldName).getIndex(), jsonParser.getValueAsString() + COMMA);
+                    }
+
                     builder.append("id=").append(featureValue).append(COMMA);
                     break;
                 case "properties":
@@ -153,7 +165,7 @@ public class FileDataLoader {
 
                         if (!fields.containsKey(propsFieldName)) {
                             if (allFields) {
-                                fields.put(propsFieldName, new Field(propsFieldName, fieldIndex++));
+                                fields.put(propsFieldName, new Field(propsFieldName, nextFieldIndex++));
                             } else {
                                 fieldDetectedMenu(propsFieldName, jsonParser.getValueAsString());
                                 String customName = scanner.nextLine().trim();
@@ -167,13 +179,17 @@ public class FileDataLoader {
                                 }
 
                                 if ("".equals(customName)) {
-                                    fields.put(propsFieldName, new Field(propsFieldName, fieldIndex++));
+                                    fields.put(propsFieldName, new Field(propsFieldName, nextFieldIndex++));
                                 } else if ("-".equals(customName)) {
                                     fields.put(propsFieldName, null);
                                 } else {
-                                    fields.put(propsFieldName, new Field(customName, fieldIndex++));
+                                    fields.put(propsFieldName, new Field(customName, nextFieldIndex++));
                                 }
                             }
+                        }
+
+                        if (fields.get(propsFieldName) != null) {
+                            setCsvLinePart(fields.get(propsFieldName).getIndex(), jsonParser.getValueAsString() + COMMA);
                         }
 
                         switch (propsFieldName) {
@@ -228,20 +244,44 @@ public class FileDataLoader {
                             String longitude = "longitude";
                             String latitude = "latitude";
                             if (!fields.containsKey(longitude)) {
-                                fields.put(longitude, new Field(longitude, fieldIndex++));
+                                fields.put(longitude, new Field(longitude, nextFieldIndex++));
                             }
                             if (!fields.containsKey(latitude)) {
-                                fields.put(latitude, new Field(latitude, fieldIndex++));
+                                fields.put(latitude, new Field(latitude, nextFieldIndex++));
                             }
+
+                            if (fields.get(longitude) != null) {
+                                setCsvLinePart(fields.get(longitude).getIndex(), featureLongitude + COMMA);
+                            }
+                            if (fields.get(latitude) != null) {
+                                setCsvLinePart(fields.get(latitude).getIndex(), featureLatitude + COMMA);
+                            }
+
                             builder.append("longitude=").append(featureLongitude).append(COMMA)
                                     .append("latitude=").append(featureLatitude).append(COMMA);
                         }
                     }
                     break;
             }
-
         }
         return ReturnStatus.OK;
+    }
+
+    private void setCsvLinePart(int index, String part) {
+        controlListSize();
+        csvLineParts.set(index, part);
+    }
+
+    private void controlListSize() {
+        if (csvLineParts.size() < nextFieldIndex) {
+            increaseListSizeBy(nextFieldIndex, csvLineParts);
+        }
+    }
+
+    private void increaseListSizeBy(int increase, List<String> list) {
+        for (int i = 0; i < increase; i++) {
+            list.add(COMMA);
+        }
     }
 
     private void creatDirectoryIfNotExists(Path path) {
