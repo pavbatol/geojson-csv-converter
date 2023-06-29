@@ -19,13 +19,17 @@ import java.util.stream.Collectors;
 public class FileDataLoader {
     private static final String DELIMITER = ",";
     private static final String DELIMITER_REPLACEMENT = ";";
-    private static final String RESET_SIGNAL = "---";
-    private static final String STOP_SIGNAL = "XXX";
+    private static final String RESET_SIGNAL = "----";
+    private static final String STOP_SIGNAL = "XXXX";
     private static final String RESET_COMMAND_RECEIVED = "Reset command received";
     private static final String EXIT_COMMAND_RECEIVED = "Exit command received";
     private static final int INITIAL_CAPACITY = 100;
     private static final String OUTPUT_FILE = "output.csv";
     private static final String OUTPUT_DIR = "output";
+    public static final String TO_SKIP_FIELD = "-";
+    public static final String TO_SKIP_REMAINING_FIELDS = "--";
+    public static final String TO_LOAD_REMAINING_FIELDS = "++";
+    public static final String TO_LEAVE_AS_IS_FIELD = "";
     private final Properties properties = AppConfig.getInstance().getProperty();
     private final String sourceFilePath = properties.getProperty("app.data.file-path");
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -36,6 +40,8 @@ public class FileDataLoader {
     private Map<String, Field> fields;
     private Set<String> nodeIds;
     private StringBuilder builder;
+    private boolean loadRemainingFields;
+    private boolean skipRemainingFields;
 
     /**
      * @param limit     Number of entries in the file. Set null for all records.
@@ -51,6 +57,8 @@ public class FileDataLoader {
             fields = new HashMap<>((int) (INITIAL_CAPACITY / 0.75) + 1, 0.75f);
             nodeIds = new HashSet<>();
             nextFieldIndex = 0;
+            loadRemainingFields = false;
+            skipRemainingFields = false;
 
             exitMenu();
             allFieldsMenu();
@@ -66,8 +74,6 @@ public class FileDataLoader {
             try (BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8,
                     StandardOpenOption.APPEND, StandardOpenOption.CREATE)
             ) {
-
-//                deleteFile(pathOut);
                 ReturnStatus status = null;
                 for (String filePath : filePaths) {
                     Path path = Path.of(filePath.trim());
@@ -75,9 +81,6 @@ public class FileDataLoader {
 
                     JsonFactory jsonFactory = objectMapper.getFactory();
                     try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()))
-//                     ;
-//                     BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8,
-//                             StandardOpenOption.APPEND, StandardOpenOption.CREATE)
                     ) {
                         status = parse(jsonParser, writer, limit);
                         if (status != ReturnStatus.OK) {
@@ -109,6 +112,9 @@ public class FileDataLoader {
 
                     writer.write(String.join(DELIMITER, csvLineParts));
                 }
+
+                log.debug("Total number of fields: {}", fields.size());
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -123,7 +129,8 @@ public class FileDataLoader {
 //                }
 //            });
 
-//            System.out.println("fields.size() = " + fields.size());
+//            System.out.println("Number of fields: " + fields.size());
+
 //            System.out.println("csvLineParts.size() = " + csvLineParts.size());
 //            System.out.println("nextFieldIndex = " +nextFieldIndex);
 
@@ -161,9 +168,7 @@ public class FileDataLoader {
     }
 
     private ReturnStatus parseTarget(JsonParser jsonParser, BufferedWriter writer) throws IOException {
-
         csvLineParts.clear();
-
         while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
             if (jsonParser.currentToken() != JsonToken.FIELD_NAME) {
                 continue;
@@ -195,15 +200,17 @@ public class FileDataLoader {
                         jsonParser.nextToken();
 
                         if (propsFieldName.startsWith("name:")
-                                && !"name:ru".equals(propsFieldName)
-                                && !"name:en".equals(propsFieldName)
-                                && !"name:".equals(propsFieldName)) {
+                            && !"name:ru".equals(propsFieldName)
+                            && !"name:en".equals(propsFieldName)
+                            && !"name:".equals(propsFieldName)) {
                             continue;
                         }
 
                         if (!fields.containsKey(propsFieldName)) {
-                            if (allFields) {
+                            if (allFields || loadRemainingFields) {
                                 fields.put(propsFieldName, new Field(propsFieldName, nextFieldIndex++));
+                            } else if (skipRemainingFields) {
+                                fields.put(propsFieldName, null);
                             } else {
                                 fieldDetectedMenu(propsFieldName, jsonParser.getValueAsString());
                                 String customName = scanner.nextLine().trim();
@@ -214,11 +221,17 @@ public class FileDataLoader {
                                 } else if (RESET_SIGNAL.equals(customName)) {
                                     log.debug(RESET_COMMAND_RECEIVED);
                                     return ReturnStatus.RESET;
+                                } else if (TO_SKIP_REMAINING_FIELDS.equals(customName)) {
+                                    skipRemainingFields = true;
+                                    customName = TO_SKIP_FIELD;
+                                } else if (TO_LOAD_REMAINING_FIELDS.equals(customName)) {
+                                    loadRemainingFields = true;
+                                    customName = TO_LEAVE_AS_IS_FIELD;
                                 }
 
-                                if ("".equals(customName)) {
+                                if (TO_LEAVE_AS_IS_FIELD.equals(customName)) {
                                     fields.put(propsFieldName, new Field(propsFieldName, nextFieldIndex++));
-                                } else if ("-".equals(customName)) {
+                                } else if (TO_SKIP_FIELD.equals(customName)) {
                                     fields.put(propsFieldName, null);
                                 } else {
                                     fields.put(propsFieldName, new Field(customName, nextFieldIndex++));
@@ -303,18 +316,19 @@ public class FileDataLoader {
             }
         }
 
-        System.out.println(csvLineParts.stream()
-                .map(s -> s == null ? "" : s)
-                .map(this::replaceDelimiter)
-                .collect(Collectors.joining(DELIMITER)));
+//        System.out.println(csvLineParts.stream()
+//                .map(s -> s == null ? "" : s)
+//                .map(this::replaceDelimiter)
+//                .collect(Collectors.joining(DELIMITER)));
+
 //        csvLineParts.forEach(System.out::print); System.out.println();
 
         // String of CSV
         if (csvLineParts.size() > 0) {
             writer.write(csvLineParts.stream()
-                    .map(s -> s == null ? "" : s)
-                    .map(this::replaceDelimiter)
-                    .collect(Collectors.joining(DELIMITER)) + "\n");
+                                 .map(s -> s == null ? TO_LEAVE_AS_IS_FIELD : s)
+                                 .map(this::replaceDelimiter)
+                                 .collect(Collectors.joining(DELIMITER)) + "\n");
         }
 
         return ReturnStatus.OK;
@@ -366,15 +380,20 @@ public class FileDataLoader {
 
     private static void exitMenu() {
         System.out.println("-----------------------");
-        System.out.println("At any stage, you can:");
-        System.out.println("Enter " + RESET_SIGNAL + " to start over");
-        System.out.println("Enter " + STOP_SIGNAL + " to exit");
+        System.out.println("At any stage you can enter:");
+        System.out.println("\"" + RESET_SIGNAL + "\" : start over");
+        System.out.println("\"" + STOP_SIGNAL + "\" : exit");
         System.out.println("-----------------------");
     }
 
-    private void fieldDetectedMenu(String fieldName, String examole) throws IOException {
-        System.out.println("Field detected: " + fieldName + " (example of a value: " + examole + ")");
-        System.out.println("Press Enter to leave as is; Or enter your name; Or type \"-\" to skip; Or enter \"all\" to load all fields as is");
+    private void fieldDetectedMenu(String fieldName, String examole) {
+        System.out.println("Field detected: \"" + fieldName + "\" (value example: " + examole + ")");
+        System.out.printf("\tPress Enter to leave this field as is; \n" +
+                          "\tOr enter your field name; \n" +
+                          "\tOr enter \"%s\" to skip; \n" +
+                          "\tOr enter \"%s\" to skip all remaining fields; \n" +
+                          "\tOr enter \"%s\" to load all remaining fields as is;\n",
+                TO_SKIP_FIELD, TO_SKIP_REMAINING_FIELDS, TO_LOAD_REMAINING_FIELDS);
     }
 
     private void allFieldsMenu() {
