@@ -11,10 +11,9 @@ import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class FileDataLoader {
@@ -23,16 +22,18 @@ public class FileDataLoader {
     private static final String STOP_SIGNAL = "XXX";
     public static final String RESET_COMMAND_RECEIVED = "Reset command received";
     public static final String EXIT_COMMAND_RECEIVED = "Exit command received";
+    public static final int INITIAL_CAPACITY = 100;
     private final String OUTPUT_FILE = "output.csv";
     private final String OUTPUT_DIR = "output";
 
     private final Properties properties = AppConfig.getInstance().getProperty();
-    private final String citiesFilePath = properties.getProperty("app.data.file-path.cities");
+    private final String sourceFilePath = properties.getProperty("app.data.file-path");
     private final ObjectMapper objectMapper = new ObjectMapper();
     private boolean allFields;
     private int nextFieldIndex;
     private List<String> csvLineParts;
     private Map<String, Field> fields;
+    private Set<String> nodeIds;
     private StringBuilder builder;
     private final Scanner scanner = new Scanner(System.in);
 
@@ -46,8 +47,9 @@ public class FileDataLoader {
 
         while (true) {
             builder = new StringBuilder();
-            fields = new HashMap<>(133, 0.75f);
-            csvLineParts = new ArrayList<>(100);
+            csvLineParts = new ArrayList<>(INITIAL_CAPACITY);
+            fields = new HashMap<>((int) (INITIAL_CAPACITY / 0.75) + 1, 0.75f);
+            nodeIds = new HashSet<>();
             nextFieldIndex = 0;
 
             exitMenu();
@@ -60,6 +62,7 @@ public class FileDataLoader {
             }
             allFields = !"0".equals(allFieldsInput);
 
+            deleteFile(pathOut);
             ReturnStatus status = null;
             for (String filePath : filePaths) {
                 Path path = Path.of(filePath.trim());
@@ -67,13 +70,23 @@ public class FileDataLoader {
 
                 JsonFactory jsonFactory = objectMapper.getFactory();
                 try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()));
-                     BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8)
+                     BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8,
+                             StandardOpenOption.APPEND, StandardOpenOption.CREATE)
                 ) {
-                    status = rootParser(jsonParser, limit);
+                    status = rootParser(jsonParser, writer, limit);
                     if (status != ReturnStatus.OK) {
                         log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
                         break;
                     }
+
+                    // Titles
+                    if (fields.values().size() > 0) {
+                        writer.write(fields.values().stream()
+                                .filter(Objects::nonNull)
+                                .map(Field::getName)
+                                .collect(Collectors.joining(",")));
+                    }
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -98,14 +111,14 @@ public class FileDataLoader {
         }
     }
 
-    private ReturnStatus rootParser(JsonParser jsonParser, final Integer limit) throws IOException {
+    private ReturnStatus rootParser(JsonParser jsonParser, BufferedWriter writer, final Integer limit) throws IOException {
         ReturnStatus status = null;
         while (jsonParser.nextToken() != null) {
             if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && "features".equals(jsonParser.currentName())) {
                 int count = 0;
                 while (jsonParser.nextToken() != JsonToken.END_ARRAY && (limit == null || count < limit)) {
                     count++;
-                    status = targetParser(jsonParser);
+                    status = targetParser(jsonParser, writer);
                     if (status != ReturnStatus.OK) {
                         log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
                         break;
@@ -115,7 +128,7 @@ public class FileDataLoader {
                     }
                     builder.append("\n");
 
-                    csvLineParts.forEach(System.out::print); System.out.println();
+//                    csvLineParts.forEach(System.out::print); System.out.println();
 
                 }
                 if (status != ReturnStatus.OK) {
@@ -127,7 +140,7 @@ public class FileDataLoader {
         return ReturnStatus.OK;
     }
 
-    private ReturnStatus targetParser(JsonParser jsonParser) throws IOException {
+    private ReturnStatus targetParser(JsonParser jsonParser, BufferedWriter writer) throws IOException {
 
         csvLineParts.clear();
 
@@ -143,6 +156,11 @@ public class FileDataLoader {
                     featureValue = jsonParser.getValueAsString();
                     if (!fields.containsKey(subFieldName)) {
                         fields.put(subFieldName, new Field(subFieldName, nextFieldIndex++));
+                    }
+
+                    // Duplicate ID
+                    if (!nodeIds.add(featureValue)) {
+                        return ReturnStatus.OK;
                     }
 
                     if (fields.get(subFieldName) != null) {
@@ -264,6 +282,16 @@ public class FileDataLoader {
                     break;
             }
         }
+
+        csvLineParts.forEach(System.out::print); System.out.println();
+
+        // String of CSV
+        if (csvLineParts.size() > 0) {
+            writer.write(csvLineParts.stream()
+                    .limit(csvLineParts.size() - 1)
+                    .collect(Collectors.joining()) + "\n");
+        }
+
         return ReturnStatus.OK;
     }
 
@@ -294,6 +322,19 @@ public class FileDataLoader {
         }
     }
 
+    private void deleteFile( Path path ) {
+        if (Files.exists(path)) {
+            try {
+                Files.delete(path);
+                log.debug("The file was successfully deleted: {}", path);
+            } catch (NoSuchFileException e) {
+                System.err.println("File not found: " + e.getMessage());
+            } catch (IOException e) {
+                System.err.println("Error deleting a file: " + e.getMessage());
+            }
+        }
+    }
+
     private static void exitMenu() {
         System.out.println("-----------------------");
         System.out.println("At any stage, you can:");
@@ -314,6 +355,6 @@ public class FileDataLoader {
     }
 
     public void run(Integer limit) {
-        loadCities(limit, citiesFilePath.split(","));
+        loadCities(limit, sourceFilePath.split(","));
     }
 }
