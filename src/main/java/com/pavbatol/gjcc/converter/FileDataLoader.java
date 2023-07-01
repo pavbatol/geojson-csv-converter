@@ -93,9 +93,6 @@ public class FileDataLoader {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-
-                    builder.append("\n");
-
                 }
                 if (status == ReturnStatus.RESET) {
                     continue;
@@ -103,7 +100,6 @@ public class FileDataLoader {
                     return;
                 }
 
-                // Titles
                 if (fields.values().size() > 0) {
                     csvLineParts.clear();
                     controlLinePartsSize();
@@ -113,7 +109,12 @@ public class FileDataLoader {
                             .filter(field -> Objects.nonNull(field.getIndex()))
                             .forEach(field -> csvLineParts.set(field.getIndex(), replaceDelimiter(field.getName())));
 
-                    writer.write(String.join(DELIMITER, csvLineParts));
+                    // Titles-line
+                    String titles = String.join(DELIMITER, csvLineParts);
+                    writer.write((titles + "\n"));
+
+                    // Body-lines
+                    writer.write(builder.toString());
                 }
 
                 log.debug("Total number of fields: {}", fields.size());
@@ -123,23 +124,11 @@ public class FileDataLoader {
                 throw new RuntimeException(e);
             }
 
-//            System.out.println(builder.toString());
-
-//            csvLineParts.forEach(System.out::println);
-
 //            fields.forEach((s, s2) -> {
 //                if (s2 != null) {
 //                    System.out.println(s + " = " + s2);
 //                }
 //            });
-
-//            System.out.println("Number of fields: " + fields.size());
-
-//            System.out.println("csvLineParts.size() = " + csvLineParts.size());
-//            System.out.println("nextFieldIndex = " +nextFieldIndex);
-
-//            System.out.println();
-//            csvLineParts.forEach(System.out::println);
 
         }
     }
@@ -156,11 +145,6 @@ public class FileDataLoader {
                         log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
                         break;
                     }
-                    if (builder.lastIndexOf(DELIMITER) == builder.length() - 1) {
-                        builder.deleteCharAt(builder.length() - 1);
-                    }
-                    builder.append("\n");
-
                 }
                 if (status != ReturnStatus.OK) {
                     return status;
@@ -195,8 +179,6 @@ public class FileDataLoader {
                     if (fields.get(subFieldName) != null) {
                         setCsvLinePart(fields.get(subFieldName).getIndex(), featureValue);
                     }
-
-                    builder.append("id=").append(featureValue).append(DELIMITER);
                     break;
                 case "properties":
                     while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
@@ -247,37 +229,6 @@ public class FileDataLoader {
                         if (fields.get(propsFieldName) != null) {
                             setCsvLinePart(fields.get(propsFieldName).getIndex(), featureValue);
                         }
-
-                        switch (propsFieldName) {
-                            case "@id":
-                                featureValue = featureValue;
-                                builder.append("@id=").append(featureValue).append(DELIMITER);
-                                break;
-                            case "addr:country":
-                                featureValue = featureValue;
-                                builder.append("country=").append(featureValue).append(DELIMITER);
-                                break;
-                            case "addr:region":
-                                featureValue = featureValue;
-                                builder.append("region=").append(featureValue).append(DELIMITER);
-                                break;
-                            case "addr:district":
-                                featureValue = featureValue;
-                                builder.append("district=").append(featureValue).append(DELIMITER);
-                                break;
-                            case "name":
-                                featureValue = featureValue;
-                                builder.append("name=").append(featureValue).append(DELIMITER);
-                                break;
-                            case "official_status":
-                                featureValue = featureValue;
-                                builder.append("official_status=").append(featureValue).append(DELIMITER);
-                                break;
-                            case "is_in:country_code":
-                                featureValue = featureValue;
-                                builder.append("is_in:country_code=").append(featureValue).append(DELIMITER);
-                                break;
-                        }
                     }
                     break;
                 case "geometry":
@@ -312,9 +263,6 @@ public class FileDataLoader {
                             if (fields.get(latitude) != null) {
                                 setCsvLinePart(fields.get(latitude).getIndex(), String.valueOf(featureLatitude));
                             }
-
-                            builder.append("longitude=").append(featureLongitude).append(DELIMITER)
-                                    .append("latitude=").append(featureLatitude).append(DELIMITER);
                         }
                     }
                     break;
@@ -329,12 +277,19 @@ public class FileDataLoader {
 //        csvLineParts.forEach(System.out::print); System.out.println();
 
         // String of CSV
-        if (csvLineParts.size() > 0) {
-            writer.write(csvLineParts.stream()
-                    .map(s -> s == null ? TO_LEAVE_AS_IS_FIELD : s)
-                    .map(this::replaceDelimiter)
-                    .collect(Collectors.joining(DELIMITER)) + "\n");
-        }
+//        if (csvLineParts.size() > 0) {
+//            writer.write(csvLineParts.stream()
+//                    .map(s -> s == null ? TO_LEAVE_AS_IS_FIELD : s)
+//                    .map(this::replaceDelimiter)
+//                    .collect(Collectors.joining(DELIMITER)) + "\n");
+//        }
+
+        // String of CSV
+        String newCsvLine = csvLineParts.stream()
+                .map(s -> s == null ? TO_LEAVE_AS_IS_FIELD : s)
+                .map(this::replaceDelimiter)
+                .collect(Collectors.joining(DELIMITER)) + "\n";
+        builder.append(newCsvLine);
 
         return ReturnStatus.OK;
     }
@@ -432,7 +387,7 @@ public class FileDataLoader {
         System.out.printf("\t%-11s : %s%n", "Selectively", "0");
         System.out.printf("\t%-11s : %s%n", "All", "1");
         System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names separated by commas " +
-                "(take the fields from features[]->properties object from your GEOJSON file )");
+                "(take the fields from features[]->properties object from your GEOJSON file)");
     }
 
     public void run(Integer limit) {
