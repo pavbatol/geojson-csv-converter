@@ -104,7 +104,7 @@ public class FileDataLoader {
                     JsonFactory jsonFactory = objectMapper.getFactory();
                     try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()))
                     ) {
-                        status = parse(jsonParser, writer);
+                        status = parse(jsonParser);
                         if (status != ReturnStatus.OK) {
                             log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
                             break;
@@ -144,14 +144,14 @@ public class FileDataLoader {
         }
     }
 
-    private ReturnStatus parse(JsonParser jsonParser, BufferedWriter writer) throws IOException {
+    private ReturnStatus parse(JsonParser jsonParser) throws IOException {
         ReturnStatus status = null;
         while (jsonParser.nextToken() != null) {
             if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && "features".equals(jsonParser.currentName())) {
                 int count = 0;
                 while (jsonParser.nextToken() != JsonToken.END_ARRAY && (linesLimit == null || count < linesLimit)) {
                     count++;
-                    status = parseTarget(jsonParser, writer);
+                    status = parseTarget(jsonParser);
                     if (status != ReturnStatus.OK) {
                         log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
                         break;
@@ -166,7 +166,7 @@ public class FileDataLoader {
         return ReturnStatus.OK;
     }
 
-    private ReturnStatus parseTarget(JsonParser jsonParser, BufferedWriter writer) throws IOException {
+    private ReturnStatus parseTarget(JsonParser jsonParser) throws IOException {
         csvLineParts.clear();
         while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
             if (jsonParser.currentToken() != JsonToken.FIELD_NAME) {
@@ -212,20 +212,6 @@ public class FileDataLoader {
                             } else {
                                 fieldDetectedMenu(propsFieldName, featureValue);
                                 String customName = scanner.nextLine().trim();
-
-//                                if (STOP_SIGNAL.equals(customName)) {
-//                                    log.debug(EXIT_COMMAND_RECEIVED);
-//                                    return ReturnStatus.STOP;
-//                                } else if (RESET_SIGNAL.equals(customName)) {
-//                                    log.debug(RESET_COMMAND_RECEIVED);
-//                                    return ReturnStatus.RESET;
-//                                } else if (TO_SKIP_REMAINING_FIELDS.equals(customName)) {
-//                                    skipRemainingFields = true;
-//                                    customName = TO_SKIP_FIELD;
-//                                } else if (TO_LOAD_REMAINING_FIELDS.equals(customName)) {
-//                                    loadRemainingFields = true;
-//                                    customName = TO_LEAVE_AS_IS_FIELD;
-//                                }
 
                                 switch (customName) {
                                     case STOP_SIGNAL -> {
@@ -299,7 +285,7 @@ public class FileDataLoader {
             }
         }
 
-        // String of CSV
+        // String for CSV file
         String newCsvLine = csvLineParts.stream()
                 .map(s -> s == null ? TO_LEAVE_AS_IS_FIELD : s)
                 .map(this::replaceDelimiter)
