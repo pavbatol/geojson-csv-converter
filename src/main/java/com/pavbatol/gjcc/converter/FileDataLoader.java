@@ -160,7 +160,7 @@ public class FileDataLoader {
                 if (status != ReturnStatus.OK) {
                     return status;
                 }
-                log.debug("Loaded features number: {}", count);
+                log.debug("Loaded features number: {}", count); // TODO: 01.07.2023 Consider not loading  duplicates
             }
         }
         return ReturnStatus.OK;
@@ -210,34 +210,9 @@ public class FileDataLoader {
                             } else if (skipRemainingFields) {
                                 fields.put(propsFieldName, null);
                             } else {
-                                fieldDetectedMenu(propsFieldName, featureValue);
-                                String customName = scanner.nextLine().trim();
-
-                                switch (customName) {
-                                    case STOP_SIGNAL -> {
-                                        log.debug(EXIT_COMMAND_RECEIVED);
-                                        return ReturnStatus.STOP;
-                                    }
-                                    case RESET_SIGNAL -> {
-                                        log.debug(RESET_COMMAND_RECEIVED);
-                                        return ReturnStatus.RESET;
-                                    }
-                                    case TO_SKIP_REMAINING_FIELDS -> {
-                                        skipRemainingFields = true;
-                                        customName = TO_SKIP_FIELD;
-                                    }
-                                    case TO_LOAD_REMAINING_FIELDS -> {
-                                        loadRemainingFields = true;
-                                        customName = TO_LEAVE_AS_IS_FIELD;
-                                    }
-                                }
-
-                                if (TO_LEAVE_AS_IS_FIELD.equals(customName)) {
-                                    fields.put(propsFieldName, new Field(propsFieldName, getAndIncrementNextFieldIndex()));
-                                } else if (TO_SKIP_FIELD.equals(customName)) {
-                                    fields.put(propsFieldName, null);
-                                } else {
-                                    fields.put(propsFieldName, new Field(customName, getAndIncrementNextFieldIndex()));
+                                ReturnStatus status = detectedAndKeepField(propsFieldName, featureValue);
+                                if (status != ReturnStatus.OK) {
+                                    return status;
                                 }
                             }
                         }
@@ -292,6 +267,39 @@ public class FileDataLoader {
                 .collect(Collectors.joining(DELIMITER)) + "\n";
         builder.append(newCsvLine);
 
+        return ReturnStatus.OK;
+    }
+
+    private ReturnStatus detectedAndKeepField(String propsFieldName, String featureValueExamole) {
+        fieldDetectedMenu(propsFieldName, featureValueExamole);
+        String customName = scanner.nextLine().trim();
+
+        switch (customName) {
+            case STOP_SIGNAL -> {
+                log.debug(EXIT_COMMAND_RECEIVED);
+                return ReturnStatus.STOP;
+            }
+            case RESET_SIGNAL -> {
+                log.debug(RESET_COMMAND_RECEIVED);
+                return ReturnStatus.RESET;
+            }
+            case TO_SKIP_REMAINING_FIELDS -> {
+                skipRemainingFields = true;
+                customName = TO_SKIP_FIELD;
+            }
+            case TO_LOAD_REMAINING_FIELDS -> {
+                loadRemainingFields = true;
+                customName = TO_LEAVE_AS_IS_FIELD;
+            }
+        }
+
+        if (TO_LEAVE_AS_IS_FIELD.equals(customName)) {
+            fields.put(propsFieldName, new Field(propsFieldName, getAndIncrementNextFieldIndex()));
+        } else if (TO_SKIP_FIELD.equals(customName)) {
+            fields.put(propsFieldName, null);
+        } else {
+            fields.put(propsFieldName, new Field(customName, getAndIncrementNextFieldIndex()));
+        }
         return ReturnStatus.OK;
     }
 
