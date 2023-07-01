@@ -35,6 +35,7 @@ public class FileDataLoader {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final Scanner scanner = new Scanner(System.in);
     private boolean allFields;
+    private boolean specifiedFields;
     private int nextFieldIndex;
     private List<String> csvLineParts;
     private Map<String, Field> fields;
@@ -68,7 +69,9 @@ public class FileDataLoader {
             } else if (RESET_SIGNAL.equals(allFieldsInput)) {
                 continue;
             }
-            allFields = !"0".equals(allFieldsInput);
+
+            defineWayOfLoadingFields(allFieldsInput);
+            skipRemainingFields = specifiedFields;
 
             deleteFile(pathOut);
             try (BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8,
@@ -202,9 +205,9 @@ public class FileDataLoader {
                         featureValue = jsonParser.getValueAsString();
 
                         if (propsFieldName.startsWith("name:")
-                            && !"name:ru".equals(propsFieldName)
-                            && !"name:en".equals(propsFieldName)
-                            && !"name:".equals(propsFieldName)) {
+                                && !"name:ru".equals(propsFieldName)
+                                && !"name:en".equals(propsFieldName)
+                                && !"name:".equals(propsFieldName)) {
                             continue;
                         }
 
@@ -328,9 +331,9 @@ public class FileDataLoader {
         // String of CSV
         if (csvLineParts.size() > 0) {
             writer.write(csvLineParts.stream()
-                                 .map(s -> s == null ? TO_LEAVE_AS_IS_FIELD : s)
-                                 .map(this::replaceDelimiter)
-                                 .collect(Collectors.joining(DELIMITER)) + "\n");
+                    .map(s -> s == null ? TO_LEAVE_AS_IS_FIELD : s)
+                    .map(this::replaceDelimiter)
+                    .collect(Collectors.joining(DELIMITER)) + "\n");
         }
 
         return ReturnStatus.OK;
@@ -384,6 +387,28 @@ public class FileDataLoader {
         }
     }
 
+    private void defineWayOfLoadingFields(String allFieldsInput) {
+        switch (allFieldsInput) {
+            case "0" -> {
+                allFields = false;
+                specifiedFields = false;
+            }
+            case "1" -> {
+                allFields = true;
+                specifiedFields = false;
+            }
+            default -> {
+                allFields = false;
+                specifiedFields = true;
+                String[] inputFields = allFieldsInput.split(",");
+                for (String fieldName : inputFields) {
+                    fieldName = fieldName.trim();
+                    fields.put(fieldName, new Field(fieldName, getAndIncrementNextFieldIndex()));
+                }
+            }
+        }
+    }
+
     private static void exitMenu() {
         System.out.println("-----------------------");
         System.out.println("At any stage you can enter:");
@@ -395,17 +420,19 @@ public class FileDataLoader {
     private void fieldDetectedMenu(String fieldName, String examole) {
         System.out.println("**\nField detected: \"" + fieldName + "\" (value example: " + examole + ")");
         System.out.printf("\tPress Enter to leave this field as is; \n" +
-                          "\tOr enter your field name\n" +
-                          "\tOr enter \"%s\" to skip\n" +
-                          "\tOr enter \"%s\" to skip all remaining fields\n" +
-                          "\tOr enter \"%s\" to load all remaining fields as is\n",
+                        "\tOr enter your field name\n" +
+                        "\tOr enter \"%s\" to skip the field\n" +
+                        "\tOr enter \"%s\" to skip all remaining fields\n" +
+                        "\tOr enter \"%s\" to load all remaining fields as is\n",
                 TO_SKIP_FIELD, TO_SKIP_REMAINING_FIELDS, TO_LOAD_REMAINING_FIELDS);
     }
 
     private void allFieldsMenu() {
         System.out.println("**\nWhich fields to save?");
-        System.out.println("\tSelectively: 0");
-        System.out.println("\tAll: 1 (or any other)");
+        System.out.printf("\t%-11s : %s%n", "Selectively", "0");
+        System.out.printf("\t%-11s : %s%n", "All", "1");
+        System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names separated by commas " +
+                "(take the fields from features[]->properties object from your GEOJSON file )");
     }
 
     public void run(Integer limit) {
