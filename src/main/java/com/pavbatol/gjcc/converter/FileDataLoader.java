@@ -114,6 +114,7 @@ public class FileDataLoader {
                 }
 
                 log.debug("Total number of fields: {}", fields.size());
+                log.debug("Total number of selected fields: {}", nextFieldIndex);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -180,7 +181,7 @@ public class FileDataLoader {
                 case "id":
                     featureValue = jsonParser.getValueAsString();
                     if (!fields.containsKey(subFieldName)) {
-                        fields.put(subFieldName, new Field(subFieldName, nextFieldIndex++));
+                        fields.put(subFieldName, new Field(subFieldName, getAndIncrementNextFieldIndex()));
                     }
 
                     // Duplicated ID
@@ -189,7 +190,7 @@ public class FileDataLoader {
                     }
 
                     if (fields.get(subFieldName) != null) {
-                        setCsvLinePart(fields.get(subFieldName).getIndex(), jsonParser.getValueAsString());
+                        setCsvLinePart(fields.get(subFieldName).getIndex(), featureValue);
                     }
 
                     builder.append("id=").append(featureValue).append(DELIMITER);
@@ -198,6 +199,7 @@ public class FileDataLoader {
                     while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
                         String propsFieldName = jsonParser.getCurrentName();
                         jsonParser.nextToken();
+                        featureValue = jsonParser.getValueAsString();
 
                         if (propsFieldName.startsWith("name:")
                             && !"name:ru".equals(propsFieldName)
@@ -208,11 +210,11 @@ public class FileDataLoader {
 
                         if (!fields.containsKey(propsFieldName)) {
                             if (allFields || loadRemainingFields) {
-                                fields.put(propsFieldName, new Field(propsFieldName, nextFieldIndex++));
+                                fields.put(propsFieldName, new Field(propsFieldName, getAndIncrementNextFieldIndex()));
                             } else if (skipRemainingFields) {
                                 fields.put(propsFieldName, null);
                             } else {
-                                fieldDetectedMenu(propsFieldName, jsonParser.getValueAsString());
+                                fieldDetectedMenu(propsFieldName, featureValue);
                                 String customName = scanner.nextLine().trim();
 
                                 if (STOP_SIGNAL.equals(customName)) {
@@ -230,46 +232,46 @@ public class FileDataLoader {
                                 }
 
                                 if (TO_LEAVE_AS_IS_FIELD.equals(customName)) {
-                                    fields.put(propsFieldName, new Field(propsFieldName, nextFieldIndex++));
+                                    fields.put(propsFieldName, new Field(propsFieldName, getAndIncrementNextFieldIndex()));
                                 } else if (TO_SKIP_FIELD.equals(customName)) {
                                     fields.put(propsFieldName, null);
                                 } else {
-                                    fields.put(propsFieldName, new Field(customName, nextFieldIndex++));
+                                    fields.put(propsFieldName, new Field(customName, getAndIncrementNextFieldIndex()));
                                 }
                             }
                         }
 
                         if (fields.get(propsFieldName) != null) {
-                            setCsvLinePart(fields.get(propsFieldName).getIndex(), jsonParser.getValueAsString());
+                            setCsvLinePart(fields.get(propsFieldName).getIndex(), featureValue);
                         }
 
                         switch (propsFieldName) {
                             case "@id":
-                                featureValue = jsonParser.getValueAsString();
+                                featureValue = featureValue;
                                 builder.append("@id=").append(featureValue).append(DELIMITER);
                                 break;
                             case "addr:country":
-                                featureValue = jsonParser.getValueAsString();
+                                featureValue = featureValue;
                                 builder.append("country=").append(featureValue).append(DELIMITER);
                                 break;
                             case "addr:region":
-                                featureValue = jsonParser.getValueAsString();
+                                featureValue = featureValue;
                                 builder.append("region=").append(featureValue).append(DELIMITER);
                                 break;
                             case "addr:district":
-                                featureValue = jsonParser.getValueAsString();
+                                featureValue = featureValue;
                                 builder.append("district=").append(featureValue).append(DELIMITER);
                                 break;
                             case "name":
-                                featureValue = jsonParser.getValueAsString();
+                                featureValue = featureValue;
                                 builder.append("name=").append(featureValue).append(DELIMITER);
                                 break;
                             case "official_status":
-                                featureValue = jsonParser.getValueAsString();
+                                featureValue = featureValue;
                                 builder.append("official_status=").append(featureValue).append(DELIMITER);
                                 break;
                             case "is_in:country_code":
-                                featureValue = jsonParser.getValueAsString();
+                                featureValue = featureValue;
                                 builder.append("is_in:country_code=").append(featureValue).append(DELIMITER);
                                 break;
                         }
@@ -295,10 +297,10 @@ public class FileDataLoader {
                             String longitude = "longitude";
                             String latitude = "latitude";
                             if (!fields.containsKey(longitude)) {
-                                fields.put(longitude, new Field(longitude, nextFieldIndex++));
+                                fields.put(longitude, new Field(longitude, getAndIncrementNextFieldIndex()));
                             }
                             if (!fields.containsKey(latitude)) {
-                                fields.put(latitude, new Field(latitude, nextFieldIndex++));
+                                fields.put(latitude, new Field(latitude, getAndIncrementNextFieldIndex()));
                             }
 
                             if (fields.get(longitude) != null) {
@@ -334,6 +336,10 @@ public class FileDataLoader {
         return ReturnStatus.OK;
     }
 
+    private int getAndIncrementNextFieldIndex() {
+        return nextFieldIndex++;
+    }
+
     private String replaceDelimiter(String str) {
         return str.replace(DELIMITER, DELIMITER_REPLACEMENT);
     }
@@ -344,8 +350,8 @@ public class FileDataLoader {
     }
 
     private void controlLinePartsSize() {
-        if (csvLineParts.size() < fields.size()) {
-            increaseListSizeBy(fields.size() - csvLineParts.size(), csvLineParts);
+        if (csvLineParts.size() < nextFieldIndex) {
+            increaseListSizeBy(nextFieldIndex - csvLineParts.size(), csvLineParts);
         }
     }
 
@@ -387,17 +393,17 @@ public class FileDataLoader {
     }
 
     private void fieldDetectedMenu(String fieldName, String examole) {
-        System.out.println("Field detected: \"" + fieldName + "\" (value example: " + examole + ")");
+        System.out.println("**\nField detected: \"" + fieldName + "\" (value example: " + examole + ")");
         System.out.printf("\tPress Enter to leave this field as is; \n" +
-                          "\tOr enter your field name; \n" +
-                          "\tOr enter \"%s\" to skip; \n" +
-                          "\tOr enter \"%s\" to skip all remaining fields; \n" +
-                          "\tOr enter \"%s\" to load all remaining fields as is;\n",
+                          "\tOr enter your field name\n" +
+                          "\tOr enter \"%s\" to skip\n" +
+                          "\tOr enter \"%s\" to skip all remaining fields\n" +
+                          "\tOr enter \"%s\" to load all remaining fields as is\n",
                 TO_SKIP_FIELD, TO_SKIP_REMAINING_FIELDS, TO_LOAD_REMAINING_FIELDS);
     }
 
     private void allFieldsMenu() {
-        System.out.println("Which fields to save?");
+        System.out.println("**\nWhich fields to save?");
         System.out.println("\tSelectively: 0");
         System.out.println("\tAll: 1 (or any other)");
     }
