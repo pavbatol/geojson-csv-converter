@@ -33,6 +33,8 @@ public class FileDataLoader {
     public static final String TO_SKIP_REMAINING_FIELDS = "--";
     public static final String TO_LOAD_REMAINING_FIELDS = "++";
     public static final String TO_LEAVE_AS_IS_FIELD = "";
+    public static final String FIELD_LONGITUDE = "longitude";
+    public static final String FIELD_LATITUDE = "latitude";
     private final Properties properties = AppConfig.getInstance().getProperty();
     private final String sourceFilePath = properties.getProperty("app.data.file-path");
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -178,18 +180,14 @@ public class FileDataLoader {
             switch (subFieldName) {
                 case "id":
                     featureValue = jsonParser.getValueAsString();
-                    if (!fields.containsKey(subFieldName)) {
-                        fields.put(subFieldName, new Field(subFieldName, getAndIncrementNextFieldIndex()));
-                    }
+                    Field field = getFieldOrCreat(subFieldName);
 
                     // Duplicated ID
                     if (!nodeIds.add(featureValue)) {
                         return ReturnStatus.OK;
                     }
 
-                    if (fields.get(subFieldName) != null) {
-                        setCsvLinePart(fields.get(subFieldName).getIndex(), featureValue);
-                    }
+                    setCsvLinePart(field.getIndex(), featureValue);
                     break;
                 case "properties":
                     while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
@@ -226,6 +224,7 @@ public class FileDataLoader {
                     while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
                         String geomFieldName = jsonParser.getCurrentName();
                         jsonParser.nextToken();
+
                         if ("coordinates".equals(geomFieldName)) {
                             double featureLongitude = .0;
                             double featureLatitude = .0;
@@ -239,21 +238,9 @@ public class FileDataLoader {
                                 }
                                 i++;
                             }
-                            String longitude = "longitude";
-                            String latitude = "latitude";
-                            if (!fields.containsKey(longitude)) {
-                                fields.put(longitude, new Field(longitude, getAndIncrementNextFieldIndex()));
-                            }
-                            if (!fields.containsKey(latitude)) {
-                                fields.put(latitude, new Field(latitude, getAndIncrementNextFieldIndex()));
-                            }
 
-                            if (fields.get(longitude) != null) {
-                                setCsvLinePart(fields.get(longitude).getIndex(), String.valueOf(featureLongitude));
-                            }
-                            if (fields.get(latitude) != null) {
-                                setCsvLinePart(fields.get(latitude).getIndex(), String.valueOf(featureLatitude));
-                            }
+                            keepField(FIELD_LONGITUDE, String.valueOf(featureLongitude));
+                            keepField(FIELD_LATITUDE, String.valueOf(featureLatitude));
                         }
                     }
                     break;
@@ -270,7 +257,20 @@ public class FileDataLoader {
         return ReturnStatus.OK;
     }
 
-    private ReturnStatus detectedAndKeepField(String propsFieldName, String featureValueExamole) {
+    private Field creatField(final String fieldName) {
+        return new Field(fieldName, getAndIncrementNextFieldIndex());
+    }
+
+    private Field getFieldOrCreat(final String fieldName) {
+        return fields.computeIfAbsent(fieldName, this::creatField);
+    }
+
+    private void keepField(final String fieldName, String value) {
+        Field field = getFieldOrCreat(fieldName);
+        setCsvLinePart(field.getIndex(), value);
+    }
+
+    private ReturnStatus detectedAndKeepField(final String propsFieldName, final String featureValueExamole) {
         fieldDetectedMenu(propsFieldName, featureValueExamole);
         String customName = scanner.nextLine().trim();
 
@@ -381,7 +381,7 @@ public class FileDataLoader {
         System.out.println("-----------------------");
     }
 
-    private void fieldDetectedMenu(String fieldName, String examole) {
+    private void fieldDetectedMenu(final String fieldName, final String examole) {
         System.out.println(noticeStr() + "\nField detected: \"" + fieldName + "\" (value example: " + examole + ")");
         System.out.printf("\tPress Enter to leave this field as is; \n" +
                         "\tOr enter your field name\n" +
