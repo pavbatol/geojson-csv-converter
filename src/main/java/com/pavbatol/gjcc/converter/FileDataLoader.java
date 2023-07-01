@@ -110,8 +110,7 @@ public class FileDataLoader {
                             .forEach(field -> csvLineParts.set(field.getIndex(), replaceDelimiter(field.getName())));
 
                     // Titles-line
-                    String titles = String.join(DELIMITER, csvLineParts);
-                    writer.write((titles + "\n"));
+                    writer.write((String.join(DELIMITER, csvLineParts) + "\n"));
 
                     // Body-lines
                     writer.write(builder.toString());
@@ -123,13 +122,6 @@ public class FileDataLoader {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-//            fields.forEach((s, s2) -> {
-//                if (s2 != null) {
-//                    System.out.println(s + " = " + s2);
-//                }
-//            });
-
         }
     }
 
@@ -202,18 +194,37 @@ public class FileDataLoader {
                                 fieldDetectedMenu(propsFieldName, featureValue);
                                 String customName = scanner.nextLine().trim();
 
-                                if (STOP_SIGNAL.equals(customName)) {
-                                    log.debug(EXIT_COMMAND_RECEIVED);
-                                    return ReturnStatus.STOP;
-                                } else if (RESET_SIGNAL.equals(customName)) {
-                                    log.debug(RESET_COMMAND_RECEIVED);
-                                    return ReturnStatus.RESET;
-                                } else if (TO_SKIP_REMAINING_FIELDS.equals(customName)) {
-                                    skipRemainingFields = true;
-                                    customName = TO_SKIP_FIELD;
-                                } else if (TO_LOAD_REMAINING_FIELDS.equals(customName)) {
-                                    loadRemainingFields = true;
-                                    customName = TO_LEAVE_AS_IS_FIELD;
+//                                if (STOP_SIGNAL.equals(customName)) {
+//                                    log.debug(EXIT_COMMAND_RECEIVED);
+//                                    return ReturnStatus.STOP;
+//                                } else if (RESET_SIGNAL.equals(customName)) {
+//                                    log.debug(RESET_COMMAND_RECEIVED);
+//                                    return ReturnStatus.RESET;
+//                                } else if (TO_SKIP_REMAINING_FIELDS.equals(customName)) {
+//                                    skipRemainingFields = true;
+//                                    customName = TO_SKIP_FIELD;
+//                                } else if (TO_LOAD_REMAINING_FIELDS.equals(customName)) {
+//                                    loadRemainingFields = true;
+//                                    customName = TO_LEAVE_AS_IS_FIELD;
+//                                }
+
+                                switch (customName) {
+                                    case STOP_SIGNAL -> {
+                                        log.debug(EXIT_COMMAND_RECEIVED);
+                                        return ReturnStatus.STOP;
+                                    }
+                                    case RESET_SIGNAL -> {
+                                        log.debug(RESET_COMMAND_RECEIVED);
+                                        return ReturnStatus.RESET;
+                                    }
+                                    case TO_SKIP_REMAINING_FIELDS -> {
+                                        skipRemainingFields = true;
+                                        customName = TO_SKIP_FIELD;
+                                    }
+                                    case TO_LOAD_REMAINING_FIELDS -> {
+                                        loadRemainingFields = true;
+                                        customName = TO_LEAVE_AS_IS_FIELD;
+                                    }
                                 }
 
                                 if (TO_LEAVE_AS_IS_FIELD.equals(customName)) {
@@ -268,21 +279,6 @@ public class FileDataLoader {
                     break;
             }
         }
-
-//        System.out.println(csvLineParts.stream()
-//                .map(s -> s == null ? "" : s)
-//                .map(this::replaceDelimiter)
-//                .collect(Collectors.joining(DELIMITER)));
-
-//        csvLineParts.forEach(System.out::print); System.out.println();
-
-        // String of CSV
-//        if (csvLineParts.size() > 0) {
-//            writer.write(csvLineParts.stream()
-//                    .map(s -> s == null ? TO_LEAVE_AS_IS_FIELD : s)
-//                    .map(this::replaceDelimiter)
-//                    .collect(Collectors.joining(DELIMITER)) + "\n");
-//        }
 
         // String of CSV
         String newCsvLine = csvLineParts.stream()
@@ -383,7 +379,7 @@ public class FileDataLoader {
     }
 
     private void allFieldsMenu() {
-        System.out.println("**\nWhich fields to save?");
+        System.out.println("**\nWhich fields to save? (The following fields will always be loaded: id, longitude, latitude)");
         System.out.printf("\t%-11s : %s%n", "Selectively", "0");
         System.out.printf("\t%-11s : %s%n", "All", "1");
         System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names separated by commas " +
