@@ -12,7 +12,6 @@ public class App {
         logger.debug("App starting");
 
         FileDataLoader fileDataLoader = new FileDataLoader();
-        fileDataLoader.run(5);
-//        fileDataLoader.run(null);
+        fileDataLoader.run();
     }
 }

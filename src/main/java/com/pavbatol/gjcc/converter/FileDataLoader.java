@@ -17,6 +17,9 @@ import java.util.stream.Collectors;
 
 @Slf4j
 public class FileDataLoader {
+    private static final String CL_RESET = "\u001B[0m";
+    private static final String CL_RED = "\u001B[31m";
+    private static final String CL_YELLOW = "\u001B[33m";
     private static final String DELIMITER = ",";
     private static final String DELIMITER_REPLACEMENT = ";";
     private static final String RESET_SIGNAL = "----";
@@ -43,12 +46,12 @@ public class FileDataLoader {
     private StringBuilder builder;
     private boolean loadRemainingFields;
     private boolean skipRemainingFields;
+    Integer linesLimit;
 
     /**
-     * @param limit     Number of entries in the file. Set null for all records.
      * @param filePaths Paths to json format files from which to read data
      */
-    private void loadCities(final Integer limit, String... filePaths) {
+    private void loadCities(String... filePaths) {
         Path pathOut = Paths.get(OUTPUT_DIR, OUTPUT_FILE);
         creatDirectoryIfNotExists(pathOut.getParent());
 
@@ -62,6 +65,23 @@ public class FileDataLoader {
             skipRemainingFields = false;
 
             exitMenu();
+
+            while (true) {
+                entitiesLoadLimitMenu();
+                String entitiesLoadLimit = scanner.nextLine().trim();
+                if (STOP_SIGNAL.equals(entitiesLoadLimit)) {
+                    return;
+                } else if (RESET_SIGNAL.equals(entitiesLoadLimit)) {
+                    continue;
+                }
+                try {
+                    linesLimit = "".equals(entitiesLoadLimit) ? null : Integer.parseInt(entitiesLoadLimit);
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println(errorStr() + ": The entered value is not a number");
+                }
+            }
+
             allFieldsMenu();
             String allFieldsInput = scanner.nextLine().trim();
             if (STOP_SIGNAL.equals(allFieldsInput)) {
@@ -69,7 +89,6 @@ public class FileDataLoader {
             } else if (RESET_SIGNAL.equals(allFieldsInput)) {
                 continue;
             }
-
             defineWayOfLoadingFields(allFieldsInput);
             skipRemainingFields = specifiedFields;
 
@@ -85,7 +104,7 @@ public class FileDataLoader {
                     JsonFactory jsonFactory = objectMapper.getFactory();
                     try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()))
                     ) {
-                        status = parse(jsonParser, writer, limit);
+                        status = parse(jsonParser, writer);
                         if (status != ReturnStatus.OK) {
                             log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
                             break;
@@ -125,12 +144,12 @@ public class FileDataLoader {
         }
     }
 
-    private ReturnStatus parse(JsonParser jsonParser, BufferedWriter writer, final Integer limit) throws IOException {
+    private ReturnStatus parse(JsonParser jsonParser, BufferedWriter writer) throws IOException {
         ReturnStatus status = null;
         while (jsonParser.nextToken() != null) {
             if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && "features".equals(jsonParser.currentName())) {
                 int count = 0;
-                while (jsonParser.nextToken() != JsonToken.END_ARRAY && (limit == null || count < limit)) {
+                while (jsonParser.nextToken() != JsonToken.END_ARRAY && (linesLimit == null || count < linesLimit)) {
                     count++;
                     status = parseTarget(jsonParser, writer);
                     if (status != ReturnStatus.OK) {
@@ -369,7 +388,7 @@ public class FileDataLoader {
     }
 
     private void fieldDetectedMenu(String fieldName, String examole) {
-        System.out.println("**\nField detected: \"" + fieldName + "\" (value example: " + examole + ")");
+        System.out.println(noticeStr() + "\nField detected: \"" + fieldName + "\" (value example: " + examole + ")");
         System.out.printf("\tPress Enter to leave this field as is; \n" +
                         "\tOr enter your field name\n" +
                         "\tOr enter \"%s\" to skip the field\n" +
@@ -379,14 +398,28 @@ public class FileDataLoader {
     }
 
     private void allFieldsMenu() {
-        System.out.println("**\nWhich fields to save? (The following fields will always be loaded: id, longitude, latitude)");
+        System.out.println(noticeStr() + "\nWhich fields to save? (The following fields will always be loaded: id, longitude, latitude)");
         System.out.printf("\t%-11s : %s%n", "Selectively", "0");
         System.out.printf("\t%-11s : %s%n", "All", "1");
         System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names separated by commas " +
                 "(take the fields from features[]->properties object from your GEOJSON file)");
     }
 
-    public void run(Integer limit) {
-        loadCities(limit, sourceFilePath.split(","));
+    private void entitiesLoadLimitMenu() {
+        System.out.println(noticeStr() + "\nHow many features (entities) to load from each source file?");
+        System.out.printf("\t%-11s : %s%n", "Limit", "enter number");
+        System.out.printf("\t%-11s : %s%n", "All", "press enter");
+    }
+
+    private String errorStr() {
+        return CL_RED + "Error" + CL_RESET;
+    }
+
+    private String noticeStr() {
+        return CL_YELLOW + "**" + CL_RESET;
+    }
+
+    public void run() {
+        loadCities(sourceFilePath.split(","));
     }
 }
