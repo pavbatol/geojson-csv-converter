@@ -204,7 +204,7 @@ public class FileDataLoader {
 
                         if (!fields.containsKey(propsFieldName)) {
                             if (allFields || loadRemainingFields) {
-                                fields.put(propsFieldName, new Field(propsFieldName, getAndIncrementNextFieldIndex()));
+                                fields.put(propsFieldName, creatField(propsFieldName));
                             } else if (skipRemainingFields) {
                                 fields.put(propsFieldName, null);
                             } else {
@@ -294,11 +294,11 @@ public class FileDataLoader {
         }
 
         if (TO_LEAVE_AS_IS_FIELD.equals(customName)) {
-            fields.put(propsFieldName, new Field(propsFieldName, getAndIncrementNextFieldIndex()));
+            fields.put(propsFieldName, creatField(propsFieldName));
         } else if (TO_SKIP_FIELD.equals(customName)) {
             fields.put(propsFieldName, null);
         } else {
-            fields.put(propsFieldName, new Field(customName, getAndIncrementNextFieldIndex()));
+            fields.put(propsFieldName, creatField(customName));
         }
         return ReturnStatus.OK;
     }
@@ -367,7 +367,7 @@ public class FileDataLoader {
                 String[] inputFields = allFieldsInput.split(",");
                 for (String fieldName : inputFields) {
                     fieldName = fieldName.trim();
-                    fields.put(fieldName, new Field(fieldName, getAndIncrementNextFieldIndex()));
+                    fields.put(fieldName, creatField(fieldName));
                 }
             }
         }
