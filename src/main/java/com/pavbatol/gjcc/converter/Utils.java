@@ -36,33 +36,55 @@ public class Utils {
         }
     }
 
-    public static List<Path> getFilePathsByExtension(String directoryPath, String extension) {
-        List<Path> filePaths = new ArrayList<>();
+//    public static List<Path> getFilePathsByExtension(String directoryPath, String extension) {
+//        List<Path> filePaths = new ArrayList<>();
+//        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(directoryPath))) {
+//            for (Path path : directoryStream) {
+//                if (Files.isRegularFile(path)) {
+//
+////                    String fileName = path.getFileName().toString();
+////                    String extension = "";
+////                    int dotIndex = fileName.lastIndexOf(".");
+////                    if (dotIndex > 0 && dotIndex < fileName.length() - 1) {
+////                        extension = fileName.substring(dotIndex + 1);
+////
+////                        if (GEOJSON.equalsIgnoreCase(extension)) {
+////                            filePaths.add(fileName);
+////                        }
+////
+////                    }
+//
+//                    if (path.getFileName().toString().endsWith("." + extension)) {
+//                        filePaths.add(path);
+//                    }
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return filePaths;
+//    }
+
+    public static List<String> getFilePathsByExtension(String directoryPath, String extension) throws IOException {
+        List<String> filePaths = new ArrayList<>();
         try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(directoryPath))) {
+
             for (Path path : directoryStream) {
                 if (Files.isRegularFile(path)) {
-
-//                    String fileName = path.getFileName().toString();
-//                    String extension = "";
-//                    int dotIndex = fileName.lastIndexOf(".");
-//                    if (dotIndex > 0 && dotIndex < fileName.length() - 1) {
-//                        extension = fileName.substring(dotIndex + 1);
-//
-//                        if (GEOJSON.equalsIgnoreCase(extension)) {
-//                            filePaths.add(fileName);
-//                        }
-//
-//                    }
-
-                    if (path.getFileName().toString().endsWith("." + extension)) {
-                        filePaths.add(path);
+                    String fileName = path.getFileName().toString();
+                    if (fileName.toLowerCase().endsWith("." + extension.toLowerCase())) {
+                        filePaths.add(path.toString());
                     }
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IOException(e);
         }
-
         return filePaths;
+    }
+
+    public static String[] getFilePathArrayByExtension(String directoryPath, String extension) throws IOException {
+        return getFilePathsByExtension(directoryPath, extension).toArray(new String[0]);
     }
 }

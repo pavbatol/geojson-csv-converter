@@ -15,8 +15,7 @@ import java.nio.file.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.pavbatol.gjcc.converter.Utils.creatDirectoryIfNotExists;
-import static com.pavbatol.gjcc.converter.Utils.deleteFile;
+import static com.pavbatol.gjcc.converter.Utils.*;
 
 @Slf4j
 public class Converter {
@@ -39,8 +38,7 @@ public class Converter {
     private static final String FIELD_LONGITUDE = "longitude";
     private static final String FIELD_LATITUDE = "latitude";
     private static final String GEOJSON_EXTENSION = "GEOJSON";
-    private final Properties properties = AppConfig.getInstance().getProperty();
-    private final String sourceFilePath = properties.getProperty("app.data.file-path");
+    private final String sourceFilePath = AppConfig.getInstance().getProperty("app.data.file-path");
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final Scanner scanner = new Scanner(System.in);
     private boolean allFields;
@@ -66,8 +64,29 @@ public class Converter {
             nextFieldIndex = 0;
             loadRemainingFields = false;
             skipRemainingFields = false;
+            ReturnStatus status = null;
 
             exitMenu();
+
+            while (true) {
+                directoryMenu();
+                String input = scanner.nextLine().trim();
+                if (STOP_SIGNAL.equals(input)) {
+                    return;
+                } else if (RESET_SIGNAL.equals(input)) {
+                    status = ReturnStatus.RESET;
+                    break;
+                }
+                try {
+                    filePaths = "".equals(input) ? filePaths : getFilePathArrayByExtension(input, GEOJSON_EXTENSION);
+                    break;
+                } catch (IOException e) {
+                    System.out.println(errorStr() + ": Failed to access the directory: " + input);
+                }
+            }
+            if (status == ReturnStatus.RESET) {
+                continue;
+            }
 
             while (true) {
                 entitiesLoadLimitMenu();
@@ -75,7 +94,8 @@ public class Converter {
                 if (STOP_SIGNAL.equals(entitiesLoadLimit)) {
                     return;
                 } else if (RESET_SIGNAL.equals(entitiesLoadLimit)) {
-                    continue;
+                    status = ReturnStatus.RESET;
+                    break;
                 }
                 try {
                     linesLimit = "".equals(entitiesLoadLimit) ? null : Integer.parseInt(entitiesLoadLimit);
@@ -83,6 +103,9 @@ public class Converter {
                 } catch (NumberFormatException e) {
                     System.out.println(errorStr() + ": The entered value is not a number");
                 }
+            }
+            if (status == ReturnStatus.RESET) {
+                continue;
             }
 
             allFieldsMenu();
@@ -99,7 +122,7 @@ public class Converter {
             try (BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8,
                     StandardOpenOption.APPEND, StandardOpenOption.CREATE)
             ) {
-                ReturnStatus status = null;
+//                ReturnStatus status = null;
                 for (String filePath : filePaths) {
                     Path path = Path.of(filePath.trim());
                     log.debug("Path to loud features: {}", path);
@@ -385,6 +408,12 @@ public class Converter {
         System.out.println(noticeStr() + "\nHow many features (entities) to load from each source file?");
         System.out.printf("\t%-11s : %s%n", "Limit", "enter number");
         System.out.printf("\t%-11s : %s%n", "All", "press enter");
+    }
+
+    private void directoryMenu() {
+        System.out.println(noticeStr() + "\nIn which directory are the source files located?");
+        System.out.printf("\t%-11s : %s%n", "In project", "press enter (contained in the variable by getProperty(\"app.data.file-path\"))");
+        System.out.printf("\t%-11s : %s%n", "In custom ", "enter your absolute path to directory");
     }
 
     private String errorStr() {
