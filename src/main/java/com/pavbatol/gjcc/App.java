@@ -1,6 +1,6 @@
 package com.pavbatol.gjcc;
 
-import com.pavbatol.gjcc.converter.FileDataLoader;
+import com.pavbatol.gjcc.converter.Converter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +11,7 @@ public class App {
         final Logger logger = LoggerFactory.getLogger(App.class);
         logger.debug("App starting");
 
-        FileDataLoader fileDataLoader = new FileDataLoader();
-        fileDataLoader.run();
+        Converter converter = new Converter();
+        converter.run();
     }
 }

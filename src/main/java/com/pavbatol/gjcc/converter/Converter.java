@@ -15,8 +15,11 @@ import java.nio.file.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.pavbatol.gjcc.converter.Utils.creatDirectoryIfNotExists;
+import static com.pavbatol.gjcc.converter.Utils.deleteFile;
+
 @Slf4j
-public class FileDataLoader {
+public class Converter {
     private static final String CL_RESET = "\u001B[0m";
     private static final String CL_RED = "\u001B[31m";
     private static final String CL_YELLOW = "\u001B[33m";
@@ -29,12 +32,13 @@ public class FileDataLoader {
     private static final int INITIAL_CAPACITY = 100;
     private static final String OUTPUT_FILE = "output.csv";
     private static final String OUTPUT_DIR = "output";
-    public static final String TO_SKIP_FIELD = "-";
-    public static final String TO_SKIP_REMAINING_FIELDS = "--";
-    public static final String TO_LOAD_REMAINING_FIELDS = "++";
-    public static final String TO_LEAVE_AS_IS_FIELD = "";
-    public static final String FIELD_LONGITUDE = "longitude";
-    public static final String FIELD_LATITUDE = "latitude";
+    private static final String TO_SKIP_FIELD = "-";
+    private static final String TO_SKIP_REMAINING_FIELDS = "--";
+    private static final String TO_LOAD_REMAINING_FIELDS = "++";
+    private static final String TO_LEAVE_AS_IS_FIELD = "";
+    private static final String FIELD_LONGITUDE = "longitude";
+    private static final String FIELD_LATITUDE = "latitude";
+    private static final String GEOJSON_EXTENSION = "GEOJSON";
     private final Properties properties = AppConfig.getInstance().getProperty();
     private final String sourceFilePath = properties.getProperty("app.data.file-path");
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -50,10 +54,7 @@ public class FileDataLoader {
     private boolean skipRemainingFields;
     Integer linesLimit;
 
-    /**
-     * @param filePaths Paths to json format files from which to read data
-     */
-    private void loadCities(String... filePaths) {
+    private void convertToCsv(String... filePaths) {
         Path pathOut = Paths.get(OUTPUT_DIR, OUTPUT_FILE);
         creatDirectoryIfNotExists(pathOut.getParent());
 
@@ -195,10 +196,7 @@ public class FileDataLoader {
                         jsonParser.nextToken();
                         featureValue = jsonParser.getValueAsString();
 
-                        if (propsFieldName.startsWith("name:")
-                                && !"name:ru".equals(propsFieldName)
-                                && !"name:en".equals(propsFieldName)
-                                && !"name:".equals(propsFieldName)) {
+                        if (excludedField(propsFieldName)) {
                             continue;
                         }
 
@@ -208,7 +206,7 @@ public class FileDataLoader {
                             } else if (skipRemainingFields) {
                                 fields.put(propsFieldName, null);
                             } else {
-                                ReturnStatus status = detectedAndKeepField(propsFieldName, featureValue);
+                                ReturnStatus status = addFieldByMenuAction(propsFieldName, featureValue);
                                 if (status != ReturnStatus.OK) {
                                     return status;
                                 }
@@ -249,12 +247,19 @@ public class FileDataLoader {
 
         // String for CSV file
         String newCsvLine = csvLineParts.stream()
-                .map(s -> s == null ? TO_LEAVE_AS_IS_FIELD : s)
+                .map(s -> s == null ? "" : s)
                 .map(this::replaceDelimiter)
                 .collect(Collectors.joining(DELIMITER)) + "\n";
         builder.append(newCsvLine);
 
         return ReturnStatus.OK;
+    }
+
+    private boolean excludedField(String fieldName) {
+        return (fieldName.startsWith("name:")
+                && !"name:ru".equals(fieldName)
+                && !"name:en".equals(fieldName)
+                && !"name:".equals(fieldName));
     }
 
     private Field creatField(final String fieldName) {
@@ -270,7 +275,7 @@ public class FileDataLoader {
         setCsvLinePart(field.getIndex(), value);
     }
 
-    private ReturnStatus detectedAndKeepField(final String propsFieldName, final String featureValueExamole) {
+    private ReturnStatus addFieldByMenuAction(final String propsFieldName, final String featureValueExamole) {
         fieldDetectedMenu(propsFieldName, featureValueExamole);
         String customName = scanner.nextLine().trim();
 
@@ -328,29 +333,6 @@ public class FileDataLoader {
         }
     }
 
-    private void creatDirectoryIfNotExists(Path path) {
-        if (!Files.exists(path)) {
-            try {
-                Files.createDirectories(path);
-            } catch (IOException e) {
-                throw new RuntimeException("Directory creation error");
-            }
-        }
-    }
-
-    private void deleteFile(Path path) {
-        if (Files.exists(path)) {
-            try {
-                Files.delete(path);
-                log.debug("The file was successfully deleted: {}", path);
-            } catch (NoSuchFileException e) {
-                System.err.println("File not found: " + e.getMessage());
-            } catch (IOException e) {
-                System.err.println("Error deleting a file: " + e.getMessage());
-            }
-        }
-    }
-
     private void defineWayOfLoadingFields(String allFieldsInput) {
         switch (allFieldsInput) {
             case "0" -> {
@@ -394,9 +376,9 @@ public class FileDataLoader {
     private void allFieldsMenu() {
         System.out.println(noticeStr() + "\nWhich fields to save? (The following fields will always be loaded: id, longitude, latitude)");
         System.out.printf("\t%-11s : %s%n", "Selectively", "0");
-        System.out.printf("\t%-11s : %s%n", "All", "1");
-        System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names separated by commas " +
-                "(take the fields from features[]->properties object from your GEOJSON file)");
+        System.out.printf("\t%-11s : %s%n", "All", "1 (notice, there can be a lot of fields)");
+        System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names, separated by commas " +
+                "(take the fields from features[]->properties object from your " + GEOJSON_EXTENSION + " file)");
     }
 
     private void entitiesLoadLimitMenu() {
@@ -414,6 +396,6 @@ public class FileDataLoader {
     }
 
     public void run() {
-        loadCities(sourceFilePath.split(","));
+        convertToCsv(sourceFilePath.split(","));
     }
 }
