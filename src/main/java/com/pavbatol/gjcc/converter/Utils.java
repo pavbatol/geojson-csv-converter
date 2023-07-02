@@ -11,7 +11,7 @@ import java.util.List;
 
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class Utils {
+public final class Utils {
 
     public static void creatDirectoryIfNotExists(Path path) {
         if (!Files.exists(path)) {
@@ -35,36 +35,6 @@ public class Utils {
             }
         }
     }
-
-//    public static List<Path> getFilePathsByExtension(String directoryPath, String extension) {
-//        List<Path> filePaths = new ArrayList<>();
-//        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(directoryPath))) {
-//            for (Path path : directoryStream) {
-//                if (Files.isRegularFile(path)) {
-//
-////                    String fileName = path.getFileName().toString();
-////                    String extension = "";
-////                    int dotIndex = fileName.lastIndexOf(".");
-////                    if (dotIndex > 0 && dotIndex < fileName.length() - 1) {
-////                        extension = fileName.substring(dotIndex + 1);
-////
-////                        if (GEOJSON.equalsIgnoreCase(extension)) {
-////                            filePaths.add(fileName);
-////                        }
-////
-////                    }
-//
-//                    if (path.getFileName().toString().endsWith("." + extension)) {
-//                        filePaths.add(path);
-//                    }
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return filePaths;
-//    }
 
     public static List<String> getFilePathsByExtension(String directoryPath, String extension) throws IOException {
         List<String> filePaths = new ArrayList<>();

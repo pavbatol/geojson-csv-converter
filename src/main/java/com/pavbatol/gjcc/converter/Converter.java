@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pavbatol.gjcc.Menu;
 import com.pavbatol.gjcc.config.AppConfig;
 import lombok.extern.slf4j.Slf4j;
 
@@ -66,48 +67,28 @@ public class Converter {
             skipRemainingFields = false;
             ReturnStatus status = null;
 
+            //---
             exitMenu();
 
-            while (true) {
-                directoryMenu();
-                String input = scanner.nextLine().trim();
-                if (STOP_SIGNAL.equals(input)) {
-                    return;
-                } else if (RESET_SIGNAL.equals(input)) {
-                    status = ReturnStatus.RESET;
-                    break;
-                }
-                try {
-                    filePaths = "".equals(input) ? filePaths : getFilePathArrayByExtension(input, GEOJSON_EXTENSION);
-                    break;
-                } catch (IOException e) {
-                    System.out.println(errorStr() + ": Failed to access the directory: " + input);
-                }
-            }
-            if (status == ReturnStatus.RESET) {
+            //---
+            ReturnArrayData arrayData = Menu.directory(scanner, filePaths); // TODO: 02.07.2023 Check for NULL: filePaths
+            if (arrayData.getStatus() == ReturnStatus.STOP) {
+                return;
+            } else if (arrayData.getStatus() == ReturnStatus.RESET) {
                 continue;
             }
+            filePaths = arrayData.getValues();
 
-            while (true) {
-                entitiesLoadLimitMenu();
-                String entitiesLoadLimit = scanner.nextLine().trim();
-                if (STOP_SIGNAL.equals(entitiesLoadLimit)) {
-                    return;
-                } else if (RESET_SIGNAL.equals(entitiesLoadLimit)) {
-                    status = ReturnStatus.RESET;
-                    break;
-                }
-                try {
-                    linesLimit = "".equals(entitiesLoadLimit) ? null : Integer.parseInt(entitiesLoadLimit);
-                    break;
-                } catch (NumberFormatException e) {
-                    System.out.println(errorStr() + ": The entered value is not a number");
-                }
-            }
-            if (status == ReturnStatus.RESET) {
+            //---
+            ReturnIntegerData integerData = Menu.limit(scanner);
+            if (integerData.getStatus() == ReturnStatus.STOP) {
+                return;
+            } else if (integerData.getStatus() == ReturnStatus.RESET) {
                 continue;
             }
+            linesLimit = integerData.getValue();
 
+            //---
             allFieldsMenu();
             String allFieldsInput = scanner.nextLine().trim();
             if (STOP_SIGNAL.equals(allFieldsInput)) {
@@ -118,11 +99,12 @@ public class Converter {
             defineWayOfLoadingFields(allFieldsInput);
             skipRemainingFields = specifiedFields;
 
+            //---
             deleteFile(pathOut);
             try (BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8,
                     StandardOpenOption.APPEND, StandardOpenOption.CREATE)
             ) {
-//                ReturnStatus status = null;
+                status = null;
                 for (String filePath : filePaths) {
                     Path path = Path.of(filePath.trim());
                     log.debug("Path to loud features: {}", path);
@@ -404,21 +386,21 @@ public class Converter {
                 "(take the fields from features[]->properties object from your " + GEOJSON_EXTENSION + " file)");
     }
 
-    private void entitiesLoadLimitMenu() {
-        System.out.println(noticeStr() + "\nHow many features (entities) to load from each source file?");
-        System.out.printf("\t%-11s : %s%n", "Limit", "enter number");
-        System.out.printf("\t%-11s : %s%n", "All", "press enter");
-    }
+//    private void entitiesLoadLimitMenu() {
+//        System.out.println(noticeStr() + "\nHow many features (entities) to load from each source file?");
+//        System.out.printf("\t%-11s : %s%n", "Limit", "enter number");
+//        System.out.printf("\t%-11s : %s%n", "All", "press enter");
+//    }
 
-    private void directoryMenu() {
-        System.out.println(noticeStr() + "\nIn which directory are the source files located?");
-        System.out.printf("\t%-11s : %s%n", "In project", "press enter (contained in the variable by getProperty(\"app.data.file-path\"))");
-        System.out.printf("\t%-11s : %s%n", "In custom ", "enter your absolute path to directory");
-    }
+//    private void directoryMenu() {
+//        System.out.println(noticeStr() + "\nIn which directory are the source files located?");
+//        System.out.printf("\t%-11s : %s%n", "In project", "press enter (contained in the variable by getProperty(\"app.data.file-path\"))");
+//        System.out.printf("\t%-11s : %s%n", "In custom ", "enter your absolute path to directory");
+//    }
 
-    private String errorStr() {
-        return CL_RED + "Error" + CL_RESET;
-    }
+//    private String errorStr() {
+//        return CL_RED + "Error" + CL_RESET;
+//    }
 
     private String noticeStr() {
         return CL_YELLOW + "**" + CL_RESET;
