@@ -10,6 +10,7 @@ import lombok.NonNull;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static com.pavbatol.gjcc.converter.Utils.fileExistsByExtension;
 import static com.pavbatol.gjcc.converter.Utils.getFilePathArrayByExtension;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -21,7 +22,7 @@ public final class Menu {
     private static final String STOP_SIGNAL = "XXXX";
     private static final String GEOJSON_EXTENSION = "GEOJSON";
 
-    public static ReturnArrayData directory(@NonNull Scanner scanner, @NonNull String[] initialFilePaths) {
+    public static ReturnArrayData directory(@NonNull Scanner scanner, String[] initialFilePaths) {
         while (true) {
             directoryMenu();
             String input = scanner.nextLine().trim();
@@ -31,17 +32,19 @@ public final class Menu {
                 return new ReturnArrayData(ReturnStatus.RESET, null);
             }
             try {
-                initialFilePaths = "".equals(input) ? initialFilePaths : getFilePathArrayByExtension(input, GEOJSON_EXTENSION);
+                String[] filePaths = "".equals(input) ? initialFilePaths : getFilePathArrayByExtension(input, GEOJSON_EXTENSION);
 
-                if (initialFilePaths.length == 0) {
-                    System.out.println(warnStr() + ": No files with the " + GEOJSON_EXTENSION + " extension found");
+                if (filePaths == initialFilePaths && !fileExistsByExtension(initialFilePaths, GEOJSON_EXTENSION)) {
+                    System.out.printf("%s: No files with the %s extension found in the environment variable\n", warnStr(), GEOJSON_EXTENSION);
+                } else if (filePaths.length == 0) {
+                    System.out.printf("%s: No files with the %s extension found in the directory: %s\n", warnStr(), GEOJSON_EXTENSION, input);
                 } else {
-                    System.out.println("Found files: " + initialFilePaths.length);
-                    for (String filePath : initialFilePaths) {
+                    System.out.println("Found files: " + filePaths.length);
+                    for (String filePath : filePaths) {
                         System.out.println(filePath);
                     }
 
-                    return new ReturnArrayData(ReturnStatus.OK, initialFilePaths);
+                    return new ReturnArrayData(ReturnStatus.OK, filePaths);
                 }
             } catch (IOException e) {
                 System.out.println(errorStr() + ": Failed to access the directory: " + input);

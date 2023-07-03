@@ -53,7 +53,7 @@ public class Converter {
     private boolean skipRemainingFields;
     Integer linesLimit;
 
-    private void convertToCsv(String... filePaths) {
+    private void convertToCsv() {
         Path pathOut = Paths.get(OUTPUT_DIR, OUTPUT_FILE);
         creatDirectoryIfNotExists(pathOut.getParent());
 
@@ -66,12 +66,14 @@ public class Converter {
             loadRemainingFields = false;
             skipRemainingFields = false;
             ReturnStatus status = null;
+            String[] filePaths = null;
 
             //---
             exitMenu();
 
             //---
-            ReturnArrayData arrayData = Menu.directory(scanner, filePaths); // TODO: 02.07.2023 Check for NULL: filePaths
+            String[] initialFilePaths = sourceFilePath == null ? null : sourceFilePath.split(",");
+            ReturnArrayData arrayData = Menu.directory(scanner, initialFilePaths);
             if (arrayData.getStatus() == ReturnStatus.STOP) {
                 return;
             } else if (arrayData.getStatus() == ReturnStatus.RESET) {
@@ -407,6 +409,6 @@ public class Converter {
     }
 
     public void run() {
-        convertToCsv(sourceFilePath.split(","));
+        convertToCsv();
     }
 }

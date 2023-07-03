@@ -57,4 +57,17 @@ public final class Utils {
     public static String[] getFilePathArrayByExtension(String directoryPath, String extension) throws IOException {
         return getFilePathsByExtension(directoryPath, extension).toArray(new String[0]);
     }
+
+    public static boolean fileExistsByExtension(String[] filePaths, String extension) {
+        if (filePaths != null) {
+            for (String filePath : filePaths) {
+                if (filePath.toLowerCase().endsWith("." + extension.toLowerCase())) {
+                    if (Files.exists(Paths.get(filePath))) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
