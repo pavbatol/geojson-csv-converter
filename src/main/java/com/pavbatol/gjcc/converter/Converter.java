@@ -91,14 +91,29 @@ public class Converter {
             linesLimit = integerData.getValue();
 
             //---
-            allFieldsMenu();
-            String allFieldsInput = scanner.nextLine().trim();
-            if (STOP_SIGNAL.equals(allFieldsInput)) {
+//            chooseFieldsMenu();
+//            String allFieldsInput = scanner.nextLine().trim();
+//            if (STOP_SIGNAL.equals(allFieldsInput)) {
+//                return;
+//            } else if (RESET_SIGNAL.equals(allFieldsInput)) {
+//                continue;
+//            }
+//            defineWayOfLoadingFields(allFieldsInput);
+//            skipRemainingFields = specifiedFields;
+
+            ReturnLoadingFildsWayData loadingFildsWayData = Menu.fields(scanner);
+            if (loadingFildsWayData.getStatus() == ReturnStatus.STOP) {
                 return;
-            } else if (RESET_SIGNAL.equals(allFieldsInput)) {
+            } else if (loadingFildsWayData.getStatus() == ReturnStatus.RESET) {
                 continue;
             }
-            defineWayOfLoadingFields(allFieldsInput);
+            allFields = loadingFildsWayData.getAllFields();
+            specifiedFields = loadingFildsWayData.getSpecifiedFields();
+            if (loadingFildsWayData.getInputFields() != null) {
+                Arrays.stream(loadingFildsWayData.getInputFields())
+                        .map(String::trim)
+                        .forEach(fieldName -> fields.put(fieldName, creatField(fieldName)));
+            }
             skipRemainingFields = specifiedFields;
 
             //---
@@ -340,27 +355,27 @@ public class Converter {
         }
     }
 
-    private void defineWayOfLoadingFields(String allFieldsInput) {
-        switch (allFieldsInput) {
-            case "0" -> {
-                allFields = false;
-                specifiedFields = false;
-            }
-            case "1" -> {
-                allFields = true;
-                specifiedFields = false;
-            }
-            default -> {
-                allFields = false;
-                specifiedFields = true;
-                String[] inputFields = allFieldsInput.split(",");
-                for (String fieldName : inputFields) {
-                    fieldName = fieldName.trim();
-                    fields.put(fieldName, creatField(fieldName));
-                }
-            }
-        }
-    }
+//    private void defineWayOfLoadingFields(String allFieldsInput) {
+//        switch (allFieldsInput) {
+//            case "0" -> {
+//                allFields = false;
+//                specifiedFields = false;
+//            }
+//            case "1" -> {
+//                allFields = true;
+//                specifiedFields = false;
+//            }
+//            default -> {
+//                allFields = false;
+//                specifiedFields = true;
+//                String[] inputFields = allFieldsInput.split(",");
+//                for (String fieldName : inputFields) {
+//                    fieldName = fieldName.trim();
+//                    fields.put(fieldName, creatField(fieldName));
+//                }
+//            }
+//        }
+//    }
 
     private static void exitMenu() {
         System.out.println("-----------------------");
@@ -380,13 +395,13 @@ public class Converter {
                 TO_SKIP_FIELD, TO_SKIP_REMAINING_FIELDS, TO_LOAD_REMAINING_FIELDS);
     }
 
-    private void allFieldsMenu() {
-        System.out.println(noticeStr() + "\nWhich fields to save? (The following fields will always be loaded: id, longitude, latitude)");
-        System.out.printf("\t%-11s : %s%n", "Selectively", "0");
-        System.out.printf("\t%-11s : %s%n", "All", "1 (notice, there can be a lot of fields)");
-        System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names, separated by commas " +
-                "(take the fields from features[]->properties object from your " + GEOJSON_EXTENSION + " file)");
-    }
+//    private void chooseFieldsMenu() {
+//        System.out.println(noticeStr() + "\nWhich fields to save? (The following fields will always be loaded: id, longitude, latitude)");
+//        System.out.printf("\t%-11s : %s%n", "Selectively", "0");
+//        System.out.printf("\t%-11s : %s%n", "All", "1 (notice, there can be a lot of fields)");
+//        System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names, separated by commas " +
+//                "(take the fields from features[]->properties object from your " + GEOJSON_EXTENSION + " file)");
+//    }
 
 //    private void entitiesLoadLimitMenu() {
 //        System.out.println(noticeStr() + "\nHow many features (entities) to load from each source file?");

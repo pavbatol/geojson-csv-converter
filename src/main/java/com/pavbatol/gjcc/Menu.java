@@ -1,8 +1,9 @@
 package com.pavbatol.gjcc;
 
 import com.pavbatol.gjcc.converter.ReturnArrayData;
-import com.pavbatol.gjcc.converter.ReturnStatus;
 import com.pavbatol.gjcc.converter.ReturnIntegerData;
+import com.pavbatol.gjcc.converter.ReturnLoadingFildsWayData;
+import com.pavbatol.gjcc.converter.ReturnStatus;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -70,6 +71,36 @@ public final class Menu {
         }
     }
 
+    public static ReturnLoadingFildsWayData fields(@NonNull Scanner scanner) {
+        chooseFieldsMenu();
+        String input = scanner.nextLine().trim();
+        if (STOP_SIGNAL.equals(input)) {
+            return ReturnLoadingFildsWayData.of(ReturnStatus.STOP);
+        } else if (RESET_SIGNAL.equals(input)) {
+            return ReturnLoadingFildsWayData.of(ReturnStatus.RESET);
+        }
+
+        boolean allFields;
+        boolean specifiedFields;
+        String[] inputFields = null;
+        switch (input) {
+            case "0" -> {
+                allFields = false;
+                specifiedFields = false;
+            }
+            case "1" -> {
+                allFields = true;
+                specifiedFields = false;
+            }
+            default -> {
+                allFields = false;
+                specifiedFields = true;
+                inputFields = input.split(",");
+            }
+        }
+        return new ReturnLoadingFildsWayData(ReturnStatus.OK, allFields, specifiedFields, inputFields);
+    }
+
     private static void directoryMenu() {
         System.out.println(noticeStr() + "\nIn which directory are the source files located?");
         System.out.printf("\t%-11s : %s%n", "In project", "press enter (contained in the variable by getProperty(\"app.data.file-path\"))");
@@ -80,6 +111,14 @@ public final class Menu {
         System.out.println(noticeStr() + "\nHow many features (entities) to load from each source file?");
         System.out.printf("\t%-11s : %s%n", "Limit", "enter number");
         System.out.printf("\t%-11s : %s%n", "All", "press enter");
+    }
+
+    private static void chooseFieldsMenu() {
+        System.out.println(noticeStr() + "\nWhich fields to save? (The following fields will always be loaded: id, longitude, latitude)");
+        System.out.printf("\t%-11s : %s%n", "Selectively", "0");
+        System.out.printf("\t%-11s : %s%n", "All", "1 (notice, there can be a lot of fields)");
+        System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names, separated by commas " +
+                "(take the fields from features[]->properties object from your " + GEOJSON_EXTENSION + " file)");
     }
 
     private static String errorStr() {
