@@ -23,6 +23,10 @@ public final class Menu {
     private static final String STOP_SIGNAL = "XXXX";
     private static final String GEOJSON_EXTENSION = "GEOJSON";
 
+    public static void exit() {
+        exitMenu();
+    }
+
     public static ReturnArrayData directory(@NonNull Scanner scanner, String[] initialFilePaths) {
         while (true) {
             directoryMenu();
@@ -99,6 +103,14 @@ public final class Menu {
             }
         }
         return new ReturnLoadingFildsWayData(ReturnStatus.OK, allFields, specifiedFields, inputFields);
+    }
+
+    private static void exitMenu() {
+        System.out.println("-----------------------");
+        System.out.println("At any stage you can enter:");
+        System.out.println("\"" + RESET_SIGNAL + "\" : start over");
+        System.out.println("\"" + STOP_SIGNAL + "\" : exit");
+        System.out.println("-----------------------");
     }
 
     private static void directoryMenu() {

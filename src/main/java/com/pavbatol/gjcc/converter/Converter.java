@@ -21,7 +21,6 @@ import static com.pavbatol.gjcc.converter.Utils.*;
 @Slf4j
 public class Converter {
     private static final String CL_RESET = "\u001B[0m";
-    private static final String CL_RED = "\u001B[31m";
     private static final String CL_YELLOW = "\u001B[33m";
     private static final String DELIMITER = ",";
     private static final String DELIMITER_REPLACEMENT = ";";
@@ -38,12 +37,10 @@ public class Converter {
     private static final String TO_LEAVE_AS_IS_FIELD = "";
     private static final String FIELD_LONGITUDE = "longitude";
     private static final String FIELD_LATITUDE = "latitude";
-    private static final String GEOJSON_EXTENSION = "GEOJSON";
     private final String sourceFilePath = AppConfig.getInstance().getProperty("app.data.file-path");
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final Scanner scanner = new Scanner(System.in);
     private boolean allFields;
-    private boolean specifiedFields;
     private int nextFieldIndex;
     private List<String> csvLineParts;
     private Map<String, Field> fields;
@@ -65,11 +62,10 @@ public class Converter {
             nextFieldIndex = 0;
             loadRemainingFields = false;
             skipRemainingFields = false;
-            ReturnStatus status = null;
             String[] filePaths = null;
 
             //---
-            exitMenu();
+            Menu.exit();
 
             //---
             String[] initialFilePaths = sourceFilePath == null ? null : sourceFilePath.split(",");
@@ -91,16 +87,6 @@ public class Converter {
             linesLimit = integerData.getValue();
 
             //---
-//            chooseFieldsMenu();
-//            String allFieldsInput = scanner.nextLine().trim();
-//            if (STOP_SIGNAL.equals(allFieldsInput)) {
-//                return;
-//            } else if (RESET_SIGNAL.equals(allFieldsInput)) {
-//                continue;
-//            }
-//            defineWayOfLoadingFields(allFieldsInput);
-//            skipRemainingFields = specifiedFields;
-
             ReturnLoadingFildsWayData loadingFildsWayData = Menu.fields(scanner);
             if (loadingFildsWayData.getStatus() == ReturnStatus.STOP) {
                 return;
@@ -108,20 +94,19 @@ public class Converter {
                 continue;
             }
             allFields = loadingFildsWayData.getAllFields();
-            specifiedFields = loadingFildsWayData.getSpecifiedFields();
+            skipRemainingFields = loadingFildsWayData.getSpecifiedFields();
             if (loadingFildsWayData.getInputFields() != null) {
                 Arrays.stream(loadingFildsWayData.getInputFields())
                         .map(String::trim)
                         .forEach(fieldName -> fields.put(fieldName, creatField(fieldName)));
             }
-            skipRemainingFields = specifiedFields;
 
             //---
             deleteFile(pathOut);
             try (BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8,
                     StandardOpenOption.APPEND, StandardOpenOption.CREATE)
             ) {
-                status = null;
+                ReturnStatus status = null;
                 for (String filePath : filePaths) {
                     Path path = Path.of(filePath.trim());
                     log.debug("Path to loud features: {}", path);
@@ -355,36 +340,6 @@ public class Converter {
         }
     }
 
-//    private void defineWayOfLoadingFields(String allFieldsInput) {
-//        switch (allFieldsInput) {
-//            case "0" -> {
-//                allFields = false;
-//                specifiedFields = false;
-//            }
-//            case "1" -> {
-//                allFields = true;
-//                specifiedFields = false;
-//            }
-//            default -> {
-//                allFields = false;
-//                specifiedFields = true;
-//                String[] inputFields = allFieldsInput.split(",");
-//                for (String fieldName : inputFields) {
-//                    fieldName = fieldName.trim();
-//                    fields.put(fieldName, creatField(fieldName));
-//                }
-//            }
-//        }
-//    }
-
-    private static void exitMenu() {
-        System.out.println("-----------------------");
-        System.out.println("At any stage you can enter:");
-        System.out.println("\"" + RESET_SIGNAL + "\" : start over");
-        System.out.println("\"" + STOP_SIGNAL + "\" : exit");
-        System.out.println("-----------------------");
-    }
-
     private void fieldDetectedMenu(final String fieldName, final String examole) {
         System.out.println(noticeStr() + "\nField detected: \"" + fieldName + "\" (value example: " + examole + ")");
         System.out.printf("\tPress Enter to leave this field as is; \n" +
@@ -394,30 +349,6 @@ public class Converter {
                         "\tOr enter \"%s\" to load all remaining fields as is\n",
                 TO_SKIP_FIELD, TO_SKIP_REMAINING_FIELDS, TO_LOAD_REMAINING_FIELDS);
     }
-
-//    private void chooseFieldsMenu() {
-//        System.out.println(noticeStr() + "\nWhich fields to save? (The following fields will always be loaded: id, longitude, latitude)");
-//        System.out.printf("\t%-11s : %s%n", "Selectively", "0");
-//        System.out.printf("\t%-11s : %s%n", "All", "1 (notice, there can be a lot of fields)");
-//        System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names, separated by commas " +
-//                "(take the fields from features[]->properties object from your " + GEOJSON_EXTENSION + " file)");
-//    }
-
-//    private void entitiesLoadLimitMenu() {
-//        System.out.println(noticeStr() + "\nHow many features (entities) to load from each source file?");
-//        System.out.printf("\t%-11s : %s%n", "Limit", "enter number");
-//        System.out.printf("\t%-11s : %s%n", "All", "press enter");
-//    }
-
-//    private void directoryMenu() {
-//        System.out.println(noticeStr() + "\nIn which directory are the source files located?");
-//        System.out.printf("\t%-11s : %s%n", "In project", "press enter (contained in the variable by getProperty(\"app.data.file-path\"))");
-//        System.out.printf("\t%-11s : %s%n", "In custom ", "enter your absolute path to directory");
-//    }
-
-//    private String errorStr() {
-//        return CL_RED + "Error" + CL_RESET;
-//    }
 
     private String noticeStr() {
         return CL_YELLOW + "**" + CL_RESET;
