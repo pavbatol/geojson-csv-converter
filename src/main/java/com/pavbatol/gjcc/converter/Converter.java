@@ -20,21 +20,13 @@ import static com.pavbatol.gjcc.converter.Utils.*;
 
 @Slf4j
 public class Converter {
-    private static final String CL_RESET = "\u001B[0m";
-    private static final String CL_YELLOW = "\u001B[33m";
     private static final String DELIMITER = ",";
     private static final String DELIMITER_REPLACEMENT = ";";
-    private static final String RESET_SIGNAL = "----";
-    private static final String STOP_SIGNAL = "XXXX";
     private static final String RESET_COMMAND_RECEIVED = "Reset command received";
     private static final String EXIT_COMMAND_RECEIVED = "Exit command received";
     private static final int INITIAL_CAPACITY = 100;
     private static final String OUTPUT_FILE = "output.csv";
     private static final String OUTPUT_DIR = "output";
-    private static final String TO_SKIP_FIELD = "-";
-    private static final String TO_SKIP_REMAINING_FIELDS = "--";
-    private static final String TO_LOAD_REMAINING_FIELDS = "++";
-    private static final String TO_LEAVE_AS_IS_FIELD = "";
     private static final String FIELD_LONGITUDE = "longitude";
     private static final String FIELD_LATITUDE = "latitude";
     private final String sourceFilePath = AppConfig.getInstance().getProperty("app.data.file-path");
@@ -213,10 +205,16 @@ public class Converter {
                             } else if (skipRemainingFields) {
                                 fields.put(propsFieldName, null);
                             } else {
-                                ReturnStatus status = addFieldByMenuAction(propsFieldName, featureValue);
+                                ReturnDetectedFieldData solveFieldData = Menu.solveField(scanner, propsFieldName, featureValue);
+                                ReturnStatus status = solveFieldData.getStatus();
                                 if (status != ReturnStatus.OK) {
+                                    log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
                                     return status;
                                 }
+                                skipRemainingFields = getBoolean(skipRemainingFields, solveFieldData.getSkipRemainingFields());
+                                loadRemainingFields = getBoolean(loadRemainingFields, solveFieldData.getLoadRemainingFields());
+                                FieldAction action = solveFieldData.getFieldAction();
+                                fields.put(propsFieldName, action == FieldAction.SKIP_FIELD ? null : creatField(action.getName()));
                             }
                         }
 
@@ -262,6 +260,10 @@ public class Converter {
         return ReturnStatus.OK;
     }
 
+    private boolean getBoolean(boolean target, Boolean source) {
+        return source == null ? target : source;
+    }
+
     private boolean excludedField(String fieldName) {
         return (fieldName.startsWith("name:")
                 && !"name:ru".equals(fieldName)
@@ -280,39 +282,6 @@ public class Converter {
     private void keepField(final String fieldName, String value) {
         Field field = getFieldOrCreat(fieldName);
         setCsvLinePart(field.getIndex(), value);
-    }
-
-    private ReturnStatus addFieldByMenuAction(final String propsFieldName, final String featureValueExamole) {
-        fieldDetectedMenu(propsFieldName, featureValueExamole);
-        String customName = scanner.nextLine().trim();
-
-        switch (customName) {
-            case STOP_SIGNAL -> {
-                log.debug(EXIT_COMMAND_RECEIVED);
-                return ReturnStatus.STOP;
-            }
-            case RESET_SIGNAL -> {
-                log.debug(RESET_COMMAND_RECEIVED);
-                return ReturnStatus.RESET;
-            }
-            case TO_SKIP_REMAINING_FIELDS -> {
-                skipRemainingFields = true;
-                customName = TO_SKIP_FIELD;
-            }
-            case TO_LOAD_REMAINING_FIELDS -> {
-                loadRemainingFields = true;
-                customName = TO_LEAVE_AS_IS_FIELD;
-            }
-        }
-
-        if (TO_LEAVE_AS_IS_FIELD.equals(customName)) {
-            fields.put(propsFieldName, creatField(propsFieldName));
-        } else if (TO_SKIP_FIELD.equals(customName)) {
-            fields.put(propsFieldName, null);
-        } else {
-            fields.put(propsFieldName, creatField(customName));
-        }
-        return ReturnStatus.OK;
     }
 
     private int getAndIncrementNextFieldIndex() {
@@ -338,20 +307,6 @@ public class Converter {
         for (int i = 0; i < increase; i++) {
             list.add(null);
         }
-    }
-
-    private void fieldDetectedMenu(final String fieldName, final String examole) {
-        System.out.println(noticeStr() + "\nField detected: \"" + fieldName + "\" (value example: " + examole + ")");
-        System.out.printf("\tPress Enter to leave this field as is; \n" +
-                        "\tOr enter your field name\n" +
-                        "\tOr enter \"%s\" to skip the field\n" +
-                        "\tOr enter \"%s\" to skip all remaining fields\n" +
-                        "\tOr enter \"%s\" to load all remaining fields as is\n",
-                TO_SKIP_FIELD, TO_SKIP_REMAINING_FIELDS, TO_LOAD_REMAINING_FIELDS);
-    }
-
-    private String noticeStr() {
-        return CL_YELLOW + "**" + CL_RESET;
     }
 
     public void run() {

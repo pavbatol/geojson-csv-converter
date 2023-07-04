@@ -1,9 +1,6 @@
 package com.pavbatol.gjcc;
 
-import com.pavbatol.gjcc.converter.ReturnArrayData;
-import com.pavbatol.gjcc.converter.ReturnIntegerData;
-import com.pavbatol.gjcc.converter.ReturnLoadingFildsWayData;
-import com.pavbatol.gjcc.converter.ReturnStatus;
+import com.pavbatol.gjcc.converter.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -21,6 +18,10 @@ public final class Menu {
     private static final String CL_YELLOW = "\u001B[33m";
     private static final String RESET_SIGNAL = "----";
     private static final String STOP_SIGNAL = "XXXX";
+    private static final String TO_SKIP_FIELD = "-";
+    private static final String TO_LEAVE_AS_IS_FIELD = "";
+    private static final String TO_SKIP_REMAINING_FIELDS = "--";
+    private static final String TO_LOAD_REMAINING_FIELDS = "++";
     private static final String GEOJSON_EXTENSION = "GEOJSON";
 
     public static void exit() {
@@ -105,6 +106,43 @@ public final class Menu {
         return new ReturnLoadingFildsWayData(ReturnStatus.OK, allFields, specifiedFields, inputFields);
     }
 
+    public static ReturnDetectedFieldData solveField(@NonNull Scanner scanner,
+                                                     final String propsFieldName,
+                                                     final String featureValueExamole) {
+        fieldDetectedMenu(propsFieldName, featureValueExamole);
+        String input = scanner.nextLine().trim();
+
+        switch (input) {
+            case STOP_SIGNAL -> {
+                return ReturnDetectedFieldData.of(ReturnStatus.STOP);
+            }
+            case RESET_SIGNAL -> {
+                return ReturnDetectedFieldData.of(ReturnStatus.RESET);
+            }
+            case TO_SKIP_REMAINING_FIELDS -> {
+                return new ReturnDetectedFieldData(ReturnStatus.OK, FieldAction.SKIP_FIELD,
+                        true, null);
+            }
+
+            case TO_LOAD_REMAINING_FIELDS -> {
+                return new ReturnDetectedFieldData(ReturnStatus.OK, FieldAction.AS_IS_NAME.setName(propsFieldName),
+                        null, true);
+            }
+            case TO_SKIP_FIELD -> {
+                return new ReturnDetectedFieldData(ReturnStatus.OK, FieldAction.SKIP_FIELD,
+                        null, null);
+            }
+            case TO_LEAVE_AS_IS_FIELD -> {
+                return new ReturnDetectedFieldData(ReturnStatus.OK, FieldAction.AS_IS_NAME.setName(propsFieldName),
+                        null, null);
+            }
+            default -> {
+                return new ReturnDetectedFieldData(ReturnStatus.OK, FieldAction.CUSTOM_NAME.setName(input),
+                        null, null);
+            }
+        }
+    }
+
     private static void exitMenu() {
         System.out.println("-----------------------");
         System.out.println("At any stage you can enter:");
@@ -131,6 +169,16 @@ public final class Menu {
         System.out.printf("\t%-11s : %s%n", "All", "1 (notice, there can be a lot of fields)");
         System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names, separated by commas " +
                 "(take the fields from features[]->properties object from your " + GEOJSON_EXTENSION + " file)");
+    }
+
+    private static void fieldDetectedMenu(final String fieldName, final String examole) {
+        System.out.println(noticeStr() + "\nField detected: \"" + fieldName + "\" (value example: " + examole + ")");
+        System.out.printf("\tPress Enter to leave this field as is; \n" +
+                        "\tOr enter your field name\n" +
+                        "\tOr enter \"%s\" to skip the field\n" +
+                        "\tOr enter \"%s\" to skip all remaining fields\n" +
+                        "\tOr enter \"%s\" to load all remaining fields as is\n",
+                TO_SKIP_FIELD, TO_SKIP_REMAINING_FIELDS, TO_LOAD_REMAINING_FIELDS);
     }
 
     private static String errorStr() {
