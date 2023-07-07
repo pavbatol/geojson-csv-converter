@@ -12,7 +12,10 @@ import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -60,7 +63,7 @@ public class Converter {
             Menu.exit();
 
             //---
-            String[] initialFilePaths = sourceFilePath == null ? null : sourceFilePath.split(",");
+            String[] initialFilePaths = sourceFilePath == null ? null : solveClasspath(splitWithTrim(",", sourceFilePath));
             ReturnArrayData arrayData = Menu.directory(scanner, initialFilePaths);
             if (arrayData.getStatus() == ReturnStatus.STOP) {
                 return;
@@ -100,7 +103,7 @@ public class Converter {
             ) {
                 ReturnStatus status = null;
                 for (String filePath : filePaths) {
-                    Path path = Path.of(filePath.trim());
+                    Path path = Path.of(filePath.trim()); // TODO: 05.07.2023 filePaths can be NULL
                     log.debug("Path to loud features: {}", path);
 
                     JsonFactory jsonFactory = objectMapper.getFactory();

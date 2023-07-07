@@ -1,10 +1,13 @@
 package com.pavbatol.gjcc.converter;
 
+import com.pavbatol.gjcc.App;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,5 +72,32 @@ public final class Utils {
             }
         }
         return false;
+    }
+
+    public static String[] splitWithTrim(String delimiter, @NonNull String source) {
+        String[] parts = source.split(delimiter);
+        for (int i = 0; i < parts.length; i++) {
+            parts[i] = parts[i].trim();
+        }
+        return parts;
+    }
+
+    public static String solveClasspath(String filePath) {
+        String prefix = "classpath:";
+        if (filePath.startsWith(prefix)) {
+            String subStr = filePath.substring(prefix.length());
+            URL resource = App.class.getClassLoader().getResource(subStr);
+
+            return resource == null ? null : Paths.get(resource.getPath()).toAbsolutePath().toString();
+        }
+        return filePath;
+    }
+
+    public static String[] solveClasspath(String[] filePaths) {
+        String[] newFilePaths = new String[filePaths.length];
+        for (int i = 0; i < filePaths.length; i++) {
+            newFilePaths[i] = solveClasspath(filePaths[i]);
+        }
+        return newFilePaths;
     }
 }

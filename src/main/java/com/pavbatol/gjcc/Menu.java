@@ -28,7 +28,12 @@ public final class Menu {
         exitMenu();
     }
 
-    public static ReturnArrayData directory(@NonNull Scanner scanner, String[] initialFilePaths) {
+    public static ReturnArrayData directory(@NonNull Scanner scanner, String[] initialFilePaths) { // TODO: 05.07.2023 Array containing an element equal to null can be received
+
+//        for (String filePath : initialFilePaths) {
+//            System.out.println(filePath);
+//        }
+
         while (true) {
             directoryMenu();
             String input = scanner.nextLine().trim();
