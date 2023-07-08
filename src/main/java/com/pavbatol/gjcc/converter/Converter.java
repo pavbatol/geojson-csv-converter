@@ -29,7 +29,7 @@ public class Converter {
     private static final String EXIT_COMMAND_RECEIVED = "Exit command received";
     private static final int INITIAL_CAPACITY = 100;
     private static final String OUTPUT_FILE = "output.csv";
-    private static final String OUTPUT_DIR = "output";
+    private static final String OUTPUT_DIR = AppConfig.getInstance().getProperty("app.data.directory.output");
     private static final String FIELD_LONGITUDE = "longitude";
     private static final String FIELD_LATITUDE = "latitude";
     private final String sourceFilePath = AppConfig.getInstance().getProperty("app.data.file-path");
@@ -63,7 +63,7 @@ public class Converter {
             Menu.exit();
 
             //---
-            String[] initialFilePaths = sourceFilePath == null ? null : solveClasspath(splitWithTrim(",", sourceFilePath));
+            String[] initialFilePaths = sourceFilePath == null ? null : splitWithTrim(",", sourceFilePath);
             ReturnArrayData arrayData = Menu.directory(scanner, initialFilePaths);
             if (arrayData.getStatus() == ReturnStatus.STOP) {
                 return;

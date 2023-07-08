@@ -6,4 +6,8 @@ import lombok.Value;
 public class ReturnArrayData {
     ReturnStatus status;
     String[] values;
+
+    public static ReturnArrayData of(ReturnStatus status) {
+        return new ReturnArrayData(status, null);
+    }
 }

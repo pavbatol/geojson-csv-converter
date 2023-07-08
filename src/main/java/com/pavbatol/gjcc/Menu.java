@@ -1,16 +1,21 @@
 package com.pavbatol.gjcc;
 
+import com.pavbatol.gjcc.config.AppConfig;
 import com.pavbatol.gjcc.converter.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.file.*;
 import java.util.Scanner;
 
-import static com.pavbatol.gjcc.converter.Utils.fileExistsByExtension;
-import static com.pavbatol.gjcc.converter.Utils.getFilePathArrayByExtension;
+import static com.pavbatol.gjcc.converter.Utils.*;
 
+@Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Menu {
     private static final String CL_RESET = "\u001B[0m";
@@ -42,15 +47,91 @@ public final class Menu {
             } else if (RESET_SIGNAL.equals(input)) {
                 return new ReturnArrayData(ReturnStatus.RESET, null);
             }
-            try {
-                String[] filePaths = "".equals(input) ? initialFilePaths : getFilePathArrayByExtension(input, GEOJSON_EXTENSION);
+//            try {
+//                String[] filePaths = "".equals(input) ? initialFilePaths : getFilePathArrayByExtension(input, GEOJSON_EXTENSION);
+//
+//                if (filePaths == initialFilePaths && !fileExistsByExtension(initialFilePaths, GEOJSON_EXTENSION)) {
+//                    System.out.printf("%s: No files with the %s extension found in the environment variable\n", warnStr(), GEOJSON_EXTENSION);
+//                } else if (filePaths.length == 0) {
+//                    System.out.printf("%s: No files with the %s extension found in the directory: %s\n", warnStr(), GEOJSON_EXTENSION, input);
+//                } else {
+//                    System.out.println("Found files: " + filePaths.length);
+//                    for (String filePath : filePaths) {
+//                        System.out.println(filePath);
+//                    }
+//
+//                    return new ReturnArrayData(ReturnStatus.OK, filePaths);
+//                }
+//            } catch (IOException e) {
+//                System.out.println(errorStr() + ": Failed to access the directory: " + input);
+//            }
 
-                if (filePaths == initialFilePaths && !fileExistsByExtension(initialFilePaths, GEOJSON_EXTENSION)) {
-                    System.out.printf("%s: No files with the %s extension found in the environment variable\n", warnStr(), GEOJSON_EXTENSION);
-                } else if (filePaths.length == 0) {
-                    System.out.printf("%s: No files with the %s extension found in the directory: %s\n", warnStr(), GEOJSON_EXTENSION, input);
+            String prefix = "classpath:";
+            String inputDir;
+            switch (input) {
+                case "":
+                    if (isLaunchedFromJAR()) {
+                        log.debug("The application is launched from the JAR archive");
+
+                        inputDir = AppConfig.getInstance().getProperty("app.data.directory.input.generated");
+                        creatDirectoryIfNotExists(Path.of(inputDir));
+
+                        for (String initialFilePath : initialFilePaths) {
+                            if (!initialFilePath.startsWith(prefix)) {
+                                continue;
+                            }
+                            String outputDir = inputDir;
+                            String inputFileName = initialFilePath.substring(prefix.length());
+                            String outputFileName = Path.of(outputDir, Path.of(inputFileName).getFileName().toString()).toString();
+                            String zipFilePath = App.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+
+//                            System.out.println();
+//                            System.out.println("inputFileName = " + inputFileName);
+//                            System.out.println("outputFileName = " + outputFileName);
+//                            System.out.println();
+
+                            try (FileSystem zipFileSystem = FileSystems.newFileSystem(Paths.get(zipFilePath), (ClassLoader) null)) {
+                                Path entryFile = zipFileSystem.getPath(inputFileName);
+
+                                if (Files.exists(entryFile)) { // TODO: 08.07.2023 Compare the size of the files before
+                                    try (BufferedReader bufferedReader = Files.newBufferedReader(entryFile);
+                                         BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(outputFileName))) {
+
+                                        String line;
+                                        while ((line = bufferedReader.readLine()) != null) {
+                                            bufferedWriter.write(line);
+                                            bufferedWriter.newLine();
+                                        }
+                                    }
+
+                                    System.out.println("Successfully copied from resource: " + entryFile + ",  to file: " + outputFileName);
+                                } else {
+                                    System.out.println("File not found inside the JAR archive.");
+                                }
+                            } catch (IOException e) {
+                                System.err.println("Error copying the file: " + e.getMessage());
+                            }
+                        }
+                    } else {
+                        log.debug("The application is launched from the development environment");
+                        inputDir = getProjectLaunchSourcePath();
+                    }
+                    break;
+                case "0":
+                    inputDir = AppConfig.getInstance().getProperty("app.data.directory.input.default");
+                    creatDirectoryIfNotExists(Path.of(inputDir));
+                    break;
+                default:
+                    inputDir = input;
+            }
+
+            try {
+                String[] filePaths = getFilePathArrayByExtension(inputDir, GEOJSON_EXTENSION);
+
+                if (filePaths.length == 0) { // || !fileExistsByExtension(filePaths, GEOJSON_EXTENSION)
+                    System.out.printf("%s: No files with the %s extension found in the directory: %s\n", warnStr(), GEOJSON_EXTENSION, inputDir);
                 } else {
-                    System.out.println("Found files: " + filePaths.length);
+                    System.out.println("Found files: " + filePaths.length + ":");
                     for (String filePath : filePaths) {
                         System.out.println(filePath);
                     }
@@ -58,7 +139,7 @@ public final class Menu {
                     return new ReturnArrayData(ReturnStatus.OK, filePaths);
                 }
             } catch (IOException e) {
-                System.out.println(errorStr() + ": Failed to access the directory: " + input);
+                System.out.println(errorStr() + ": Failed to access the directory: " + inputDir);
             }
         }
     }

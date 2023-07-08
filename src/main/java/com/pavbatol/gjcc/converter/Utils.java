@@ -7,7 +7,6 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,18 +60,18 @@ public final class Utils {
         return getFilePathsByExtension(directoryPath, extension).toArray(new String[0]);
     }
 
-    public static boolean fileExistsByExtension(String[] filePaths, String extension) {
-        if (filePaths != null) {
-            for (String filePath : filePaths) {
-                if (filePath.toLowerCase().endsWith("." + extension.toLowerCase())) {
-                    if (Files.exists(Paths.get(filePath))) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
+//    public static boolean fileExistsByExtension(String[] filePaths, String extension) {
+//        if (filePaths != null) {
+//            for (String filePath : filePaths) {
+//                if (filePath.toLowerCase().endsWith("." + extension.toLowerCase())) {
+//                    if (Files.exists(Paths.get(filePath))) {
+//                        return true;
+//                    }
+//                }
+//            }
+//        }
+//        return false;
+//    }
 
     public static String[] splitWithTrim(String delimiter, @NonNull String source) {
         String[] parts = source.split(delimiter);
@@ -82,22 +81,34 @@ public final class Utils {
         return parts;
     }
 
-    public static String solveClasspath(String filePath) {
-        String prefix = "classpath:";
-        if (filePath.startsWith(prefix)) {
-            String subStr = filePath.substring(prefix.length());
-            URL resource = App.class.getClassLoader().getResource(subStr);
+//    public static String solveClasspath(String filePath) {
+//        String prefix = "classpath:";
+//        if (filePath.startsWith(prefix)) {
+//            String subStr = filePath.substring(prefix.length());
+//            URL resource = App.class.getClassLoader().getResource(subStr);
+//
+//            return resource == null ? null : resource.getPath();
+//        }
+//        return filePath;
+//    }
 
-            return resource == null ? null : Paths.get(resource.getPath()).toAbsolutePath().toString();
-        }
-        return filePath;
+//    public static String[] solveClasspath(String[] filePaths) {
+//        String[] newFilePaths = new String[filePaths.length];
+//        for (int i = 0; i < filePaths.length; i++) {
+//            newFilePaths[i] = solveClasspath(filePaths[i]);
+//        }
+//        return newFilePaths;
+//    }
+
+    public static String getProjectLaunchSourcePath() {
+        return App.class.getProtectionDomain().getCodeSource().getLocation().getPath();
     }
 
-    public static String[] solveClasspath(String[] filePaths) {
-        String[] newFilePaths = new String[filePaths.length];
-        for (int i = 0; i < filePaths.length; i++) {
-            newFilePaths[i] = solveClasspath(filePaths[i]);
-        }
-        return newFilePaths;
+    public static String getProjectLaunchSourceName() {
+        return Paths.get(getProjectLaunchSourcePath()).getFileName().toString();
+    }
+
+    public static boolean isLaunchedFromJAR() {
+        return getProjectLaunchSourceName().toLowerCase().endsWith(".jar");
     }
 }
