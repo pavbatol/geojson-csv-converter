@@ -104,7 +104,7 @@ public class Converter {
                 ReturnStatus status = null;
                 for (String filePath : filePaths) {
                     Path path = Path.of(filePath.trim()); // TODO: 05.07.2023 filePaths can be NULL
-                    log.debug("Path to loud features: {}", path);
+                    log.info("Path to loud features: {}", path);
 
                     JsonFactory jsonFactory = objectMapper.getFactory();
                     try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()))
@@ -140,8 +140,8 @@ public class Converter {
                     writer.write(builder.toString());
                 }
 
-                log.debug("Total number of fields: {}", fields.size());
-                log.debug("Total number of selected fields: {}", nextFieldIndex);
+                log.info("Total number of fields: {}", fields.size());
+                log.info("Total number of selected fields: {}", nextFieldIndex);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -165,7 +165,7 @@ public class Converter {
                 if (status != ReturnStatus.OK) {
                     return status;
                 }
-                log.debug("Loaded features number: {}", count); // TODO: 01.07.2023 Consider not loading  duplicates
+                log.info("Loaded features number: {}", count); // TODO: 01.07.2023 Consider not loading  duplicates
             }
         }
         return ReturnStatus.OK;

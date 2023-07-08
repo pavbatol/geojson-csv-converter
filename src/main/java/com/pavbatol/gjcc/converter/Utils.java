@@ -7,6 +7,8 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +40,44 @@ public final class Utils {
         }
     }
 
+    public static boolean checkDuplicateFile(@NonNull Path inputFileName, @NonNull Path outputFileName) throws IOException {
+        if (Files.exists(outputFileName)) {
+            return Files.size(inputFileName) == Files.size(outputFileName);
+        }
+        return false;
+    }
+
+    public static void copyResource(final String inputFileName, final String outputFileName) {
+        final String zipFilePath = App.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        try (FileSystem zipFileSystem = FileSystems.newFileSystem(Paths.get(zipFilePath), (ClassLoader) null)) {
+            final Path entryFile = zipFileSystem.getPath(inputFileName);
+
+            if (Files.exists(entryFile)) {
+                Path outputFile = Paths.get(outputFileName);
+
+                if (checkDuplicateFile(entryFile, outputFile)) {
+                    log.debug("The file " + outputFileName + " already exists and has the same size as " + inputFileName);
+                    return;
+                }
+
+                try (InputStream inputStream = Files.newInputStream(entryFile);
+                     OutputStream outputStream = Files.newOutputStream(outputFile)) {
+                    byte[] buffer = new byte[4096];
+                    int bytesRead;
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, bytesRead);
+                    }
+                }
+
+                log.debug("Successfully copied from resource: " + entryFile + ",  to file: " + outputFileName);
+            } else {
+                log.info("File not found inside the JAR archive.");
+            }
+        } catch (IOException e) {
+            log.warn("Error copying the file: " + e.getMessage());
+        }
+    }
+
     public static List<String> getFilePathsByExtension(String directoryPath, String extension) throws IOException {
         List<String> filePaths = new ArrayList<>();
         try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(directoryPath))) {
@@ -60,18 +100,18 @@ public final class Utils {
         return getFilePathsByExtension(directoryPath, extension).toArray(new String[0]);
     }
 
-//    public static boolean fileExistsByExtension(String[] filePaths, String extension) {
-//        if (filePaths != null) {
-//            for (String filePath : filePaths) {
-//                if (filePath.toLowerCase().endsWith("." + extension.toLowerCase())) {
-//                    if (Files.exists(Paths.get(filePath))) {
-//                        return true;
-//                    }
-//                }
-//            }
-//        }
-//        return false;
-//    }
+    public static boolean fileExistsByExtension(String[] filePaths, String extension) {
+        if (filePaths != null) {
+            for (String filePath : filePaths) {
+                if (filePath.toLowerCase().endsWith("." + extension.toLowerCase())) {
+                    if (Files.exists(Paths.get(filePath))) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
     public static String[] splitWithTrim(String delimiter, @NonNull String source) {
         String[] parts = source.split(delimiter);

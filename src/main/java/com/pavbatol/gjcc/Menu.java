@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.*;
 import java.util.Scanner;
 
@@ -41,32 +39,14 @@ public final class Menu {
 
         while (true) {
             directoryMenu();
-            String input = scanner.nextLine().trim();
+            final String input = scanner.nextLine().trim();
             if (STOP_SIGNAL.equals(input)) {
                 return new ReturnArrayData(ReturnStatus.STOP, null);
             } else if (RESET_SIGNAL.equals(input)) {
                 return new ReturnArrayData(ReturnStatus.RESET, null);
             }
-//            try {
-//                String[] filePaths = "".equals(input) ? initialFilePaths : getFilePathArrayByExtension(input, GEOJSON_EXTENSION);
-//
-//                if (filePaths == initialFilePaths && !fileExistsByExtension(initialFilePaths, GEOJSON_EXTENSION)) {
-//                    System.out.printf("%s: No files with the %s extension found in the environment variable\n", warnStr(), GEOJSON_EXTENSION);
-//                } else if (filePaths.length == 0) {
-//                    System.out.printf("%s: No files with the %s extension found in the directory: %s\n", warnStr(), GEOJSON_EXTENSION, input);
-//                } else {
-//                    System.out.println("Found files: " + filePaths.length);
-//                    for (String filePath : filePaths) {
-//                        System.out.println(filePath);
-//                    }
-//
-//                    return new ReturnArrayData(ReturnStatus.OK, filePaths);
-//                }
-//            } catch (IOException e) {
-//                System.out.println(errorStr() + ": Failed to access the directory: " + input);
-//            }
 
-            String prefix = "classpath:";
+            final String prefix = "classpath:";
             String inputDir;
             switch (input) {
                 case "":
@@ -80,37 +60,10 @@ public final class Menu {
                             if (!initialFilePath.startsWith(prefix)) {
                                 continue;
                             }
-                            String outputDir = inputDir;
-                            String inputFileName = initialFilePath.substring(prefix.length());
-                            String outputFileName = Path.of(outputDir, Path.of(inputFileName).getFileName().toString()).toString();
-                            String zipFilePath = App.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-
-//                            System.out.println();
-//                            System.out.println("inputFileName = " + inputFileName);
-//                            System.out.println("outputFileName = " + outputFileName);
-//                            System.out.println();
-
-                            try (FileSystem zipFileSystem = FileSystems.newFileSystem(Paths.get(zipFilePath), (ClassLoader) null)) {
-                                Path entryFile = zipFileSystem.getPath(inputFileName);
-
-                                if (Files.exists(entryFile)) { // TODO: 08.07.2023 Compare the size of the files before
-                                    try (BufferedReader bufferedReader = Files.newBufferedReader(entryFile);
-                                         BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(outputFileName))) {
-
-                                        String line;
-                                        while ((line = bufferedReader.readLine()) != null) {
-                                            bufferedWriter.write(line);
-                                            bufferedWriter.newLine();
-                                        }
-                                    }
-
-                                    System.out.println("Successfully copied from resource: " + entryFile + ",  to file: " + outputFileName);
-                                } else {
-                                    System.out.println("File not found inside the JAR archive.");
-                                }
-                            } catch (IOException e) {
-                                System.err.println("Error copying the file: " + e.getMessage());
-                            }
+                            final String outputDir = inputDir;
+                            final String inputFileName = initialFilePath.substring(prefix.length());
+                            final String outputFileName = Path.of(outputDir, Path.of(inputFileName).getFileName().toString()).toString();
+                            copyResource(inputFileName, outputFileName);
                         }
                     } else {
                         log.debug("The application is launched from the development environment");
@@ -126,9 +79,9 @@ public final class Menu {
             }
 
             try {
-                String[] filePaths = getFilePathArrayByExtension(inputDir, GEOJSON_EXTENSION);
+                final String[] filePaths = getFilePathArrayByExtension(inputDir, GEOJSON_EXTENSION);
 
-                if (filePaths.length == 0) { // || !fileExistsByExtension(filePaths, GEOJSON_EXTENSION)
+                if (filePaths.length == 0 || !fileExistsByExtension(filePaths, GEOJSON_EXTENSION)) {
                     System.out.printf("%s: No files with the %s extension found in the directory: %s\n", warnStr(), GEOJSON_EXTENSION, inputDir);
                 } else {
                     System.out.println("Found files: " + filePaths.length + ":");
