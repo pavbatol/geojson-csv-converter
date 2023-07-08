@@ -10,9 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.nio.file.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -89,7 +92,6 @@ public final class Utils {
     public static List<String> getFilePathsByExtension(String directoryPath, String extension) throws IOException {
         List<String> filePaths = new ArrayList<>();
         try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(directoryPath))) {
-
             for (Path path : directoryStream) {
                 if (Files.isRegularFile(path)) {
                     String fileName = path.getFileName().toString();
@@ -129,24 +131,41 @@ public final class Utils {
         return parts;
     }
 
-//    public static String solveClasspath(String filePath) {
-//        String prefix = "classpath:";
-//        if (filePath.startsWith(prefix)) {
-//            String subStr = filePath.substring(prefix.length());
-//            URL resource = App.class.getClassLoader().getResource(subStr);
-//
-//            return resource == null ? null : resource.getPath();
-//        }
-//        return filePath;
-//    }
+    public static Optional<String> relativePathToAbsolute(@NonNull String filePath) {
+        String prefix = "classpath:";
+        if (filePath.startsWith(prefix)) {
+            String withoutPrefix = filePath.substring(prefix.length());
+            URL resource = App.class.getClassLoader().getResource(withoutPrefix);
+            return resource == null ? Optional.empty() : Optional.of(resource.getPath());
+        } else if (!Path.of(filePath).isAbsolute()) {
+            String userDir = System.getProperty("user.dir");
+            return userDir == null ? Optional.empty() : Optional.of(Path.of(userDir, filePath).toString());
+        } else {
+            return Optional.of(filePath);
+        }
+    }
 
-//    public static String[] solveClasspath(String[] filePaths) {
-//        String[] newFilePaths = new String[filePaths.length];
-//        for (int i = 0; i < filePaths.length; i++) {
-//            newFilePaths[i] = solveClasspath(filePaths[i]);
-//        }
-//        return newFilePaths;
-//    }
+    public static String[] relativePathToAbsolute(String[] filePaths) {
+        String[] newFilePaths = new String[filePaths.length];
+        for (int i = 0; i < filePaths.length; i++) {
+            if (filePaths[i] != null) {
+                int finalI = i;
+                relativePathToAbsolute(filePaths[i]).ifPresentOrElse(
+                        newFilePath -> newFilePaths[finalI] = newFilePath,
+                        () -> log.debug("Failed to process the resource: " + filePaths[finalI])
+                );
+            } else {
+                log.debug("Ignoring element with null value");
+            }
+        }
+        return newFilePaths;
+    }
+
+    public static String[] getExistingFiles(String[] filePaths) {
+        return Arrays.stream(filePaths)
+                .filter(filePath -> Files.exists(Path.of(filePath)))
+                .toList().toArray(new String[]{});
+    }
 
     public static String getProjectLaunchSourcePath() {
         return App.class.getProtectionDomain().getCodeSource().getLocation().getPath();

@@ -83,16 +83,16 @@ public class Converter {
             linesLimit = integerData.getValue();
 
             //---
-            ReturnLoadingFildsWayData loadingFildsWayData = Menu.fields(scanner);
-            if (loadingFildsWayData.getStatus() == ReturnStatus.STOP) {
+            ReturnLoadingFildsWayData loadingFieldsWayData = Menu.fields(scanner);
+            if (loadingFieldsWayData.getStatus() == ReturnStatus.STOP) {
                 return;
-            } else if (loadingFildsWayData.getStatus() == ReturnStatus.RESET) {
+            } else if (loadingFieldsWayData.getStatus() == ReturnStatus.RESET) {
                 continue;
             }
-            allFields = loadingFildsWayData.getAllFields();
-            skipRemainingFields = loadingFildsWayData.getSpecifiedFields();
-            if (loadingFildsWayData.getInputFields() != null) {
-                Arrays.stream(loadingFildsWayData.getInputFields())
+            allFields = loadingFieldsWayData.getAllFields();
+            skipRemainingFields = loadingFieldsWayData.getSpecifiedFields();
+            if (loadingFieldsWayData.getInputFields() != null) {
+                Arrays.stream(loadingFieldsWayData.getInputFields())
                         .map(String::trim)
                         .forEach(fieldName -> fields.put(fieldName, creatField(fieldName)));
             }
@@ -104,7 +104,7 @@ public class Converter {
             ) {
                 ReturnStatus status = null;
                 for (String filePath : filePaths) {
-                    Path path = Path.of(filePath.trim()); // TODO: 05.07.2023 filePaths can be NULL
+                    Path path = Path.of(filePath.trim()); // TODO: 05.07.2023 filePaths can be NULL or not exists
                     log.info("Path to loud features: {}", path);
 
                     JsonFactory jsonFactory = objectMapper.getFactory();

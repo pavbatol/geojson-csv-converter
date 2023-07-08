@@ -27,6 +27,7 @@ public final class Menu {
     private static final String TO_LOAD_REMAINING_FIELDS = "++";
     private static final String GEOJSON_EXTENSION = "GEOJSON";
     private static final String OUTPUT_DEFAULT_DIR = AppConfig.getInstance().getProperty("app.data.directory.input.default");
+    private static final String INPUT_GENERATED_DIR = AppConfig.getInstance().getProperty("app.data.directory.input.generated");
 
     public static void exit() {
         exitMenu();
@@ -54,7 +55,7 @@ public final class Menu {
                     if (isLaunchedFromJAR()) {
                         log.debug("The application is launched from the JAR archive");
 
-                        inputDir = AppConfig.getInstance().getProperty("app.data.directory.input.generated");
+                        inputDir = INPUT_GENERATED_DIR;
                         creatDirectoryIfNotExists(Path.of(inputDir));
 
                         for (String initialFilePath : initialFilePaths) {
@@ -68,7 +69,7 @@ public final class Menu {
                         }
                     } else {
                         log.debug("The application is launched from the development environment");
-                        inputDir = getProjectLaunchSourcePath();
+                        inputDir = null;
                     }
                     break;
                 case "0":
@@ -79,9 +80,13 @@ public final class Menu {
             }
 
             try {
-                final String[] filePaths = getFilePathArrayByExtension(inputDir, GEOJSON_EXTENSION);
+                final String[] filePaths = inputDir != null
+                        ? getFilePathArrayByExtension(inputDir, GEOJSON_EXTENSION)
+                        : getExistingFiles(relativePathToAbsolute(initialFilePaths));
 
-                if (filePaths.length == 0 || !fileExistsByExtension(filePaths, GEOJSON_EXTENSION)) {
+                if (inputDir != null && !fileExistsByExtension(initialFilePaths, GEOJSON_EXTENSION)) {
+                    System.out.printf("%s: No files with the %s extension found in the environment variable\n", warnStr(), GEOJSON_EXTENSION);
+                } else if (filePaths.length == 0) {
                     System.out.printf("%s: No files with the %s extension found in the directory: %s\n", warnStr(), GEOJSON_EXTENSION, inputDir);
                 } else {
                     System.out.println("Found files: " + filePaths.length + ":");
