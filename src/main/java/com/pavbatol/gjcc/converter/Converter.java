@@ -48,6 +48,7 @@ public class Converter {
     private void convertToCsv() {
         Path pathOut = Paths.get(OUTPUT_DIR, OUTPUT_FILE);
         creatDirectoryIfNotExists(pathOut.getParent());
+        creatIfNotAndGetInputDefaultDir();
 
         while (true) {
             builder = new StringBuilder();

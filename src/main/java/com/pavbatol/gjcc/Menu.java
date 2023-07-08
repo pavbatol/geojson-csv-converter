@@ -26,6 +26,7 @@ public final class Menu {
     private static final String TO_SKIP_REMAINING_FIELDS = "--";
     private static final String TO_LOAD_REMAINING_FIELDS = "++";
     private static final String GEOJSON_EXTENSION = "GEOJSON";
+    private static final String OUTPUT_DEFAULT_DIR = AppConfig.getInstance().getProperty("app.data.directory.input.default");
 
     public static void exit() {
         exitMenu();
@@ -71,8 +72,7 @@ public final class Menu {
                     }
                     break;
                 case "0":
-                    inputDir = AppConfig.getInstance().getProperty("app.data.directory.input.default");
-                    creatDirectoryIfNotExists(Path.of(inputDir));
+                    inputDir = creatIfNotAndGetInputDefaultDir();
                     break;
                 default:
                     inputDir = input;
@@ -192,21 +192,24 @@ public final class Menu {
 
     private static void directoryMenu() {
         System.out.println(noticeStr() + "\nIn which directory are the source files located?");
-        System.out.printf("\t%-11s : %s%n", "In project", "press enter (contained in the variable by getProperty(\"app.data.file-path\"))");
-        System.out.printf("\t%-11s : %s%n", "In custom ", "enter your absolute path to directory");
+        System.out.printf("\t%-14s : %s%n", "In preset data", "press enter (contained in the application.properties " +
+                "in the variable \"app.data.file-path\")");
+        System.out.printf("\t%-14s : %s%n", "In default dir", "enter '0' (The directory is located " +
+                "next to the application file: " + OUTPUT_DEFAULT_DIR);
+        System.out.printf("\t%-14s : %s%n", "In custom dir", "enter your absolute path to directory");
     }
 
     private static void entitiesLoadLimitMenu() {
         System.out.println(noticeStr() + "\nHow many features (entities) to load from each source file?");
-        System.out.printf("\t%-11s : %s%n", "Limit", "enter number");
-        System.out.printf("\t%-11s : %s%n", "All", "press enter");
+        System.out.printf("\t%-14s : %s%n", "Limit", "enter number");
+        System.out.printf("\t%-14s : %s%n", "All", "press enter");
     }
 
     private static void chooseFieldsMenu() {
         System.out.println(noticeStr() + "\nWhich fields to save? (The following fields will always be loaded: id, longitude, latitude)");
-        System.out.printf("\t%-11s : %s%n", "Selectively", "0");
-        System.out.printf("\t%-11s : %s%n", "All", "1 (notice, there can be a lot of fields)");
-        System.out.printf("\t%-11s : %s%n", "Specified", "specify the field names, separated by commas " +
+        System.out.printf("\t%-14s : %s%n", "Selectively", "0");
+        System.out.printf("\t%-14s : %s%n", "All", "1 (notice, there can be a lot of fields)");
+        System.out.printf("\t%-14s : %s%n", "Specified", "specify the field names, separated by commas " +
                 "(take the fields from features[]->properties object from your " + GEOJSON_EXTENSION + " file)");
     }
 

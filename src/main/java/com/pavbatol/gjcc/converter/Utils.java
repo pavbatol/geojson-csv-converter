@@ -1,6 +1,7 @@
 package com.pavbatol.gjcc.converter;
 
 import com.pavbatol.gjcc.App;
+import com.pavbatol.gjcc.config.AppConfig;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -16,6 +17,7 @@ import java.util.List;
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Utils {
+    private static final String OUTPUT_DEFAULT_DIR = AppConfig.getInstance().getProperty("app.data.directory.input.default");
 
     public static void creatDirectoryIfNotExists(Path path) {
         if (!Files.exists(path)) {
@@ -38,6 +40,12 @@ public final class Utils {
                 System.err.println("Error deleting a file: " + e.getMessage());
             }
         }
+    }
+
+    public static String creatIfNotAndGetInputDefaultDir() {
+        String dir = OUTPUT_DEFAULT_DIR;
+        creatDirectoryIfNotExists(Path.of(dir));
+        return dir;
     }
 
     public static boolean checkDuplicateFile(@NonNull Path inputFileName, @NonNull Path outputFileName) throws IOException {
