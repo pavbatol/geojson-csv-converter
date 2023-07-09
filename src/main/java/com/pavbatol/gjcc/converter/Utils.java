@@ -21,6 +21,8 @@ import java.util.Optional;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Utils {
     private static final String OUTPUT_DEFAULT_DIR = AppConfig.getInstance().getProperty("app.data.directory.input.default");
+    private static final String CLASSPATH = "classpath:";
+    private static final String USER_DIR = "user.dir";
 
     public static void creatDirectoryIfNotExists(Path path) {
         if (!Files.exists(path)) {
@@ -132,17 +134,21 @@ public final class Utils {
     }
 
     public static Optional<String> relativePathToAbsolute(@NonNull String filePath) {
-        String prefix = "classpath:";
+        String prefix = getResourcePathPrefix();
         if (filePath.startsWith(prefix)) {
             String withoutPrefix = filePath.substring(prefix.length());
             URL resource = App.class.getClassLoader().getResource(withoutPrefix);
             return resource == null ? Optional.empty() : Optional.of(resource.getPath());
         } else if (!Path.of(filePath).isAbsolute()) {
-            String userDir = System.getProperty("user.dir");
+            String userDir = System.getProperty(USER_DIR);
             return userDir == null ? Optional.empty() : Optional.of(Path.of(userDir, filePath).toString());
         } else {
             return Optional.of(filePath);
         }
+    }
+
+    public static String getResourcePathPrefix() {
+        return CLASSPATH;
     }
 
     public static String[] relativePathToAbsolute(String[] filePaths) {
@@ -163,6 +169,7 @@ public final class Utils {
 
     public static String[] getExistingFiles(String[] filePaths) {
         return Arrays.stream(filePaths)
+                .filter(filePath -> Files.isRegularFile(Path.of(filePath)))
                 .filter(filePath -> Files.exists(Path.of(filePath)))
                 .toList().toArray(new String[]{});
     }

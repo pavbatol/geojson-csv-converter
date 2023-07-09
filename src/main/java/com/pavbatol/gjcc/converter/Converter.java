@@ -64,7 +64,7 @@ public class Converter {
             Menu.exit();
 
             //---
-            String[] initialFilePaths = sourceFilePath == null ? null : splitWithTrim(",", sourceFilePath);
+            String[] initialFilePaths = sourceFilePath == null ? new String[]{} : splitWithTrim(",", sourceFilePath);
             ReturnArrayData arrayData = Menu.directory(scanner, initialFilePaths);
             if (arrayData.getStatus() == ReturnStatus.STOP) {
                 return;
@@ -104,7 +104,10 @@ public class Converter {
             ) {
                 ReturnStatus status = null;
                 for (String filePath : filePaths) {
-                    Path path = Path.of(filePath.trim()); // TODO: 05.07.2023 filePaths can be NULL or not exists
+                    if (filePath == null) {
+                        continue;
+                    }
+                    Path path = Path.of(filePath.trim());
                     log.info("Path to loud features: {}", path);
 
                     JsonFactory jsonFactory = objectMapper.getFactory();
@@ -116,7 +119,7 @@ public class Converter {
                             break;
                         }
                     } catch (IOException e) {
-                        throw new RuntimeException(e);
+                        log.warn("Failed attempt to read the file: " + path);
                     }
                 }
                 if (status == ReturnStatus.RESET) {
@@ -313,7 +316,7 @@ public class Converter {
         }
     }
 
-    public void run() {
-        convertToCsv();
+    public static void run() {
+        new Converter().convertToCsv();
     }
 }

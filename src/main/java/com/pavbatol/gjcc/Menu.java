@@ -33,7 +33,7 @@ public final class Menu {
         exitMenu();
     }
 
-    public static ReturnArrayData directory(@NonNull Scanner scanner, String[] initialFilePaths) { // TODO: 05.07.2023 Array containing an element equal to null can be received
+    public static ReturnArrayData directory(@NonNull Scanner scanner, @NonNull String[] initialFilePaths) {
 
 //        for (String filePath : initialFilePaths) {
 //            System.out.println(filePath);
@@ -48,7 +48,7 @@ public final class Menu {
                 return new ReturnArrayData(ReturnStatus.RESET, null);
             }
 
-            final String prefix = "classpath:";
+            final String prefix = getResourcePathPrefix();
             String inputDir;
             switch (input) {
                 case "":

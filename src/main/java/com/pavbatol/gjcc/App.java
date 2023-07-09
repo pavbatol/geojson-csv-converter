@@ -13,8 +13,7 @@ public class App {
         final Logger logger = LoggerFactory.getLogger(App.class);
         logger.info("App starting");
 
-        Converter converter = new Converter();
-        converter.run();
+        Converter.run();
 
         logger.info("The application is completed");
     }
