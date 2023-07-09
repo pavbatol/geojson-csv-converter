@@ -78,11 +78,11 @@ public final class Menu {
             }
 
             try {
-                final String[] filePaths = inputDir != null
-                        ? getFilePathArrayByExtension(inputDir, GEOJSON_EXTENSION)
-                        : getExistingFiles(relativePathToAbsolute(initialFilePaths));
+                final String[] filePaths = inputDir == null
+                        ? getExistingFiles(relativePathToAbsolute(initialFilePaths))
+                        : getFilePathArrayByExtension(inputDir, GEOJSON_EXTENSION);
 
-                if (inputDir != null && !fileExistsByExtension(initialFilePaths, GEOJSON_EXTENSION)) {
+                if (inputDir == null && !fileExistsByExtension(filePaths, GEOJSON_EXTENSION)) {
                     System.out.printf("%s: No files with the %s extension found in the environment variable\n", warnStr(), GEOJSON_EXTENSION);
                 } else if (filePaths.length == 0) {
                     System.out.printf("%s: No files with the %s extension found in the directory: %s\n", warnStr(), GEOJSON_EXTENSION, inputDir);
