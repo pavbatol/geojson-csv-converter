@@ -32,6 +32,11 @@ public class Converter {
     private static final String OUTPUT_DIR = AppConfig.getInstance().getProperty("app.data.directory.output");
     private static final String FIELD_LONGITUDE = "longitude";
     private static final String FIELD_LATITUDE = "latitude";
+    private static final String FEATURES = "features";
+    private static final String FEATURE_ID = "id";
+    private static final String FEATURE_PROPERTIES = "properties";
+    private static final String FEATURE_GEOMETRY = "geometry";
+    private static final String FEATURE_GEOMETRY_COORDINATES = "coordinates";
     private final String sourceFilePath = AppConfig.getInstance().getProperty("app.data.file-path");
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final Scanner scanner = new Scanner(System.in);
@@ -156,7 +161,7 @@ public class Converter {
     private ReturnStatus parse(JsonParser jsonParser) throws IOException {
         ReturnStatus status = null;
         while (jsonParser.nextToken() != null) {
-            if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && "features".equals(jsonParser.currentName())) {
+            if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && FEATURES.equals(jsonParser.currentName())) {
                 int count = 0;
                 while (jsonParser.nextToken() != JsonToken.END_ARRAY && (linesLimit == null || count < linesLimit)) {
                     count++;
@@ -169,7 +174,7 @@ public class Converter {
                 if (status != ReturnStatus.OK) {
                     return status;
                 }
-                log.info("Loaded features number: {}", count); // TODO: 01.07.2023 Consider not loading  duplicates
+                log.info("Processed features number: {}", count);
             }
         }
         return ReturnStatus.OK;
@@ -185,7 +190,7 @@ public class Converter {
             String subFieldName = jsonParser.getCurrentName();
             jsonParser.nextToken();
             switch (subFieldName) {
-                case "id":
+                case FEATURE_ID:
                     featureValue = jsonParser.getValueAsString();
                     Field field = getFieldOrCreat(subFieldName);
 
@@ -196,7 +201,7 @@ public class Converter {
 
                     setCsvLinePart(field.getIndex(), featureValue);
                     break;
-                case "properties":
+                case FEATURE_PROPERTIES:
                     while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
                         String propsFieldName = jsonParser.getCurrentName();
                         jsonParser.nextToken();
@@ -230,12 +235,12 @@ public class Converter {
                         }
                     }
                     break;
-                case "geometry":
+                case FEATURE_GEOMETRY:
                     while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
                         String geomFieldName = jsonParser.getCurrentName();
                         jsonParser.nextToken();
 
-                        if ("coordinates".equals(geomFieldName)) {
+                        if (FEATURE_GEOMETRY_COORDINATES.equals(geomFieldName)) {
                             double featureLongitude = .0;
                             double featureLatitude = .0;
                             int i = 0;

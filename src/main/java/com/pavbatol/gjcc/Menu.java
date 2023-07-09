@@ -25,6 +25,9 @@ public final class Menu {
     private static final String TO_LEAVE_AS_IS_FIELD = "";
     private static final String TO_SKIP_REMAINING_FIELDS = "--";
     private static final String TO_LOAD_REMAINING_FIELDS = "++";
+    private static final String TO_EMPTY = "";
+    private static final String TO_ZERO = "0";
+    private static final String TO_ONE = "1";
     private static final String GEOJSON_EXTENSION = "GEOJSON";
     private static final String OUTPUT_DEFAULT_DIR = AppConfig.getInstance().getProperty("app.data.directory.input.default");
     private static final String INPUT_GENERATED_DIR = AppConfig.getInstance().getProperty("app.data.directory.input.generated");
@@ -34,11 +37,6 @@ public final class Menu {
     }
 
     public static ReturnArrayData directory(@NonNull Scanner scanner, @NonNull String[] initialFilePaths) {
-
-//        for (String filePath : initialFilePaths) {
-//            System.out.println(filePath);
-//        }
-
         while (true) {
             directoryMenu();
             final String input = scanner.nextLine().trim();
@@ -51,7 +49,7 @@ public final class Menu {
             final String prefix = getResourcePathPrefix();
             String inputDir;
             switch (input) {
-                case "":
+                case TO_EMPTY:
                     if (isLaunchedFromJAR()) {
                         log.debug("The application is launched from the JAR archive");
 
@@ -72,7 +70,7 @@ public final class Menu {
                         inputDir = null;
                     }
                     break;
-                case "0":
+                case TO_ZERO:
                     inputDir = creatIfNotAndGetInputDefaultDir();
                     break;
                 default:
@@ -133,11 +131,11 @@ public final class Menu {
         boolean specifiedFields;
         String[] inputFields = null;
         switch (input) {
-            case "0" -> {
+            case TO_ZERO -> {
                 allFields = false;
                 specifiedFields = false;
             }
-            case "1" -> {
+            case TO_ONE -> {
                 allFields = true;
                 specifiedFields = false;
             }
@@ -167,7 +165,6 @@ public final class Menu {
                 return new ReturnDetectedFieldData(ReturnStatus.OK, FieldAction.SKIP_FIELD,
                         true, null);
             }
-
             case TO_LOAD_REMAINING_FIELDS -> {
                 return new ReturnDetectedFieldData(ReturnStatus.OK, FieldAction.AS_IS_NAME.setName(propsFieldName),
                         null, true);
@@ -199,7 +196,7 @@ public final class Menu {
         System.out.println(noticeStr() + "\nIn which directory are the source files located?");
         System.out.printf("\t%-14s : %s%n", "In preset data", "press enter (contained in the application.properties " +
                 "in the variable \"app.data.file-path\")");
-        System.out.printf("\t%-14s : %s%n", "In default dir", "enter '0' (The directory is located " +
+        System.out.printf("\t%-14s : %s%n", "In default dir", "enter " + TO_ZERO + " (The directory is located " +
                 "next to the application file: " + OUTPUT_DEFAULT_DIR);
         System.out.printf("\t%-14s : %s%n", "In custom dir", "enter your absolute path to directory");
     }
@@ -212,8 +209,8 @@ public final class Menu {
 
     private static void chooseFieldsMenu() {
         System.out.println(noticeStr() + "\nWhich fields to save? (The following fields will always be loaded: id, longitude, latitude)");
-        System.out.printf("\t%-14s : %s%n", "Selectively", "0");
-        System.out.printf("\t%-14s : %s%n", "All", "1 (notice, there can be a lot of fields)");
+        System.out.printf("\t%-14s : %s%n", "Selectively", TO_ZERO);
+        System.out.printf("\t%-14s : %s%n", "All", TO_ONE + " (notice, there can be a lot of fields)");
         System.out.printf("\t%-14s : %s%n", "Specified", "specify the field names, separated by commas " +
                 "(take the fields from features[]->properties object from your " + GEOJSON_EXTENSION + " file)");
     }

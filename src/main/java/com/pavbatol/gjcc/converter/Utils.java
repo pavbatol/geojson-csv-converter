@@ -40,9 +40,9 @@ public final class Utils {
                 Files.delete(path);
                 log.debug("The file was successfully deleted: {}", path);
             } catch (NoSuchFileException e) {
-                System.err.println("File not found: " + e.getMessage());
+                log.debug("File not found: {}", e.getMessage());
             } catch (IOException e) {
-                System.err.println("Error deleting a file: " + e.getMessage());
+                log.error("Error deleting a file: {}", e.getMessage());
             }
         }
     }
@@ -69,7 +69,7 @@ public final class Utils {
                 Path outputFile = Paths.get(outputFileName);
 
                 if (checkDuplicateFile(entryFile, outputFile)) {
-                    log.debug("The file " + outputFileName + " already exists and has the same size as " + inputFileName);
+                    log.debug("The file {} already exists and has the same size as {}", outputFileName, inputFileName);
                     return;
                 }
 
@@ -82,12 +82,12 @@ public final class Utils {
                     }
                 }
 
-                log.debug("Successfully copied from resource: " + entryFile + ",  to file: " + outputFileName);
+                log.debug("Successfully copied from resource: {}, to file: {}", entryFile, outputFileName);
             } else {
                 log.info("File not found inside the JAR archive.");
             }
         } catch (IOException e) {
-            log.warn("Error copying the file: " + e.getMessage());
+            log.warn("Error copying the file: {}", e.getMessage());
         }
     }
 
