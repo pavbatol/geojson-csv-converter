@@ -10,11 +10,9 @@ import java.util.Set;
 public class AppConfig {
     private static final Properties properties = new Properties();
     private static final String RESOURCE_APPLICATION_PROPERTIES = "application.properties";
-    private static final String PROPERTY_APP_LOG_LEVEL = "app.log.level";
-    private static final String SYSTEM_VAR_PROPERTIES_PATH = "properties.path";
 
     private AppConfig() {
-        String propertiesPath = System.getProperty(SYSTEM_VAR_PROPERTIES_PATH);
+        String propertiesPath = System.getProperty(SystemProps.PROPERTIES_PATH.getKey());
         try (InputStream inputStream = propertiesPath == null
                 ? ClassLoader.getSystemResourceAsStream(RESOURCE_APPLICATION_PROPERTIES)
                 : Files.newInputStream(Path.of(propertiesPath))) {
@@ -42,10 +40,6 @@ public class AppConfig {
 
     public String getProperty(String key) {
         return properties.getProperty(key);
-    }
-
-    public String getLogLevel() {
-        return getProperty(PROPERTY_APP_LOG_LEVEL);
     }
 
     private static class InstanceHolder {

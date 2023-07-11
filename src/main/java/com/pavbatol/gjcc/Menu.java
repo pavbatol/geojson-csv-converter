@@ -1,14 +1,14 @@
 package com.pavbatol.gjcc;
 
-import com.pavbatol.gjcc.config.AppConfig;
+import com.pavbatol.gjcc.config.Props;
 import com.pavbatol.gjcc.converter.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.*;
-import java.nio.file.*;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 import static com.pavbatol.gjcc.converter.Utils.*;
@@ -29,8 +29,8 @@ public final class Menu {
     private static final String TO_ZERO = "0";
     private static final String TO_ONE = "1";
     private static final String GEOJSON_EXTENSION = "GEOJSON";
-    private static final String OUTPUT_DEFAULT_DIR = AppConfig.getInstance().getProperty("app.data.directory.input.default");
-    private static final String INPUT_GENERATED_DIR = AppConfig.getInstance().getProperty("app.data.directory.input.generated");
+    private static final String OUTPUT_DEFAULT_DIR = Props.DATA_DIRECTORY_INPUT_DEFAULT.getValue();
+    private static final String INPUT_GENERATED_DIR = Props.DATA_DIRECTORY_INPUT_GENERATED.getValue();
 
     public static void exit() {
         exitMenu();

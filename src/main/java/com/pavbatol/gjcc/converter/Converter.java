@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pavbatol.gjcc.Menu;
-import com.pavbatol.gjcc.config.AppConfig;
+import com.pavbatol.gjcc.config.Props;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedWriter;
@@ -29,7 +29,7 @@ public class Converter {
     private static final String EXIT_COMMAND_RECEIVED = "Exit command received";
     private static final int INITIAL_CAPACITY = 100;
     private static final String OUTPUT_FILE = "output.csv";
-    private static final String OUTPUT_DIR = AppConfig.getInstance().getProperty("app.data.directory.output");
+    private static final String OUTPUT_DIR = Props.DATA_DIRECTORY_OUTPUT.getValue();
     private static final String FIELD_LONGITUDE = "longitude";
     private static final String FIELD_LATITUDE = "latitude";
     private static final String FEATURES = "features";
@@ -37,7 +37,7 @@ public class Converter {
     private static final String FEATURE_PROPERTIES = "properties";
     private static final String FEATURE_GEOMETRY = "geometry";
     private static final String FEATURE_GEOMETRY_COORDINATES = "coordinates";
-    private final String sourceFilePath = AppConfig.getInstance().getProperty("app.data.file-path");
+    private final String sourceFilePath = Props.DATA_PRESET_FILE_PATHS.getValue();
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final Scanner scanner = new Scanner(System.in);
     private boolean allFields;

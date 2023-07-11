@@ -1,7 +1,7 @@
 package com.pavbatol.gjcc.converter;
 
 import com.pavbatol.gjcc.App;
-import com.pavbatol.gjcc.config.AppConfig;
+import com.pavbatol.gjcc.config.Props;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -20,7 +20,7 @@ import java.util.Optional;
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Utils {
-    private static final String OUTPUT_DEFAULT_DIR = AppConfig.getInstance().getProperty("app.data.directory.input.default");
+    private static final String INPUT_DEFAULT_DIR = Props.DATA_DIRECTORY_INPUT_DEFAULT.getValue();
     private static final String CLASSPATH = "classpath:";
     private static final String USER_DIR = "user.dir";
 
@@ -48,7 +48,7 @@ public final class Utils {
     }
 
     public static String creatIfNotAndGetInputDefaultDir() {
-        String dir = OUTPUT_DEFAULT_DIR;
+        String dir = INPUT_DEFAULT_DIR;
         creatDirectoryIfNotExists(Path.of(dir));
         return dir;
     }
