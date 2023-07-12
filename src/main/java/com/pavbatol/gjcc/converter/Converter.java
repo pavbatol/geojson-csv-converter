@@ -50,6 +50,10 @@ public class Converter {
     private boolean skipRemainingFields;
     Integer linesLimit;
 
+    public static void run() {
+        new Converter().convertToCsv();
+    }
+
     private void convertToCsv() {
         Path pathOut = Paths.get(OUTPUT_DIR, OUTPUT_FILE);
         creatDirectoryIfNotExists(pathOut.getParent());
@@ -154,10 +158,10 @@ public class Converter {
                         csvLineParts.set(field.getIndex(), replaceDelimiter(field.getName()));
                     }
                 }
-                // Titles-line
+                // Writing field-names-line and body-lines
                 writer.write((String.join(DELIMITER, csvLineParts) + "\n"));
-                // Body-lines
                 writer.write(builder.toString());
+                log.info("The data is saved to: {}", pathOut);
             }
             log.info("Total number of fields: {}", fields.size());
             log.info("Total number of selected fields: {}", nextFieldIndex);
@@ -328,9 +332,5 @@ public class Converter {
         for (int i = 0; i < increase; i++) {
             list.add(null);
         }
-    }
-
-    public static void run() {
-        new Converter().convertToCsv();
     }
 }

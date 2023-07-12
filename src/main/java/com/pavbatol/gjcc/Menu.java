@@ -20,7 +20,7 @@ public final class Menu {
     private static final String CL_RED = "\u001B[31m";
     private static final String CL_YELLOW = "\u001B[33m";
     private static final String RESET_SIGNAL = "----";
-    private static final String STOP_SIGNAL = "XXXX";
+    private static final String STOP_SIGNAL = "!!!!";
     private static final String TO_SKIP_FIELD = "-";
     private static final String TO_LEAVE_AS_IS_FIELD = "";
     private static final String TO_SKIP_REMAINING_FIELDS = "--";
@@ -186,16 +186,16 @@ public final class Menu {
 
     private static void exitMenu() {
         System.out.println("-----------------------");
-        System.out.println("At any stage you can enter:");
-        System.out.println("\"" + RESET_SIGNAL + "\" : start over");
-        System.out.println("\"" + STOP_SIGNAL + "\" : exit");
+        System.out.println("At any stage you can:");
+        System.out.printf("%-10s : %s%n", "start over", "\"" + RESET_SIGNAL + "\"");
+        System.out.printf("%-10s : %s%n", "exit", "\"" + STOP_SIGNAL + "\"");
         System.out.println("-----------------------");
     }
 
     private static void directoryMenu() {
         System.out.println(noticeStr() + "\nIn which directory are the source files located?");
         System.out.printf("\t%-14s : %s%n", "In preset data", "press enter (contained in the application.properties " +
-                "in the variable \"app.data.file-path\")");
+                "in the variable \"" + Props.DATA_PRESET_FILE_PATHS.getKey() + "\")");
         System.out.printf("\t%-14s : %s%n", "In default dir", "enter " + TO_ZERO + " (The directory is located " +
                 "next to the application file: " + OUTPUT_DEFAULT_DIR);
         System.out.printf("\t%-14s : %s%n", "In custom dir", "enter your absolute path to directory");
