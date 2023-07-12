@@ -7,6 +7,11 @@ import java.nio.file.Path;
 import java.util.Properties;
 import java.util.Set;
 
+/**
+ * This class is for initializing variables from the application.properties file
+ * and getting their values through a method. For a more comfortable reading of values,
+ * it is recommended to use the Props and SystemProps classes.
+ */
 public class AppConfig {
     private static final Properties properties = new Properties();
     private static final String RESOURCE_APPLICATION_PROPERTIES = "application.properties";
