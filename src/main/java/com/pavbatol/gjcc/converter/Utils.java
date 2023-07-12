@@ -12,10 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.nio.file.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -53,13 +50,6 @@ public final class Utils {
         return dir;
     }
 
-    public static boolean checkDuplicateFile(@NonNull Path inputFileName, @NonNull Path outputFileName) throws IOException {
-        if (Files.exists(outputFileName)) {
-            return Files.size(inputFileName) == Files.size(outputFileName);
-        }
-        return false;
-    }
-
     public static void copyResource(final String inputFileName, final String outputFileName) {
         final String zipFilePath = App.class.getProtectionDomain().getCodeSource().getLocation().getPath();
         try (FileSystem zipFileSystem = FileSystems.newFileSystem(Paths.get(zipFilePath), (ClassLoader) null)) {
@@ -68,7 +58,7 @@ public final class Utils {
             if (Files.exists(entryFile)) {
                 Path outputFile = Paths.get(outputFileName);
 
-                if (checkDuplicateFile(entryFile, outputFile)) {
+                if (checkDuplicateFile(outputFile, Files.size(entryFile))) {
                     log.debug("The file {} already exists and has the same size as {}", outputFileName, inputFileName);
                     return;
                 }
@@ -89,23 +79,6 @@ public final class Utils {
         } catch (IOException e) {
             log.warn("Error copying the file: {}", e.getMessage());
         }
-    }
-
-    public static List<String> getFilePathsByExtension(String directoryPath, String extension) throws IOException {
-        List<String> filePaths = new ArrayList<>();
-        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(directoryPath))) {
-            for (Path path : directoryStream) {
-                if (Files.isRegularFile(path)) {
-                    String fileName = path.getFileName().toString();
-                    if (fileName.toLowerCase().endsWith("." + extension.toLowerCase())) {
-                        filePaths.add(path.toString());
-                    }
-                }
-            }
-        } catch (IOException e) {
-            throw new IOException(e);
-        }
-        return filePaths;
     }
 
     public static String[] getFilePathArrayByExtension(String directoryPath, String extension) throws IOException {
@@ -133,7 +106,54 @@ public final class Utils {
         return parts;
     }
 
-    public static Optional<String> relativePathToAbsolute(@NonNull String filePath) {
+    public static String getResourcePathPrefix() {
+        return CLASSPATH;
+    }
+
+    public static String[] relativePathToAbsolute(String[] filePaths) {
+        final List<String> absolutePaths = new ArrayList<>(filePaths.length);
+        for (String filePath : filePaths) {
+            if (filePath != null) {
+                relativePathToAbsolute(filePath).ifPresentOrElse(
+                        absolutePaths::add,
+                        () -> log.warn("Failed to process the resource: " + filePath)
+                );
+            } else {
+                log.debug("Convert to absolute path: Ignoring element with null value");
+            }
+        }
+        return absolutePaths.toArray(new String[0]);
+    }
+
+    public static String[] getExistingFiles(String[] filePaths) {
+        return Arrays.stream(filePaths)
+                .filter(filePath -> Files.isRegularFile(Path.of(filePath)))
+                .filter(filePath -> Files.exists(Path.of(filePath)))
+                .toList().toArray(new String[]{});
+    }
+
+    public static boolean isLaunchedFromJAR() {
+        return getProjectLaunchSourceName().toLowerCase().endsWith(".jar");
+    }
+
+    private static List<String> getFilePathsByExtension(String directoryPath, String extension) throws IOException {
+        List<String> filePaths = new ArrayList<>();
+        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(directoryPath))) {
+            for (Path path : directoryStream) {
+                if (Files.isRegularFile(path)) {
+                    String fileName = path.getFileName().toString();
+                    if (fileName.toLowerCase().endsWith("." + extension.toLowerCase())) {
+                        filePaths.add(path.toString());
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new IOException(e);
+        }
+        return filePaths;
+    }
+
+    private static Optional<String> relativePathToAbsolute(@NonNull String filePath) {
         String prefix = getResourcePathPrefix();
         if (filePath.startsWith(prefix)) {
             String withoutPrefix = filePath.substring(prefix.length());
@@ -147,42 +167,18 @@ public final class Utils {
         }
     }
 
-    public static String getResourcePathPrefix() {
-        return CLASSPATH;
-    }
-
-    public static String[] relativePathToAbsolute(String[] filePaths) {
-        String[] newFilePaths = new String[filePaths.length];
-        for (int i = 0; i < filePaths.length; i++) {
-            if (filePaths[i] != null) {
-                int finalI = i;
-                relativePathToAbsolute(filePaths[i]).ifPresentOrElse(
-                        newFilePath -> newFilePaths[finalI] = newFilePath,
-                        () -> log.debug("Failed to process the resource: " + filePaths[finalI])
-                );
-            } else {
-                log.debug("Ignoring element with null value");
-            }
-        }
-        return newFilePaths;
-    }
-
-    public static String[] getExistingFiles(String[] filePaths) {
-        return Arrays.stream(filePaths)
-                .filter(filePath -> Files.isRegularFile(Path.of(filePath)))
-                .filter(filePath -> Files.exists(Path.of(filePath)))
-                .toList().toArray(new String[]{});
-    }
-
-    public static String getProjectLaunchSourcePath() {
+    private static String getProjectLaunchSourcePath() {
         return App.class.getProtectionDomain().getCodeSource().getLocation().getPath();
     }
 
-    public static String getProjectLaunchSourceName() {
+    private static String getProjectLaunchSourceName() {
         return Paths.get(getProjectLaunchSourcePath()).getFileName().toString();
     }
 
-    public static boolean isLaunchedFromJAR() {
-        return getProjectLaunchSourceName().toLowerCase().endsWith(".jar");
+    private static boolean checkDuplicateFile(@NonNull Path path, long fileSize) throws IOException {
+        if (Files.exists(path)) {
+            return Files.size(path) == fileSize;
+        }
+        return false;
     }
 }
