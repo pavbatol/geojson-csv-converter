@@ -4,8 +4,10 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pavbatol.gjcc.Menu;
 import com.pavbatol.gjcc.config.Props;
+import com.pavbatol.gjcc.field.Field;
+import com.pavbatol.gjcc.field.FieldAction;
+import com.pavbatol.gjcc.returns.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedWriter;

@@ -1,7 +1,8 @@
-package com.pavbatol.gjcc;
+package com.pavbatol.gjcc.converter;
 
 import com.pavbatol.gjcc.config.Props;
-import com.pavbatol.gjcc.converter.*;
+import com.pavbatol.gjcc.field.FieldAction;
+import com.pavbatol.gjcc.returns.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;

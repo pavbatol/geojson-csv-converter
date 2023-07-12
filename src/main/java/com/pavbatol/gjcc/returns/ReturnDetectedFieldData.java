@@ -1,5 +1,6 @@
-package com.pavbatol.gjcc.converter;
+package com.pavbatol.gjcc.returns;
 
+import com.pavbatol.gjcc.field.FieldAction;
 import lombok.Value;
 
 @Value

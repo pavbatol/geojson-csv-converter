@@ -1,4 +1,4 @@
-package com.pavbatol.gjcc.converter;
+package com.pavbatol.gjcc.returns;
 
 import lombok.Value;
 
