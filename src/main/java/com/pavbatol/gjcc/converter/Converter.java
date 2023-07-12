@@ -56,19 +56,13 @@ public class Converter {
         creatIfNotAndGetInputDefaultDir();
 
         while (true) {
-            builder = new StringBuilder();
-            csvLineParts = new ArrayList<>(INITIAL_CAPACITY);
-            fields = new HashMap<>((int) (INITIAL_CAPACITY / 0.75) + 1, 0.75f);
-            nodeIds = new HashSet<>();
-            nextFieldIndex = 0;
-            loadRemainingFields = false;
-            skipRemainingFields = false;
+            initializeVariables();
             String[] filePaths = null;
 
             //---
             Menu.exit();
 
-            //---
+            //---Determining the directory containing the sources and getting a list of files
             String[] initialFilePaths = sourceFilePath == null ? new String[]{} : splitWithTrim(",", sourceFilePath);
             ReturnArrayData arrayData = Menu.directory(scanner, initialFilePaths);
             if (arrayData.getStatus() == ReturnStatus.STOP) {
@@ -78,7 +72,7 @@ public class Converter {
             }
             filePaths = arrayData.getValues();
 
-            //---
+            //---Limit on processing source strings
             ReturnIntegerData integerData = Menu.limit(scanner);
             if (integerData.getStatus() == ReturnStatus.STOP) {
                 return;
@@ -87,7 +81,7 @@ public class Converter {
             }
             linesLimit = integerData.getValue();
 
-            //---
+            //---Field loading way
             ReturnLoadingFildsWayData loadingFieldsWayData = Menu.fields(scanner);
             if (loadingFieldsWayData.getStatus() == ReturnStatus.STOP) {
                 return;
@@ -97,65 +91,80 @@ public class Converter {
             allFields = loadingFieldsWayData.getAllFields();
             skipRemainingFields = loadingFieldsWayData.getSpecifiedFields();
             if (loadingFieldsWayData.getInputFields() != null) {
-                Arrays.stream(loadingFieldsWayData.getInputFields())
-                        .map(String::trim)
-                        .forEach(fieldName -> fields.put(fieldName, creatField(fieldName)));
+                for (String str : loadingFieldsWayData.getInputFields()) {
+                    String fieldName = str.trim();
+                    fields.put(fieldName, creatField(fieldName));
+                }
             }
 
-            //---
+            //---Search for values by fields, collect and write
             deleteFile(pathOut);
-            try (BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8,
-                    StandardOpenOption.APPEND, StandardOpenOption.CREATE)
-            ) {
-                ReturnStatus status = null;
-                for (String filePath : filePaths) {
-                    if (filePath == null) {
-                        continue;
-                    }
-                    Path path = Path.of(filePath.trim());
-                    log.info("Path to loud features: {}", path);
-
-                    JsonFactory jsonFactory = objectMapper.getFactory();
-                    try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()))
-                    ) {
-                        status = parse(jsonParser);
-                        if (status != ReturnStatus.OK) {
-                            log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
-                            break;
-                        }
-                    } catch (IOException e) {
-                        log.warn("Failed attempt to read the file: " + path);
-                    }
-                }
-                if (status == ReturnStatus.RESET) {
-                    continue;
-                } else if (status == ReturnStatus.STOP) {
-                    return;
-                }
-
-                if (fields.values().size() > 0) {
-                    csvLineParts.clear();
-                    controlLinePartsSize();
-                    fields.values().stream()
-                            .filter(Objects::nonNull)
-                            .filter(field -> Objects.nonNull(field.getName()))
-                            .filter(field -> Objects.nonNull(field.getIndex()))
-                            .forEach(field -> csvLineParts.set(field.getIndex(), replaceDelimiter(field.getName())));
-
-                    // Titles-line
-                    writer.write((String.join(DELIMITER, csvLineParts) + "\n"));
-
-                    // Body-lines
-                    writer.write(builder.toString());
-                }
-
-                log.info("Total number of fields: {}", fields.size());
-                log.info("Total number of selected fields: {}", nextFieldIndex);
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            ReturnStatus status = collectAndWrite(pathOut, filePaths);
+            if (status == ReturnStatus.RESET) {
+                continue;
+            } else if (status == ReturnStatus.STOP) {
+                return;
             }
         }
+    }
+
+    private void initializeVariables() {
+        builder = new StringBuilder();
+        csvLineParts = new ArrayList<>(INITIAL_CAPACITY);
+        fields = new HashMap<>((int) (INITIAL_CAPACITY / 0.75) + 1, 0.75f);
+        nodeIds = new HashSet<>();
+        nextFieldIndex = 0;
+        loadRemainingFields = false;
+        skipRemainingFields = false;
+    }
+
+    private ReturnStatus collectAndWrite(Path pathOut, String[] filePaths) {
+        try (BufferedWriter writer = Files.newBufferedWriter(pathOut, StandardCharsets.UTF_8,
+                StandardOpenOption.APPEND, StandardOpenOption.CREATE)
+        ) {
+            ReturnStatus status = null;
+            for (String filePath : filePaths) {
+                if (filePath == null) {
+                    continue;
+                }
+                Path path = Path.of(filePath.trim());
+                log.info("Path to loud features: {}", path);
+                JsonFactory jsonFactory = objectMapper.getFactory();
+                try (JsonParser jsonParser = jsonFactory.createParser(new FileInputStream(path.toString()))
+                ) {
+                    status = parse(jsonParser);
+                    if (status != ReturnStatus.OK) {
+                        log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
+                        break;
+                    }
+                } catch (IOException e) {
+                    log.warn("Failed attempt to read the file: " + path);
+                }
+            }
+
+            if (status != ReturnStatus.OK) {
+                return status;
+            }
+
+            if (fields.values().size() > 0) {
+                csvLineParts.clear();
+                controlLinePartsSize();
+                for (Field field : fields.values()) {
+                    if (field != null && field.getName() != null && field.getIndex() != null) {
+                        csvLineParts.set(field.getIndex(), replaceDelimiter(field.getName()));
+                    }
+                }
+                // Titles-line
+                writer.write((String.join(DELIMITER, csvLineParts) + "\n"));
+                // Body-lines
+                writer.write(builder.toString());
+            }
+            log.info("Total number of fields: {}", fields.size());
+            log.info("Total number of selected fields: {}", nextFieldIndex);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return ReturnStatus.OK;
     }
 
     private ReturnStatus parse(JsonParser jsonParser) throws IOException {
