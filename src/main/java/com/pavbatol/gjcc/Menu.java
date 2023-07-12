@@ -29,7 +29,7 @@ public final class Menu {
     private static final String TO_ZERO = "0";
     private static final String TO_ONE = "1";
     private static final String GEOJSON_EXTENSION = "GEOJSON";
-    private static final String OUTPUT_DEFAULT_DIR = Props.DATA_DIRECTORY_INPUT_DEFAULT.getValue();
+    private static final String OUTPUT_DIR = Props.DATA_DIRECTORY_INPUT_DEFAULT.getValue();
     private static final String INPUT_GENERATED_DIR = Props.DATA_DIRECTORY_INPUT_GENERATED.getValue();
 
     public static void exit() {
@@ -41,9 +41,9 @@ public final class Menu {
             directoryMenu();
             final String input = scanner.nextLine().trim();
             if (STOP_SIGNAL.equals(input)) {
-                return new ReturnArrayData(ReturnStatus.STOP, null);
+                return ReturnArrayData.of(ReturnStatus.STOP);
             } else if (RESET_SIGNAL.equals(input)) {
-                return new ReturnArrayData(ReturnStatus.RESET, null);
+                return ReturnArrayData.of(ReturnStatus.RESET);
             }
 
             final String prefix = getResourcePathPrefix();
@@ -105,9 +105,9 @@ public final class Menu {
             entitiesLoadLimitMenu();
             String input = scanner.nextLine().trim();
             if (STOP_SIGNAL.equals(input)) {
-                return new ReturnIntegerData(ReturnStatus.STOP, null);
+                return ReturnIntegerData.of(ReturnStatus.STOP);
             } else if (RESET_SIGNAL.equals(input)) {
-                return new ReturnIntegerData(ReturnStatus.RESET, null);
+                return ReturnIntegerData.of(ReturnStatus.RESET);
             }
             try {
                 Integer linesLimit = "".equals(input) ? null : Integer.parseInt(input);
@@ -197,7 +197,7 @@ public final class Menu {
         System.out.printf("\t%-14s : %s%n", "In preset data", "press enter (contained in the application.properties " +
                 "in the variable \"" + Props.DATA_PRESET_FILE_PATHS.getKey() + "\")");
         System.out.printf("\t%-14s : %s%n", "In default dir", "enter " + TO_ZERO + " (The directory is located " +
-                "next to the application file: " + OUTPUT_DEFAULT_DIR);
+                "next to the application file: " + OUTPUT_DIR);
         System.out.printf("\t%-14s : %s%n", "In custom dir", "enter your absolute path to directory");
     }
 
