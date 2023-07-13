@@ -1,10 +1,11 @@
 package com.pavbatol.gjcc.returns;
 
+import lombok.NonNull;
 import lombok.Value;
 
 @Value
 public class ReturnLoadingFildsWayData {
-    ReturnStatus status;
+    @NonNull ReturnStatus status;
     Boolean allFields;
     Boolean specifiedFields;
     String[] inputFields;

@@ -1,10 +1,11 @@
 package com.pavbatol.gjcc.returns;
 
+import lombok.NonNull;
 import lombok.Value;
 
 @Value
 public class ReturnArrayData {
-    ReturnStatus status;
+    @NonNull ReturnStatus status;
     String[] values;
 
     public static ReturnArrayData of(ReturnStatus status) {
