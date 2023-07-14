@@ -36,9 +36,7 @@ public class Converter {
     private static final String FIELD_LATITUDE = "latitude";
     private static final String FEATURE_LON = "lon";
     private static final String FEATURE_LAT = "lat";
-    //    private static final String FEATURES = "features";
     private static final String FEATURE_ID = "id";
-//    private static final String FEATURE_PROPERTIES = "properties";
     private static final String FEATURE_GEOMETRY = "geometry";
     private static final String FEATURE_GEOMETRY_COORDINATES = "coordinates";
     private static final String PRESET_FILE_PATHS = Props.DATA_PRESET_FILE_PATHS.getValue();
@@ -179,63 +177,12 @@ public class Converter {
     }
 
     private ReturnStatus parse(JsonParser jsonParser) throws IOException {
-//        ReturnStatus status = null;
-//        while (jsonParser.nextToken() != null) {
-//            if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && FEATURES.equals(jsonParser.currentName())) {
-//                int count = 0;
-//                while (jsonParser.nextToken() != JsonToken.END_ARRAY && (linesLimit == null || count < linesLimit)) {
-//                    count++;
-//                    status = parseTarget(jsonParser);
-//                    if (status != ReturnStatus.OK) {
-//                        log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
-//                        break;
-//                    }
-//                }
-//                if (status != ReturnStatus.OK) {
-//                    return status;
-//                }
-//                log.info("Processed features number: {}", count);
-//            }
-//        }
-//        return ReturnStatus.OK;
-
-
-//        boolean nodesListFound = false;
-//        for (String nodesListName : nodes.keySet()) {
-//            ReturnStatus status = null;
-//            while (jsonParser.nextToken() != null) {
-//                if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && nodesListName.equals(jsonParser.currentName())) {
-//                    nodesListFound = true;
-////                    FEATURE_PROPERTIES = nodes.get(nodesListName);
-//                    int count = 0;
-//                    while (jsonParser.nextToken() != JsonToken.END_ARRAY && (linesLimit == null || count < linesLimit)) {
-//                        count++;
-////                        status = parseTarget(jsonParser);
-//                        status = parseTarget(jsonParser, nodes.get(nodesListName));
-////                        status = parseTarget(jsonParser, "aaa");
-//                        if (status != ReturnStatus.OK) {
-//                            log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
-//                            break;
-//                        }
-//                    }
-//                    if (status != ReturnStatus.OK) {
-//                        return status;
-//                    }
-//                    log.info("Processed features number: {}", count);
-//                    break;
-//                }
-//            }
-//            if (nodesListFound) {
-//                break;
-//            }
-//        }
-//        return ReturnStatus.OK;
-
         int count = 0;
         ReturnStatus status = null;
         while (jsonParser.nextToken() != null) {
-            String currentName = jsonParser.currentName();
-            if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && featurePropertiesListNames.containsKey(currentName)) {
+            String currentName = jsonParser.currentName() == null ? jsonParser.currentName() : jsonParser.currentName().toLowerCase();
+            if (jsonParser.getCurrentToken() == JsonToken.FIELD_NAME && featurePropertiesListNames.containsKey(currentName)
+                    && jsonParser.nextToken() == JsonToken.START_ARRAY) {
                 while (jsonParser.nextToken() != JsonToken.END_ARRAY && (linesLimit == null || count < linesLimit)) {
                     count++;
                     status = parseTarget(jsonParser, featurePropertiesListNames.get(currentName));
@@ -261,54 +208,24 @@ public class Converter {
                 continue;
             }
             String featureValue;
-            String subFieldName = jsonParser.getCurrentName();
+            String subFieldName = jsonParser.getCurrentName().toLowerCase();
             jsonParser.nextToken();
             switch (subFieldName) {
                 case FEATURE_ID:
-                    featureValue = jsonParser.getValueAsString();
+                    featureValue = jsonParser.getValueAsString().trim();
+                    int index = featureValue.lastIndexOf("/");
+                    featureValue = index == -1 ? featureValue : featureValue.substring(index + 1); // remove dirty
                     Field field = getFieldOrCreat(subFieldName);
 
                     // Duplicated ID
                     if (!featureIds.add(featureValue)) {
+                        while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
+                        }
                         return ReturnStatus.OK;
                     }
 
                     setCsvLinePart(field.getIndex(), featureValue);
                     break;
-//                case FEATURE_PROPERTIES:
-//                    while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
-//                        String propsFieldName = jsonParser.getCurrentName();
-//                        jsonParser.nextToken();
-//                        featureValue = jsonParser.getValueAsString();
-//
-//                        if (excludedField(propsFieldName)) {
-//                            continue;
-//                        }
-//
-//                        if (!fields.containsKey(propsFieldName)) {
-//                            if (allFields || loadRemainingFields) {
-//                                fields.put(propsFieldName, creatField(propsFieldName));
-//                            } else if (skipRemainingFields) {
-//                                fields.put(propsFieldName, null);
-//                            } else {
-//                                ReturnDetectedFieldData solveFieldData = Menu.solveField(scanner, propsFieldName, featureValue);
-//                                ReturnStatus status = solveFieldData.getStatus();
-//                                if (status != ReturnStatus.OK) {
-//                                    log.debug(status == ReturnStatus.RESET ? RESET_COMMAND_RECEIVED : EXIT_COMMAND_RECEIVED);
-//                                    return status;
-//                                }
-//                                skipRemainingFields = getBoolean(skipRemainingFields, solveFieldData.getSkipRemainingFields());
-//                                loadRemainingFields = getBoolean(loadRemainingFields, solveFieldData.getLoadRemainingFields());
-//                                FieldAction action = solveFieldData.getFieldAction();
-//                                fields.put(propsFieldName, action == FieldAction.SKIP_FIELD ? null : creatField(action.getName()));
-//                            }
-//                        }
-//
-//                        if (fields.get(propsFieldName) != null) {
-//                            setCsvLinePart(fields.get(propsFieldName).getIndex(), featureValue);
-//                        }
-//                    }
-//                    break;
                 case FEATURE_LON:
                     keepField(FIELD_LONGITUDE, String.valueOf(jsonParser.getDoubleValue()));
                     break;
