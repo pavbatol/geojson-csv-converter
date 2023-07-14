@@ -105,6 +105,7 @@ public class Converter {
             }
 
             //---Search for values by fields, collect and write
+            long startTime = System.currentTimeMillis();
             deleteFile(pathOut);
             ReturnStatus status = collectAndWrite(pathOut, filePaths);
             if (status == ReturnStatus.RESET) {
@@ -112,6 +113,9 @@ public class Converter {
             } else if (status == ReturnStatus.STOP) {
                 return;
             }
+            log.info(loadingFieldsWayData.getAllFields() || loadingFieldsWayData.getSpecifiedFields() ?
+                    "Execution time: {} sec" : "Execution time with field selection: {} sec"
+                    , (System.currentTimeMillis() - startTime) / 1000.0);
         }
     }
 
