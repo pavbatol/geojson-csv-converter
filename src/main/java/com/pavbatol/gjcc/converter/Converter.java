@@ -216,14 +216,14 @@ public class Converter {
                 continue;
             }
             String featureValue;
-            String subFieldName = jsonParser.getCurrentName().toLowerCase();
+            String featureFieldName = jsonParser.getCurrentName().toLowerCase();
             jsonParser.nextToken();
-            switch (subFieldName) {
-                case FEATURE_ID:
+            switch (featureFieldName) {
+                case FEATURE_ID -> {
                     featureValue = jsonParser.getValueAsString().trim();
                     int index = featureValue.lastIndexOf("/");
                     featureValue = index == -1 ? featureValue : featureValue.substring(index + 1); // remove dirty
-                    Field field = getFieldOrCreat(subFieldName);
+                    Field field = getFieldOrCreat(featureFieldName);
 
                     // Duplicated ID
                     if (!featureIds.add(featureValue)) {
@@ -233,14 +233,10 @@ public class Converter {
                     }
 
                     setCsvLinePart(field.getIndex(), featureValue);
-                    break;
-                case FEATURE_LON:
-                    keepField(FIELD_LONGITUDE, String.valueOf(jsonParser.getDoubleValue()));
-                    break;
-                case FEATURE_LAT:
-                    keepField(FIELD_LATITUDE, String.valueOf(jsonParser.getDoubleValue()));
-                    break;
-                case FEATURE_GEOMETRY:
+                }
+                case FEATURE_LON -> keepField(FIELD_LONGITUDE, String.valueOf(jsonParser.getDoubleValue()));
+                case FEATURE_LAT -> keepField(FIELD_LATITUDE, String.valueOf(jsonParser.getDoubleValue()));
+                case FEATURE_GEOMETRY -> {
                     while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
                         String geomFieldName = jsonParser.getCurrentName();
                         jsonParser.nextToken();
@@ -263,9 +259,9 @@ public class Converter {
                             keepField(FIELD_LATITUDE, String.valueOf(featureLatitude));
                         }
                     }
-                    break;
-                default:
-                    if (!subFieldName.equals(featurePropertiesListName)) {
+                }
+                default -> {
+                    if (!featureFieldName.equals(featurePropertiesListName)) {
                         break;
                     }
                     while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
@@ -300,7 +296,7 @@ public class Converter {
                             setCsvLinePart(fields.get(propsFieldName).getIndex(), featureValue);
                         }
                     }
-                    break;
+                }
             }
         }
 
@@ -314,8 +310,8 @@ public class Converter {
         return ReturnStatus.OK;
     }
 
-    private boolean getBoolean(boolean target, Boolean source) {
-        return source == null ? target : source;
+    private boolean getBoolean(boolean defaultValue, Boolean source) {
+        return source == null ? defaultValue : source;
     }
 
     private boolean excludedField(String fieldName) {
