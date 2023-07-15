@@ -153,7 +153,7 @@ public class Converter {
                         break;
                     }
                 } catch (IOException e) {
-                    log.warn("Failed attempt to read the file: " + path);
+                    log.warn("Failed attempt to read the file: {}{}", path, "\n" + e);
                 }
             }
 
@@ -245,7 +245,10 @@ public class Converter {
                             double featureLongitude = .0;
                             double featureLatitude = .0;
                             int i = 0;
-                            while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
+                            while (jsonParser.nextToken() != JsonToken.END_ARRAY && i <= 1) {
+                                if (!jsonParser.currentToken().isNumeric()) {
+                                    continue;
+                                }
                                 double coord = jsonParser.getDoubleValue();
                                 if (i == 0) {
                                     featureLongitude = coord;
@@ -315,7 +318,7 @@ public class Converter {
     }
 
     private boolean excludedField(String fieldName) {
-        return (fieldName.startsWith("name:")
+        return fieldName == null || (fieldName.startsWith("name:")
                 && !"name:ru".equals(fieldName)
                 && !"name:en".equals(fieldName)
                 && !"name:".equals(fieldName));
