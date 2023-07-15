@@ -3,6 +3,10 @@ package com.pavbatol.gjcc.converter;
 import com.pavbatol.gjcc.config.Props;
 import com.pavbatol.gjcc.field.FieldAction;
 import com.pavbatol.gjcc.returns.*;
+import com.pavbatol.gjcc.returns.impl.ReturnArrayData;
+import com.pavbatol.gjcc.returns.impl.ReturnDetectedFieldData;
+import com.pavbatol.gjcc.returns.impl.ReturnIntegerData;
+import com.pavbatol.gjcc.returns.impl.ReturnLoadingFieldsWayData;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -119,13 +123,13 @@ public final class Menu {
         }
     }
 
-    public static ReturnLoadingFildsWayData fields(@NonNull Scanner scanner) {
+    public static ReturnLoadingFieldsWayData fields(@NonNull Scanner scanner) {
         chooseFieldsMenu();
         String input = scanner.nextLine().trim();
         if (STOP_SIGNAL.equals(input)) {
-            return ReturnLoadingFildsWayData.of(ReturnStatus.STOP);
+            return ReturnLoadingFieldsWayData.of(ReturnStatus.STOP);
         } else if (RESET_SIGNAL.equals(input)) {
-            return ReturnLoadingFildsWayData.of(ReturnStatus.RESET);
+            return ReturnLoadingFieldsWayData.of(ReturnStatus.RESET);
         }
 
         boolean allFields;
@@ -146,7 +150,7 @@ public final class Menu {
                 inputFields = input.split(",");
             }
         }
-        return new ReturnLoadingFildsWayData(ReturnStatus.OK, allFields, specifiedFields, inputFields);
+        return new ReturnLoadingFieldsWayData(ReturnStatus.OK, allFields, specifiedFields, inputFields);
     }
 
     public static ReturnDetectedFieldData solveField(@NonNull Scanner scanner,

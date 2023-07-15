@@ -8,6 +8,10 @@ import com.pavbatol.gjcc.config.Props;
 import com.pavbatol.gjcc.field.Field;
 import com.pavbatol.gjcc.field.FieldAction;
 import com.pavbatol.gjcc.returns.*;
+import com.pavbatol.gjcc.returns.impl.ReturnArrayData;
+import com.pavbatol.gjcc.returns.impl.ReturnDetectedFieldData;
+import com.pavbatol.gjcc.returns.impl.ReturnIntegerData;
+import com.pavbatol.gjcc.returns.impl.ReturnLoadingFieldsWayData;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedWriter;
@@ -89,7 +93,7 @@ public class Converter {
             linesLimit = integerData.getValue();
 
             //---Field loading way
-            ReturnLoadingFildsWayData loadingFieldsWayData = Menu.fields(scanner);
+            ReturnLoadingFieldsWayData loadingFieldsWayData = Menu.fields(scanner);
             if (loadingFieldsWayData.getStatus() == ReturnStatus.STOP) {
                 return;
             } else if (loadingFieldsWayData.getStatus() == ReturnStatus.RESET) {
