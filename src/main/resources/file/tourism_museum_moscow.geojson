@@ -1,0 +1,7233 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-ide",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2023-07-15T18:08:15Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/253038783",
+        "contact:website": "http://roerichsmuseum.ru/",
+        "museum": "art",
+        "name": "Музей Рерихов",
+        "name:de": "Roerich-Museum",
+        "name:en": "Roerich Museum",
+        "tourism": "museum",
+        "wikidata": "Q48953495",
+        "wikipedia": "ru:Музей Рерихов"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6275282,
+          55.8307276
+        ]
+      },
+      "id": "node/253038783"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/267719856",
+        "contact:email": "malmus@mail.ru",
+        "contact:phone": "+7 495 5014244",
+        "contact:website": "http://malmus.ru",
+        "name": "Краеведческий музей",
+        "official_name": "Музей истории и культуры городского поселения Малаховка",
+        "opening_hours": "Tu-Sa 11:00-17:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0092816,
+          55.6388874
+        ]
+      },
+      "id": "node/267719856"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/273354709",
+        "contact:phone": "+7 495 6971610",
+        "contact:website": "http://www.artprivatecollections.ru",
+        "museum": "art",
+        "name": "Отдел личных коллекций",
+        "name:en": "Museum of Private Collections",
+        "opening_hours": "We-Su 12:00-20:00; Th 12:00-21:00",
+        "tourism": "museum",
+        "wikidata": "Q4306373",
+        "wikipedia": "ru:Музей личных коллекций"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6071231,
+          55.7473762
+        ]
+      },
+      "id": "node/273354709"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/273354762",
+        "description:en": "19th and 20th century European & American art.",
+        "museum": "art",
+        "name": "Галерея искусства стран Европы и Америки XIX—XX веков",
+        "name:en": "Gallery of European and American Art",
+        "name:ru": "Галерея искусства стран Европы и Америки XIX—XX веков",
+        "official_name": "Галерея искусства стран Европы и Америки XIX—ХХ веков ГМИИ им. А. С. Пушкина",
+        "tourism": "museum",
+        "wikidata": "Q21637701",
+        "wikipedia": "ru:Галерея искусства стран Европы и Америки XIX—XX веков"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6053051,
+          55.7464881
+        ]
+      },
+      "id": "node/273354762"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/273355916",
+        "addr:city": "Москва",
+        "addr:housenumber": "12/2",
+        "addr:street": "улица Пречистенка",
+        "contact:phone": "+7 495 6375674",
+        "contact:website": "http://www.pushkinmuseum.ru/",
+        "description:en": "Museum about the author AS Pushkin.",
+        "museum": "person",
+        "name": "Государственный музей А.С.Пушкина",
+        "name:en": "Pushkin State Museum",
+        "opening_hours": "Tu-We,Fr-Su 10:00-18:00; Th 13:00-21:00",
+        "tourism": "museum",
+        "wikidata": "Q4146877"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5968988,
+          55.7440686
+        ]
+      },
+      "id": "node/273355916"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/273356351",
+        "fee": "yes",
+        "museum": "art",
+        "name": "Государственный центральный театральный музей им. А. А. Бахрушина",
+        "tourism": "museum",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6380937,
+          55.7317886
+        ]
+      },
+      "id": "node/273356351"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/288506766",
+        "addr:postcode": "117292",
+        "email": "info@darwinmuseum.ru",
+        "fee": "yes",
+        "museum": "nature",
+        "name": "Государственный Дарвиновский музей",
+        "name:de": "Staatliches Darwin-Museum",
+        "name:en": "The State Darwin Museum",
+        "name:ru": "Государственный Дарвиновский музей",
+        "opening_hours": "Tu-Su 10:00-18:00",
+        "phone": "+7 499 1346124",
+        "tourism": "museum",
+        "website": "http://www.darwinmuseum.ru",
+        "wikidata": "Q1107243",
+        "wikipedia": "ru:Государственный Дарвиновский музей"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5614951,
+          55.6907141
+        ]
+      },
+      "id": "node/288506766"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/361207435",
+        "name": "Краеведческий музей",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0165251,
+          55.7479667
+        ]
+      },
+      "id": "node/361207435"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/366363174",
+        "contact:fax": "+7 495 5566950",
+        "contact:phone": "+7 495 5566950",
+        "contact:website": "http://zhukmuseum.mya5.ru",
+        "level": "2",
+        "name": "Музей истории покорения неба",
+        "opening_hours": "Tu-Th 10:00-13:00,14:00-18:00; Fr 10:00-13:00,14:00-17:00; Sa-Su 10:00-15:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.1232944,
+          55.5978884
+        ]
+      },
+      "id": "node/366363174"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/412190491",
+        "addr:postcode": "141300",
+        "email": "muzey.igrushki@inbox.ru",
+        "name": "Музей игрушки",
+        "name:ca": "Museu dels joguets",
+        "name:en": "Toys Museum",
+        "name:it": "Museo di giochi",
+        "opening_hours": "We-Su 10:00-17:00",
+        "phone": "+7 496 5404101",
+        "tourism": "museum",
+        "website": "http://museumot.info/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.129266,
+          56.3050387
+        ]
+      },
+      "id": "node/412190491"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/420379838",
+        "name": "Культурный центр г. Фрязино",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0439735,
+          55.959658
+        ]
+      },
+      "id": "node/420379838"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/470962167",
+        "name": "Краеведческий музей",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9083774,
+          55.9671383
+        ]
+      },
+      "id": "node/470962167"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/564010202",
+        "addr:postcode": "142000",
+        "email": "t84967930006@bk.ru",
+        "name": "Историко-художественный музей Домодедово",
+        "opening_hours": "We,Fr-Su 10:00-13:00,14:00-17:00; Th 11:00-13:00,14:00-19:00",
+        "operator": "Администрация ГО Домодедово",
+        "phone": "+7 496 7930006;+7 496 7943104",
+        "tourism": "museum",
+        "website": "https://dom-museum.mo.muzkult.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7662082,
+          55.4359737
+        ]
+      },
+      "id": "node/564010202"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/610322532",
+        "contact:fax": "+7 495 5263817",
+        "contact:phone": "+7 495 5263874",
+        "name": "Музей НИИЦ подготовки космонавтов им. Ю.А. Гагарина",
+        "operator": "РГНИИ УПК им. Ю.А. Гагарина",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.1046344,
+          55.8774163
+        ]
+      },
+      "id": "node/610322532"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/612042411",
+        "amenity": "arts_centre",
+        "contact:email": "info@electromuseum.ru",
+        "contact:phone": "+7-499-1871045",
+        "contact:website": "http://electromuseum.ru/",
+        "museum": "art",
+        "name": "Электромузей",
+        "opening_hours": "Tu-Su 11:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6593152,
+          55.8357451
+        ]
+      },
+      "id": "node/612042411"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/668036470",
+        "contact:phone": "+7 495 3394544;+7 495 3391500",
+        "contact:website": "http://www.paleo.ru/museum/",
+        "museum": "paleontology",
+        "name": "Палеонтологический музей",
+        "name:de": "Paläontologisches Museum Moskau",
+        "name:en": "Moscow Paleontological Museum",
+        "name:ru": "Палеонтологический музей",
+        "name:sk": "Paleontologičeskij muzej imeni Ju. A. Orlova",
+        "official_name": "Палеонтологический музей им. Ю. А. Орлова РАН",
+        "opening_hours": "We-Su 10:00-18:00; Mo,Tu off",
+        "start_date": "1937",
+        "tourism": "museum",
+        "wikidata": "Q1327180",
+        "wikipedia": "ru:Палеонтологический музей имени Ю. А. Орлова"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5139616,
+          55.6239794
+        ]
+      },
+      "id": "node/668036470"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/700913751",
+        "name": "Краеведческий музей",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.992649,
+          55.9201848
+        ]
+      },
+      "id": "node/700913751"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/703628600",
+        "addr:city": "Москва",
+        "addr:housenumber": "53",
+        "addr:street": "улица Арбат",
+        "contact:phone": "+7 499 2419295",
+        "contact:website": "http://www.pushkinmuseum.ru/?q=content/memorialnaya-kvartira-pushkina-na-arbate",
+        "fee": "yes",
+        "museum": "person",
+        "name": "Музей-квартира А. С. Пушкина",
+        "name:en": "Pushkin Flat-museum",
+        "official_name": "Мемориальная квартира А. С. Пушкина на Арбате",
+        "opening_hours": "We-Su 10:00-17:30; Th 13:00-21:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5858475,
+          55.7475414
+        ]
+      },
+      "id": "node/703628600"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/806336106",
+        "contact:email": "ramyz@mail.ru",
+        "contact:fax": "+7 496 4634453",
+        "contact:phone": "+7 496 4632794",
+        "name": "Раменский историко-художественный музей",
+        "opening_hours": "Tu-Su 10:00-17:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.2093994,
+          55.5725542
+        ]
+      },
+      "id": "node/806336106"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/864424236",
+        "addr:housenumber": "11",
+        "addr:street": "улица Довженко",
+        "description": "В дни концертов экскурсии проводятся до 14 часов. Экскурсии для групп — по предварительной записи.",
+        "museum": "person",
+        "name": "Государственный мемориальный музей Б.Ш. Окуджавы",
+        "name:es": "The State Memorial Museum of B.Sh. Okudzhava",
+        "opening_hours": "Th-Su 11:00-17:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3164915,
+          55.6504315
+        ]
+      },
+      "id": "node/864424236"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/913308087",
+        "description:en": "A museum about boots and traditional Russian footwear.",
+        "museum": "ethnography",
+        "name": "Русские валенки",
+        "name:en": "Russian Boots",
+        "name:es": "Museo Tren Fúnebre de Lennin",
+        "opening_hours": "Tu,We,Fr,Sa 11:00-17:30",
+        "tourism": "museum",
+        "website": "http://www.museum.ru/M2097"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6487933,
+          55.7257389
+        ]
+      },
+      "id": "node/913308087"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/914334474",
+        "name": "Музей войск ПВО",
+        "tourism": "museum",
+        "website": "http://www.mvpvo.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0876173,
+          55.7585407
+        ]
+      },
+      "id": "node/914334474"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/922497297",
+        "museum": "person",
+        "name": "Музей Героев Советского Союза Зои и Александра Космодемьянских",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5043492,
+          55.8213033
+        ]
+      },
+      "id": "node/922497297"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/944400411",
+        "contact:instagram": "lubermvk",
+        "contact:phone": "+7 495 554 82 96;+7 495 554 43 05",
+        "contact:vk": "lubermvk",
+        "contact:website": "https://mvkmuzey.ru/",
+        "email": "lbrc_mvk@mosreg.ru",
+        "museum": "local",
+        "name": "Краеведческий музей",
+        "opening_hours": "We-Su 10:00-19:00",
+        "source": "http://www.musej.ru/",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8946557,
+          55.6772038
+        ]
+      },
+      "id": "node/944400411"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1105037133",
+        "name": "Дом-музей С. И. Танеева",
+        "name:ru": "Дом-музей С. И. Танеева",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.8065045,
+          55.7524539
+        ]
+      },
+      "id": "node/1105037133"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1106417588",
+        "museum": "history",
+        "name": "Долгопрудненский историко-художественный музей",
+        "opening_hours": "We 10:00-19:00; Th 12:00-21:00; Fr-Sa 10:00-19:00; Su 10:00-18:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5133194,
+          55.9407317
+        ]
+      },
+      "id": "node/1106417588"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1106845052",
+        "contact:phone": "+7 495 6219075",
+        "contact:website": "http://mayakovsky.museum",
+        "description:en": "Vladimir Vladimirovich Mayakovsky 1893 – 1930, poet, actor, playwright,.",
+        "museum": "person",
+        "name": "Музей В.В. Маяковского",
+        "name:en": "Museum of Vladimir Mayakovsky",
+        "tourism": "museum",
+        "wikidata": "Q4146875",
+        "wikipedia": "ru:Государственный музей В. В. Маяковского"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6294805,
+          55.759489
+        ]
+      },
+      "id": "node/1106845052"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1161887242",
+        "contact:phone": "+7 495 6920567",
+        "contact:website": "http://www.glinka.museum/about/museum_of_prokofiev",
+        "museum": "person",
+        "name": "Музей С. С. Прокофьева",
+        "name:en": "Prokofiev Museum",
+        "opening_hours": "We-Sa 11:00-19:00; Th 12:00-21:00; Su 11:00-18:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6144128,
+          55.7601513
+        ]
+      },
+      "id": "node/1161887242"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1209161477",
+        "name": "Ногинский музейно-выставочный центр",
+        "opening_hours": "Tu-Su 11:00-17:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4374016,
+          55.8559946
+        ]
+      },
+      "id": "node/1209161477"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1259825177",
+        "name": "Краеведческий музей",
+        "phone": "+7 49624 26391;+7 49624 28169",
+        "tourism": "museum",
+        "website": "https://www.klin-museum.ru/musems/Kraevedcheskiymuzey.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.725981,
+          56.3296953
+        ]
+      },
+      "id": "node/1259825177"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1327904475",
+        "name": "Музей \"Храм Покрова в Филях\"",
+        "tourism": "museum",
+        "website": "http://www.rublev-museum.ru/filial/church.aspx"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5102343,
+          55.7506982
+        ]
+      },
+      "id": "node/1327904475"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1359123836",
+        "contact:phone": "+7 495 9538684",
+        "contact:website": "http://www.gctm.ru/branches/dmo",
+        "museum": "person",
+        "name": "Дом-музей А.Н. Островского",
+        "name:en": "Ostrovsky Museum",
+        "opening_hours": "We-Su 12:00-18:30; Th 13:00-20:30",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.626381,
+          55.7387976
+        ]
+      },
+      "id": "node/1359123836"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1387788105",
+        "name": "Музей МСЗ",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4678567,
+          55.7914155
+        ]
+      },
+      "id": "node/1387788105"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1396324038",
+        "contact:email": "dostoevskij_f_m@mail.ru",
+        "contact:phone": "+7 495 6811085",
+        "museum": "person",
+        "name": "Музей-квартира Ф.М.Достоевского",
+        "name:en": "Apartment Museum of Fyodor Dostoevsky",
+        "opening_hours": "Tu-Su 11:00-18:00; We,Th 14:00-21:00",
+        "start_date": "11.11.1928",
+        "tourism": "museum",
+        "wikidata": "Q4306050",
+        "wikipedia": "ru:Музей-квартира Ф. М. Достоевского (Москва)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6103574,
+          55.7834974
+        ]
+      },
+      "id": "node/1396324038"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1396891662",
+        "historic": "manor",
+        "name": "Музей-усадьба Д.И.Менделеева",
+        "tourism": "museum",
+        "website": "http://шахматово.рф"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.0139,
+          56.3822
+        ]
+      },
+      "id": "node/1396891662"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1406961084",
+        "museum": "sport",
+        "name": "Музей Спорта",
+        "name:en": "Sports Museum",
+        "name:es": "Museo del deporte",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5555292,
+          55.7162148
+        ]
+      },
+      "id": "node/1406961084"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1429094469",
+        "name": "Точка G",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5920261,
+          55.7518208
+        ]
+      },
+      "id": "node/1429094469"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1592025111",
+        "contact:email": "museumdom@yandex.ru",
+        "contact:phone": "+7 495 9594936",
+        "contact:website": "http://www.museum.ru/m427",
+        "full_name": "Государственный краеведческий музей \"Дом на набережной\"",
+        "museum": "local",
+        "name": "Дом на набережной",
+        "opening_hours": "Tu-Sa 13:00-21:00",
+        "tourism": "museum",
+        "wikidata": "Q21641915",
+        "wikipedia": "ru:Музей «Дом на набережной»"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6119663,
+          55.7451872
+        ]
+      },
+      "id": "node/1592025111"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1704334659",
+        "name": "Земская школа",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.045363,
+          56.3336224
+        ]
+      },
+      "id": "node/1704334659"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1733057309",
+        "addr:housenumber": "11",
+        "addr:street": "5-й Котельнический переулок",
+        "contact:email": "hsale@bunker42.com",
+        "contact:fax": "+7 495 5000554",
+        "contact:phone": "+7 495 5000553",
+        "contact:website": "http://www.bunker42.com",
+        "museum": "war",
+        "name": "Музей холодной войны (экспозиционный комплекс Бункер-42)",
+        "name:de": "Bunker GO-42",
+        "name:el": "Κρατικό Ακίνητο αρ. 42",
+        "name:en": "Bunker 42 -Tagansky Protected Command Point",
+        "name:pl": "Bunkier GO-42",
+        "name:pt": "Bunker 42",
+        "name:sv": "Bunker GO-42",
+        "opening_hours": "24/7",
+        "tourism": "museum",
+        "wikidata": "Q1009559",
+        "wikipedia": "ru:Музей холодной войны (Москва)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6491082,
+          55.7416458
+        ]
+      },
+      "id": "node/1733057309"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1762104769",
+        "email": "newhist@museumkorolev.ru",
+        "museum": "history",
+        "name": "Музей наукограда Королёв. Новейшая история города",
+        "opening_hours": "We-Su 10:00-18:00",
+        "phone": "+7 495 516 60 66",
+        "tourism": "museum",
+        "website": "http://museumkorolev.ru/o-muzee/muzey-noveyshey-istorii/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8136946,
+          55.9183032
+        ]
+      },
+      "id": "node/1762104769"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1795360097",
+        "alt_name": "Мост",
+        "contact:website": "https://www.mostmuseum.ru",
+        "museum": "transport",
+        "name": "М.О.С.Т.",
+        "opening_hours": "Mo-Fr 12:00-22:00; Sa,Su,PH 12:00-23:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6015687,
+          55.7333654
+        ]
+      },
+      "id": "node/1795360097"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1826640863",
+        "museum": "person",
+        "name": "Музей-квартира священника Павла Флоренского",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5805508,
+          55.7392507
+        ]
+      },
+      "id": "node/1826640863"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1833558556",
+        "contact:phone": "+74963438148",
+        "name": "Историко-Краеведческий музей",
+        "official_name": "\"Наро-Фоминский историко-краеведческий музей\" МУК",
+        "opening_hours": "Tu-Sa 09:30-17:30",
+        "source:contact": "http://www.bizbi.ru",
+        "source:official_name": "http://www.bizbi.ru",
+        "source:opening_hours": "http://www.bizbi.ru",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.7242127,
+          55.3842335
+        ]
+      },
+      "id": "node/1833558556"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1845312017",
+        "name": "Выставочный зал музея Зеленограда",
+        "phone": "+7 499 7171602",
+        "tourism": "museum",
+        "website": "vzz1410.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.1467012,
+          55.9866338
+        ]
+      },
+      "id": "node/1845312017"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1933730593",
+        "contact:phone": "+7 495 3600147",
+        "museum": "local",
+        "name": "Музей истории Лефортово",
+        "opening_hours": "Tu-Su 10:00-18:00",
+        "tourism": "museum",
+        "wikidata": "Q21641927"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7110632,
+          55.76945
+        ]
+      },
+      "id": "node/1933730593"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1971650945",
+        "addr:housenumber": "144",
+        "addr:postcode": "141300",
+        "addr:street": "проспект Красной Армии",
+        "name": "Историко-художественный музей",
+        "name:en": "History and Art Museum",
+        "opening_hours": "We-Th, Sa-Su 10:00-17:45; Fr 10:00-16:45",
+        "operator": "Сергиево-Посадский государственный историко-художественный музей-заповедник",
+        "phone": "+7 496 5412890",
+        "tourism": "museum",
+        "website": "http://www.museum-sp.ru/department/main/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.135335,
+          56.3128333
+        ]
+      },
+      "id": "node/1971650945"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2002311388",
+        "name": "Дом А. П. Чехова",
+        "name:ru": "Дом А. П. Чехова",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.8471077,
+          55.7352353
+        ]
+      },
+      "id": "node/2002311388"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2161495261",
+        "contact:phone": "+7 495 9543900;+7 916 6298052",
+        "museum": "geology",
+        "name": "Минералогический музей им. Ферсмана",
+        "name:ca": "Museu Mineralògic Fersman",
+        "name:en": "Fersman Mineralogical Museum",
+        "name:ja": "フェルスマン鉱物博物館",
+        "official_name": "Минералогический музей им. А. Е. Ферсмана Российской Академии Наук",
+        "opening_hours": "We-Su 11:00-18:00",
+        "tourism": "museum",
+        "website": "https://www.fmm.ru/",
+        "wikidata": "Q4294140",
+        "wikipedia": "ru:Минералогический музей имени А. Е. Ферсмана РАН"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.592779,
+          55.7187353
+        ]
+      },
+      "id": "node/2161495261"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2219502268",
+        "museum": "person",
+        "name": "Мемориальный музей-квартира А. Н. Толстого",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5966937,
+          55.7585382
+        ]
+      },
+      "id": "node/2219502268"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2250142414",
+        "contact:phone": "+7 495 9173104",
+        "contact:website": "www.svrpu.ru",
+        "museum": "military",
+        "name": "Центральный пограничный музей ФСБ России",
+        "name:en": "Museum of the Russian FSB",
+        "tourism": "museum",
+        "wikidata": "Q4306422",
+        "wikipedia": "ru:Музей пограничных войск"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6455571,
+          55.7508201
+        ]
+      },
+      "id": "node/2250142414"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2368886164",
+        "name": "Теремной дворец",
+        "name:de": "Terem-Palast",
+        "name:en": "Terem Palace",
+        "name:fr": "Palais des Térems",
+        "name:it": "Palazzo Terem",
+        "name:pt": "Palácio dos Terems",
+        "name:ru": "Теремной дворец",
+        "tourism": "museum",
+        "wikidata": "Q2548788",
+        "wikipedia": "ru:Теремной дворец"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6157295,
+          55.7506384
+        ]
+      },
+      "id": "node/2368886164"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2368886170",
+        "name": "Золотая Царицына палата",
+        "name:de": "Goldene Zarinnenkammer",
+        "name:en": "Tsarina's Golden Chamber",
+        "name:it": "Camera d'oro della zarina",
+        "name:ru": "Золотая Царицына палата",
+        "tourism": "museum",
+        "wikidata": "Q1822330",
+        "wikipedia": "ru:Золотая Царицына палата"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.616391,
+          55.7507042
+        ]
+      },
+      "id": "node/2368886170"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2451397153",
+        "addr:housenumber": "1",
+        "addr:street": "улица Гоголя",
+        "museum": "person",
+        "name": "Музей-галерея Е.А. Евтушенко",
+        "name:es": "Museum-gallery Yevtushenko",
+        "opening_hours": "Th-Su 10:00-17:00; Mo-We \"только по предварительной договоренности\"",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3262397,
+          55.6534343
+        ]
+      },
+      "id": "node/2451397153"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2465851425",
+        "contact:email": "zelmuseum@bk.ru",
+        "contact:facebook": "https://www.facebook.com/ZelMuseum/",
+        "email": "zelmuseum@culture.mos.ru",
+        "name": "Историко-краеведческий музей",
+        "name:ka": "ზელენოგრადის ისტორიულ-მხარეთმცოდნეობითი მუზეუმი",
+        "name:ru": "Историко-краеведческий музей",
+        "opening_hours": "Mo-Su 10:00-18:00; PH off",
+        "operator": "Государственное Бюджетное Учреждение Культуры Города Москвы «Музей Зеленограда»",
+        "operator:ref:inn": "7735066949",
+        "operator:ref:kpp": "773501001",
+        "operator:ref:ogrn": "1037739279819",
+        "phone": "+7 (499) 732-21-22",
+        "start_date": "1969",
+        "tourism": "museum",
+        "website": "http://www.zelmuseum.ru",
+        "wikidata": "Q21639762",
+        "wikipedia": "ru:Зеленоградский историко-краеведческий музей"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.1716648,
+          55.9863638
+        ]
+      },
+      "id": "node/2465851425"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2468882311",
+        "contact:phone": "+7 495 9570727",
+        "contact:website": "https://www.tretyakovgallery.ru/for-visitors/museums/novaya-tretyakovka/",
+        "fee": "yes",
+        "museum": "art",
+        "name": "Новая Третьяковка",
+        "name:en": "New Tretyakov",
+        "name:ru": "Новая Третьяковка",
+        "opening_hours": "Mo off; Tu,We,Sa 10:00-18:00; Th,Fr,Su 10:00-21:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6062274,
+          55.7348087
+        ]
+      },
+      "id": "node/2468882311"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2506932067",
+        "museum": "toys",
+        "name": "Музей Буратино-Пиноккио",
+        "opening_hours": "Mo-Su 10:00-18:00",
+        "phone": "+7 499 164 05 76",
+        "tourism": "museum",
+        "website": "https://domskazok.su/buratino"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7816015,
+          55.7910895
+        ]
+      },
+      "id": "node/2506932067"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2511951122",
+        "fixme": "resurvey",
+        "museum": "books",
+        "name": "Музей книги",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6406683,
+          55.7604293
+        ]
+      },
+      "id": "node/2511951122"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2519943163",
+        "museum": "local",
+        "name": "Лыткаринский историко-краеведческий музей",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9007882,
+          55.5804127
+        ]
+      },
+      "id": "node/2519943163"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2587146329",
+        "contact:phone": "+7 495 9264114",
+        "museum": "person",
+        "name": "Московский дом Ахматовой",
+        "opening_hours": "Tu-Sa 10:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6106752,
+          55.7571296
+        ]
+      },
+      "id": "node/2587146329"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2590877091",
+        "contact:phone": "+7 495 6295322",
+        "museum": "person",
+        "name": "Музей-квартира В.Э. Мейерхольда",
+        "name:en": "Vsevolod Meyerhold Flat-Museum",
+        "opening_hours": "We-Su 12:00-19:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6099116,
+          55.7600859
+        ]
+      },
+      "id": "node/2590877091"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2594744195",
+        "alt_name": "MMOMA",
+        "contact:website": "http://www.mmoma.ru",
+        "name": "Московский музей современного искусства",
+        "name:en": "Moscow Museum of Modern Art",
+        "name:pt": "Museu de Art Moderna",
+        "name:ru": "Московский музей современного искусства",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5992678,
+          55.7595636
+        ]
+      },
+      "id": "node/2594744195"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2613597034",
+        "contact:ok": "https://ok.ru/orientmuseum",
+        "contact:twitter": "@OrientalMuseum",
+        "contact:vk": "https://www.vk.com/club51591430",
+        "contact:youtube": "https://www.youtube.com/channel/UCVLLHoj91lBRBJY_4EEGK5g",
+        "email": "info@orientmuseum.ru",
+        "museum": "art",
+        "name": "Музей искусства народов Востока",
+        "name:en": "Museum of Oriental Arts",
+        "opening_hours": "Tu 11:00-19:30; Fr-Su 11:00-19:30; We-Th 12:00-20:30",
+        "operator:type": "government",
+        "phone": "+7 495 6910212",
+        "short_name": "Музей Востока",
+        "start_date": "1918",
+        "tourism": "museum",
+        "website": "https://www.orientmuseum.ru",
+        "wikidata": "Q1056108",
+        "wikipedia": "ru:Музей Востока"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5998947,
+          55.7563931
+        ]
+      },
+      "id": "node/2613597034"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2640796034",
+        "email": "shalyapin.museum@gmail.com",
+        "museum": "person",
+        "name": "Дом-музей Шаляпина",
+        "name:en": "Chaliapin House Museum",
+        "name:ru": "Дом-музей Шаляпина",
+        "opening_hours": "Tu 10:00-18:00; We-Th 11:30-19:00; Sa 10:00-18:00; Su 10:00-16:30",
+        "phone": "+7 495 6056236",
+        "tourism": "museum",
+        "website": "http://www.shalyapin-museum.org/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5833111,
+          55.7566941
+        ]
+      },
+      "id": "node/2640796034"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2675498162",
+        "addr:city": "район Новогиреево",
+        "addr:housenumber": "37А",
+        "addr:postcode": "111394",
+        "addr:street": "Новогиреевская улица",
+        "museum": "art",
+        "name": "Московский государственный музей Вадима Сидура",
+        "name:en": "Vadim Sidur State Museum of Moscow",
+        "opening_hours": "We-Su 12:00-19:00",
+        "phone": "+7 495 6459277",
+        "tourism": "museum",
+        "website": "https://mmoma.ru",
+        "wikidata": "Q48953878"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7990588,
+          55.753169
+        ]
+      },
+      "id": "node/2675498162"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2675521498",
+        "addr:city": "район Перово",
+        "addr:housenumber": "12 к1",
+        "addr:postcode": "111123",
+        "addr:street": "1-я Владимирская улица",
+        "email": "afgan-zal@mail.ru",
+        "museum": "war",
+        "name": "Выставочный зал истории войны в Афганистане",
+        "opening_hours": "Tu-Sa 10:00-18:00",
+        "phone": "+7 495 3064339",
+        "tourism": "museum",
+        "website": "http://afgan-zal.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.774538,
+          55.757888
+        ]
+      },
+      "id": "node/2675521498"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2678333852",
+        "contact:email": "khimki-galery@yandex.ru",
+        "contact:phone": "+7 495 5758557",
+        "contact:website": "www.museum.ru/M3208",
+        "internet_access": "wlan",
+        "museum": "art",
+        "name": "Химкинская картинная галерея им. С.Н. Горшина",
+        "opening_hours": "Mo-Fr 11:00-18:00",
+        "start_date": "24.12.1993",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4457276,
+          55.8891973
+        ]
+      },
+      "id": "node/2678333852"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2710621472",
+        "contact:email": "bronmuzey@mail.ru",
+        "contact:phone": "+7 496 4665986;+7 916 0707769",
+        "contact:website": "http://bronmus.ru",
+        "level": "2",
+        "name": "Музей истории города Бронницы",
+        "opening_hours": "Tu-Sa 09:00-17:00; Su 10:00-16:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.2677486,
+          55.4247685
+        ]
+      },
+      "id": "node/2710621472"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2715045290",
+        "alt_name": "Государственный культурный центр-музейВ.С. Высоцкого",
+        "alt_name:en": "State Cultural Center and MuseumVS Vysotsky",
+        "contact:phone": "+7 495 9152979",
+        "description": "Museum to Vladimir Vysotsky 1938 - 1980, famous Russion singer, actor and poet.",
+        "museum": "person",
+        "name": "Дом Высоцкого на Таганке",
+        "name:en": "House on Taganka",
+        "opening_hours": "Tu-We,Fr 11:00-18:00; Sa-Su 11:00-17:00; Th 13:00-21:00",
+        "operator": "Государственное учреждение культуры г.Москвы",
+        "operator:en": "State Institution of Culture of Moscow",
+        "tourism": "museum",
+        "website": "www.visotsky.ru",
+        "wikidata": "Q4146855",
+        "wikipedia": "ru:Музей Владимира Высоцкого"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6518177,
+          55.7444769
+        ]
+      },
+      "id": "node/2715045290"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2758278217",
+        "addr:city": "Москва",
+        "addr:country": "RU",
+        "addr:entrance": "3",
+        "addr:floor": "4",
+        "addr:housenumber": "3/5 кГ",
+        "addr:postcode": "121019",
+        "addr:room": "Г-405",
+        "addr:street": "улица Воздвиженка",
+        "internet_access": "wlan",
+        "museum": "books",
+        "name": "Музей книги",
+        "name:en": "Book Museum",
+        "opening_hours": "Mo-Fr 09:00-20:00; Sa 09:00-19:00",
+        "operator": "Российская Государственная Библиотека",
+        "phone": "+7 495 6228672",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6087385,
+          55.7522192
+        ]
+      },
+      "id": "node/2758278217"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2798179186",
+        "contact:phone": "+7 499 7669328",
+        "contact:website": "http://tolstoymuseum.ru/museums/museum_branchs/prechistenka",
+        "museum": "person",
+        "name": "Государственный музей Л.Н. Толстого",
+        "name:de": "Staatliches Leo-Tolstoi-Museum",
+        "name:en": "State Tolstoy Museum",
+        "opening_hours": "Tu-Su 10:00-18:00; Th 12:00-20:00",
+        "tourism": "museum",
+        "wikidata": "Q19911795"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5969685,
+          55.7428122
+        ]
+      },
+      "id": "node/2798179186"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2820078760",
+        "museum": "person",
+        "name": "Научно-мемориальный музей профессора Н.Е. Жуковского",
+        "tourism": "museum",
+        "wikidata": "Q4314538"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6790989,
+          55.7635513
+        ]
+      },
+      "id": "node/2820078760"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2832330569",
+        "fee": "yes",
+        "name": "Музей истории русского платка и шали",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6529836,
+          55.7710969
+        ]
+      },
+      "id": "node/2832330569"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2889693379",
+        "museum": "aerospace",
+        "name": "Музей военно-воздушных сил России",
+        "opening_hours": "We-Fr 09:00-18:00; Sa, Su 09:00-17:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.1882924,
+          55.8308709
+        ]
+      },
+      "id": "node/2889693379"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2992380329",
+        "addr:city": "Подольск",
+        "addr:housenumber": "8",
+        "addr:street": "проспект Ленина",
+        "email": "immz-podolie@yandex.ru",
+        "museum": "nature",
+        "name": "Музей-заповедник \"Подолье\"",
+        "phone": "8 (4967) 69-92-39",
+        "tourism": "museum",
+        "website": "https://www.xn----htbbcgnqcwbi7b9h.xn--p1ai/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5558402,
+          55.4378346
+        ]
+      },
+      "id": "node/2992380329"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3114388064",
+        "alt_name": "Политех",
+        "email": "pm26@polymus.ru",
+        "name": "Политехнический музей на ВДНХ",
+        "opening_hours": "Tu-Fr 10:00-19:00; Sa,Su 10:00-20:00; Mo off",
+        "operator": "Государственный Политехнический музей",
+        "phone": "+7 495 7305438 доб.1446",
+        "tourism": "museum",
+        "website": "https://polymus.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6214271,
+          55.8343574
+        ]
+      },
+      "id": "node/3114388064"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3165169799",
+        "name": "Ногинский музейно-выставочный центр",
+        "official_name": "филиал Муниципального учреждения культуры \"Ногинский музейно-выставочный центр\"",
+        "old_name": "Почтовая станция \"Богородск\"",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4388473,
+          55.8563485
+        ]
+      },
+      "id": "node/3165169799"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3182704485",
+        "alt_name": "Московский музей современного искусства",
+        "alt_name:en": "Moscow Museum of Modern Art;MMoMA",
+        "contact:website": "http://www.mmoma.ru",
+        "museum": "person",
+        "name": "Творческая мастерская художника Зураба Церетели",
+        "opening_hours": "Mo-Su 12:00-20:00; Th 13:00-21:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5769988,
+          55.7662408
+        ]
+      },
+      "id": "node/3182704485"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3206046372",
+        "contact:phone": "+7 495 6256405",
+        "contact:website": "http://dollmuseum.ru",
+        "description": "Среда - экскурсионный день, в 12:00 и в 16:00 экскурсии для всех желающих, четверг - воскресенье 11:00 - 19:00, перерыв 14:00 - 14:30. В дни школьных каникул музей открыт ежедневно, кроме понедельника, с 11:00 до 19:00.",
+        "museum": "toys",
+        "name": "Музей уникальных кукол",
+        "name:en": "Museum of Unique Dolls",
+        "name:ru": "Музей уникальных кукол",
+        "opening_hours": "We 12:00-17:00; Th-Su 11:00-14:00,14:30-19:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6445089,
+          55.7593066
+        ]
+      },
+      "id": "node/3206046372"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3251246210",
+        "addr:housenumber": "80 с1",
+        "addr:street": "Советская улица",
+        "email": "sbunker@mail.ru",
+        "museum": "history",
+        "name": "Музейный комплекс \"Бункер Сталина\"",
+        "name:en": "Museum \"Stalin's bunker\"",
+        "note": "Фактически не бункер, а туннель на правительственную ложу стадиона.",
+        "opening_hours": "Mo-Fr 10:00-18:00",
+        "phone": "+7 499 1666768",
+        "tourism": "museum",
+        "website": "http://www.cmaf.ru/branchs/bun/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7513847,
+          55.7973733
+        ]
+      },
+      "id": "node/3251246210"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3325191509",
+        "contact:phone": "+7 499 2516730",
+        "contact:website": "http://www.mosmuseum.ru/museum-menu-mireka.html",
+        "museum": "music",
+        "name": "Музей русской гармоники А. Мирека",
+        "name:en": "Russian Garmonika Museum",
+        "opening_hours": "Tu,We 10:00-17:30; Th 10:00-20:30; Fr-Su 10:00-16:30",
+        "tourism": "museum",
+        "wikidata": "Q12130578",
+        "wikipedia": "ru:Музей русской гармоники А. Мирека"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5945538,
+          55.771822
+        ]
+      },
+      "id": "node/3325191509"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3350346072",
+        "contact:website": "https://polymus.ru/places/detail/otkrytaya-kollektsiya",
+        "museum": "technology",
+        "name": "Политехнический музей, открытые фонды",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7226516,
+          55.7089892
+        ]
+      },
+      "id": "node/3350346072"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3361538621",
+        "addr:flat": "50",
+        "contact:email": "bulgakovmuseum@gmail.com",
+        "contact:phone": "+7 495 6995366",
+        "contact:website": "http://bulgakovmuseum.ru",
+        "museum": "person",
+        "name": "Государственный музей М. А. Булгакова",
+        "name:en": "Bulgakov Museum",
+        "name:hy": "Միխայիլ Բուլգակովի թանգարան",
+        "name:it": "Museo Bulgakov",
+        "name:ru": "Государственный музей М. А. Булгакова",
+        "opening_hours": "Tu-Su 12:00-19:00",
+        "tourism": "museum",
+        "wikidata": "Q4146884",
+        "wikipedia": "ru:Музей Михаила Афанасьевича Булгакова"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5939442,
+          55.7670276
+        ]
+      },
+      "id": "node/3361538621"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3382996910",
+        "name": "Балашихинский историко-краеведческий музей",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9531462,
+          55.7985106
+        ]
+      },
+      "id": "node/3382996910"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3387496562",
+        "contact:phone": "+7 495 6916154",
+        "contact:website": "http://goslitmuz.ru/museums/dom-muzey-a-p-chekhova",
+        "museum": "person",
+        "name": "Дом-музей А.П. Чехова",
+        "name:en": "Anton Chekhov House-museum",
+        "opening_hours": "Tu-Su 11:00-17:30; Th 14:00-19:15",
+        "tourism": "museum",
+        "wikidata": "Q54996579"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5860933,
+          55.7603073
+        ]
+      },
+      "id": "node/3387496562"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3390705964",
+        "addr:city": "Москва",
+        "addr:housenumber": "36",
+        "addr:street": "Старая Басманная улица",
+        "alt_name": "Дом-музей В.Л. Пушкина на Старой Басманной",
+        "contact:email": "info@a-s-pushkinmus.ru",
+        "contact:phone": "+7 499 2631057",
+        "contact:website": "http://www.pushkinmuseum.ru/?q=node/2",
+        "description": "Последняя пятница каждого месяца – санитарный день",
+        "museum": "person",
+        "name": "Дом-музей В.Л. Пушкина",
+        "name:en": "V.L. Pushkin Museum",
+        "opening_hours": "We-Su 10:00-18:00; Th 13:00-21:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6688753,
+          55.7690155
+        ]
+      },
+      "id": "node/3390705964"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3423510101",
+        "contact:phone": "+7 495 6904505",
+        "contact:website": "http://www.gnesin-academy.ru/museum",
+        "museum": "person",
+        "name": "Мемориальный музей-квартира Е.Ф.Гнесиной",
+        "name:en": "E.F.Gnesina Museum",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5922172,
+          55.7552658
+        ]
+      },
+      "id": "node/3423510101"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3437732377",
+        "comment": "Каждая последняя рабочая неделя месяца: понедельник – выходной, суббота - рабочая.",
+        "description": "Экскурсии проводятся по предварительной записи",
+        "fee": "no",
+        "museum": "technology",
+        "name": "Музей воды",
+        "opening_hours": "Mo-Th 10:00-17:00; Fr 10:00-16:00",
+        "operator": "АО \"Мосводоканал\"",
+        "phone": "+7 495 676 92 13;+7 495 676 26 89",
+        "tourism": "museum",
+        "website": "http://www.mosvodokanal.ru/about/museum.php",
+        "wikidata": "Q4306234",
+        "wikipedia": "ru:Музей воды (Москва)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.656708,
+          55.7293577
+        ]
+      },
+      "id": "node/3437732377"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3441521467",
+        "fee": "yes",
+        "museum": "children",
+        "name": "Музей детства",
+        "opening_hours": "Mo-Su 10:00-22:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6249678,
+          55.760394
+        ]
+      },
+      "id": "node/3441521467"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3452879912",
+        "addr:city": "Клин",
+        "addr:housenumber": "23А",
+        "addr:postcode": "141601",
+        "addr:street": "Литейная улица",
+        "description": "Выставочный зал имени Народного художника России Юрия Васильевича Карапаева",
+        "level": "2",
+        "name": "Выставочный зал им. Ю.В. Карапаева",
+        "phone": "+7 49624 27671",
+        "tourism": "museum",
+        "website": "https://www.klin-museum.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.72475,
+          56.3307236
+        ]
+      },
+      "id": "node/3452879912"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3454298446",
+        "email": "enjoy@experimentanium.ru",
+        "museum": "children",
+        "name": "Экспериментаниум",
+        "name:en": "Experimentanium",
+        "opening_hours": "Mo-Fr 09:30-19:00; Sa,Su 10:00-20:00",
+        "phone": "+7 495 1200520",
+        "tourism": "museum",
+        "website": "https://experimentanium.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5108289,
+          55.8088254
+        ]
+      },
+      "id": "node/3454298446"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3466483914",
+        "contact:phone": "+7 495 6954618",
+        "contact:website": "http://goslitmuz.ru/museums/dom-i-s-ostroukhova-v-trubnikakh",
+        "museum": "person",
+        "name": "Дом И.С. Остроухова в Трубниках",
+        "opening_hours": "Tu-Su 11:00-18:00; Th 14:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5866715,
+          55.7548346
+        ]
+      },
+      "id": "node/3466483914"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3484120452",
+        "museum": "person",
+        "name": "Усыпальница бояр Романовых",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6563244,
+          55.7318124
+        ]
+      },
+      "id": "node/3484120452"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3500710699",
+        "addr:city": "Москва",
+        "addr:housenumber": "55",
+        "addr:street": "улица Арбат",
+        "fee": "yes",
+        "museum": "person",
+        "name": "Мемориальная квартира Андрея Белого",
+        "name:en": "Memorial Apartment of Andrey Bely",
+        "name:es": "Departamento de Andrei Belly",
+        "opening_hours": "We,Fr-Su 10:00-18:00; Th 13:00-21:00",
+        "tourism": "museum",
+        "website": "http://kvartira-belogo.guru.ru/",
+        "wikidata": "Q4290193"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5855988,
+          55.74737
+        ]
+      },
+      "id": "node/3500710699"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3500729458",
+        "addr:housenumber": "27",
+        "addr:street": "переулок Сивцев Вражек",
+        "check_date": "2022-11-19",
+        "fee": "yes",
+        "museum": "person",
+        "name": "Дом-музей А. И. Герцена",
+        "tourism": "museum",
+        "website": "http://goslitmuz.ru/museums/dom-muzey-a-i-gertsena/",
+        "wikidata": "Q4165185",
+        "wikipedia": "ru:Дом-музей А. И. Герцена"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5918975,
+          55.7471255
+        ]
+      },
+      "id": "node/3500729458"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3500775990",
+        "addr:housenumber": "2/4 с4",
+        "addr:street": "Лужнецкая набережная",
+        "museum": "art",
+        "name": "Ар Деко",
+        "tourism": "museum",
+        "website": "https://www.facebook.com/artdecomuseum",
+        "wikidata": "Q21641917",
+        "wikipedia": "ru:Музей Ар Деко"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5741033,
+          55.7152789
+        ]
+      },
+      "id": "node/3500775990"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3500790779",
+        "addr:housenumber": "9 с2",
+        "addr:street": "Земледельческий переулок",
+        "museum": "art",
+        "name": "Творческое наследие академика Юрия Орехова",
+        "tourism": "museum",
+        "website": "http://www.sculptura.ru/Ru/Hs/Orekhov_museum/Museum.htm"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5781424,
+          55.7404075
+        ]
+      },
+      "id": "node/3500790779"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3500852153",
+        "museum": "person",
+        "name": "Музей-квартира Г. С. Улановой",
+        "tourism": "museum",
+        "website": "http://www.gctm.ru/branches/mku/",
+        "wikidata": "Q4306047"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6418981,
+          55.7466123
+        ]
+      },
+      "id": "node/3500852153"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3500887936",
+        "museum": "history",
+        "name": "Музей Императорского православного палестинского общества",
+        "name:en": "Museum of Russian Emperor Palestine Society",
+        "name:ru": "Музей Императорского православного палестинского общества",
+        "opening_hours": "We,Fr 13:00-18:00; Sa 13:00-17:00",
+        "operator:type": "private",
+        "phone": "+7 495 7975595",
+        "reservation": "required",
+        "tourism": "museum",
+        "website": "http://ippo.ru/about/centre/1/1/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6381335,
+          55.7551257
+        ]
+      },
+      "id": "node/3500887936"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3500891969",
+        "museum": "person",
+        "name": "Музей Ю.В. Никулина",
+        "name:en": "Yurij Nikulin Museum",
+        "opening_hours": "Mo-Fr 10:00-18:00",
+        "operator:type": "private",
+        "tourism": "museum",
+        "website": "http://www.fond-nikulin.ru/o-muzee.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.633077,
+          55.7578004
+        ]
+      },
+      "id": "node/3500891969"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3501032524",
+        "museum": "history",
+        "name": "Археологический выставочный комплекс \"Старый \"Гостиный двор\"",
+        "tourism": "museum",
+        "website": "https://dkn.mos.ru/popularization/the-old-gostiny-dvor/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6277982,
+          55.7538794
+        ]
+      },
+      "id": "node/3501032524"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3501044091",
+        "fixme": "resurvey",
+        "museum": "person",
+        "name": "П. И. Чайковский и Москва",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5853551,
+          55.7581396
+        ]
+      },
+      "id": "node/3501044091"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3501050337",
+        "name": "Интерактивный музей \"Лунариум\"",
+        "tourism": "museum",
+        "website": "http://www.planetarium-moscow.ru/in-the-planetarium/lunarium/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5836102,
+          55.7610315
+        ]
+      },
+      "id": "node/3501050337"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3501078381",
+        "museum": "speciality",
+        "name": "Педагогический музей А.С.Макаренко",
+        "tourism": "museum",
+        "website": "http://www.makarenko-museum.narod.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4330928,
+          55.7299494
+        ]
+      },
+      "id": "node/3501078381"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3501090950",
+        "museum": "children",
+        "name": "Музей барона Мюнхгаузена",
+        "tourism": "museum",
+        "website": "http://www.museum.ru/M3082"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.481038,
+          55.7719604
+        ]
+      },
+      "id": "node/3501090950"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3501092305",
+        "name": "Самоцветы",
+        "tourism": "museum",
+        "website": "http://gemmuseum.ru/?object=static_page&id=1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4795144,
+          55.7810999
+        ]
+      },
+      "id": "node/3501092305"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3501093152",
+        "museum": "medicine",
+        "name": "Центральный музей им. Б.В.Зимина Всероссийского общества слепых",
+        "tourism": "museum",
+        "website": "http://www.ksrk.ru/1285829492056082.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5109055,
+          55.787592
+        ]
+      },
+      "id": "node/3501093152"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3501108218",
+        "email": "E.D.Kachanovskaya@mgts.ru",
+        "museum": "technology",
+        "name": "Музей истории телефонной связи МГТС",
+        "opening_hours": "Mo-Fr 10:00-16:00",
+        "phone": "+7 499 198 05 63",
+        "tourism": "museum",
+        "website": "https://help.mgts.ru/company/museum/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5034669,
+          55.7956302
+        ]
+      },
+      "id": "node/3501108218"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3501114729",
+        "museum": "war",
+        "name": "Музей памяти погибших воинов в Афганистане, Чечне и других горячих точках",
+        "tourism": "museum",
+        "website": "http://www.sovinformburo.com/terms/detail/?item_id=1005&type=1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4563707,
+          55.8099708
+        ]
+      },
+      "id": "node/3501114729"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3501119667",
+        "museum": "ethnography",
+        "name": "Музей истории евреев в России",
+        "name:en": "Russian Jewish History Museum",
+        "tourism": "museum",
+        "website": "http://www.mievr.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5605257,
+          55.793716
+        ]
+      },
+      "id": "node/3501119667"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3501148879",
+        "museum": "speciality",
+        "name": "Музей охоты и рыболовства",
+        "tourism": "museum",
+        "website": "http://rors-museum.ru/?page_id=76"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4887573,
+          55.8398495
+        ]
+      },
+      "id": "node/3501148879"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502556677",
+        "museum": "maritime",
+        "name": "Музей Морского космического флота",
+        "tourism": "museum",
+        "website": "http://ski-omer.ru/museum/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6299878,
+          55.7876993
+        ]
+      },
+      "id": "node/3502556677"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502560194",
+        "contact:vk": "https://vk.com/mb_mgpu",
+        "name": "Музей экономики и быта",
+        "phone": "+7 916 810 83 20",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4340882,
+          55.8434168
+        ]
+      },
+      "id": "node/3502560194"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502599105",
+        "museum": "money",
+        "name": "Музей денег",
+        "name:en": "Money Museum",
+        "name:ru": "Музей денег",
+        "opening_hours": "Mo-Fr 10:00-18:00; Sa-Su 11:00-19:00",
+        "phone": "+7 499 6529456",
+        "tourism": "museum",
+        "website": "http://muzeydeneg.ru/contacts/",
+        "wikidata": "Q16678430",
+        "wikipedia": "ru:Музей денег (Москва)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4656142,
+          55.8578944
+        ]
+      },
+      "id": "node/3502599105"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502676039",
+        "contact:email": "webmaster@deol.ru",
+        "contact:phone": "+7 495 9761003",
+        "contact:website": "http://www.deol.ru/culture/museum/koni.htm",
+        "museum": "agriculture",
+        "name": "Научно-художественный музей коневодства",
+        "opening_hours": "Mo-Th 10:00-17:00; Fr 10:00-16:00",
+        "tourism": "museum",
+        "website": "https://www.timacad.ru/departments/museum/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.553283,
+          55.8305994
+        ]
+      },
+      "id": "node/3502676039"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502683505",
+        "addr:housenumber": "2 к1",
+        "addr:street": "Алтуфьевское шоссе",
+        "museum": "ethnography",
+        "name": "Музей русского костюма",
+        "phone": "+7 495 9733364",
+        "tourism": "museum",
+        "website": "http://www.mosstarina.narod.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5871807,
+          55.8489299
+        ]
+      },
+      "id": "node/3502683505"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502818838",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "museum": "technology",
+        "name": "Музей истории телефона",
+        "name:en": "The Museum of Telephone History",
+        "opening_hours": "Tu-Su 10:00-18:00; Th 12:00-20:00",
+        "phone": "+7 495 8001330",
+        "tourism": "museum",
+        "website": "http://www.telhistory.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5879818,
+          55.7649901
+        ]
+      },
+      "id": "node/3502818838"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502825887",
+        "museum": "toys",
+        "name": "Музей народной игрушки \"Забавушка\"",
+        "phone": "+7 499 1612618",
+        "tourism": "museum",
+        "website": "http://www.zabawushka.ru/",
+        "wikidata": "Q19908959"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7332167,
+          55.79666
+        ]
+      },
+      "id": "node/3502825887"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502875291",
+        "fee": "yes",
+        "museum": "maritime",
+        "name": "Музей истории Российского флота",
+        "tourism": "museum",
+        "website": "http://www.kremlin-izmailovo.com/muzei/muzey-istorii-rossiyskogo-flota"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7517782,
+          55.7944017
+        ]
+      },
+      "id": "node/3502875291"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502875292",
+        "fee": "yes",
+        "name": "Музей янтаря",
+        "name:es": "Museo del ambar",
+        "name:ru": "Музей янтаря",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7510901,
+          55.7939815
+        ]
+      },
+      "id": "node/3502875292"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502875693",
+        "fee": "yes",
+        "name": "Музей колоколов",
+        "name:pt": "Museu Antôn Kolokolov (artista Russo)",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7519522,
+          55.7941171
+        ]
+      },
+      "id": "node/3502875693"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502875694",
+        "fee": "yes",
+        "museum": "ethnography",
+        "name": "Музей национального костюма",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7519126,
+          55.7942772
+        ]
+      },
+      "id": "node/3502875694"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502875695",
+        "fee": "yes",
+        "museum": "toys",
+        "name": "Музей русской игрушки",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7505642,
+          55.7945951
+        ]
+      },
+      "id": "node/3502875695"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502875696",
+        "fee": "yes",
+        "museum": "literature",
+        "name": "Музей русской сказки",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7511613,
+          55.7945462
+        ]
+      },
+      "id": "node/3502875696"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502875697",
+        "addr:housenumber": "73Ж",
+        "addr:postcode": "105187",
+        "addr:street": "Измайловское шоссе",
+        "email": "museumvodka@kremlin-izmailovo.com",
+        "fee": "yes",
+        "museum": "food",
+        "name": "Музей истории водки",
+        "name:en": "Museum of vodka history",
+        "name:pt": "Museu de historia da Vodka",
+        "opening_hours": "Mo-Su 10:00-20:00",
+        "phone": "+7 499 1665097",
+        "tourism": "museum",
+        "website": "http://www.vodkamuseum.ru/",
+        "wikidata": "Q4306311"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.750584,
+          55.7940393
+        ]
+      },
+      "id": "node/3502875697"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502875698",
+        "fee": "yes",
+        "museum": "food",
+        "name": "Музей хлеба",
+        "name:en": "Musuem of Bread",
+        "tourism": "museum",
+        "website": "http://www.kremlin-izmailovo.com/muzei/muzey-hleba"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7495321,
+          55.794126
+        ]
+      },
+      "id": "node/3502875698"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502875699",
+        "addr:housenumber": "73Ж",
+        "addr:street": "Измайловское шоссе",
+        "fee": "yes",
+        "museum": "history",
+        "name": "Всемирная история в пластилине",
+        "opening_hours": "Mo-Su 10:00-18:00",
+        "phone": "+7 903 7464140",
+        "tourism": "museum",
+        "website": "http://plastmuseum.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7518467,
+          55.7940335
+        ]
+      },
+      "id": "node/3502875699"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502923947",
+        "museum": "military",
+        "name": "Центральный музей войск национальной гвардии Российской Федерации",
+        "opening_hours": "Mo-Su 09:00-18:00; We off",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.698035,
+          55.7600885
+        ]
+      },
+      "id": "node/3502923947"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502941745",
+        "check_date": "2022-05-25",
+        "museum": "person",
+        "name": "Музей-квартира А.М. Васнецова",
+        "opening_hours": "Tu-Sa 10:00-17:00",
+        "phone": "+7 495 6089045",
+        "tourism": "museum",
+        "website": "http://www.tretyakovgallery.ru/ru/visitors/address/flatamvasn/",
+        "wikidata": "Q21636752",
+        "wikipedia": "ru:Мемориальный музей-квартира А. М. Васнецова"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6487268,
+          55.7637956
+        ]
+      },
+      "id": "node/3502941745"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502959734",
+        "museum": "military",
+        "name": "Музей службы внешней разведки",
+        "phone": "+7 495 6731729",
+        "tourism": "museum",
+        "website": "https://mfua.ru/_public/svr/gal5.php"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7163464,
+          55.7468011
+        ]
+      },
+      "id": "node/3502959734"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3502990779",
+        "contact:phone": "+7 916 5133148",
+        "contact:website": "http://nomadic.ru/",
+        "museum": "ethnography",
+        "name": "Музей кочевой культуры",
+        "opening_hours": "Tu-Su 10:00-19:00; Th off",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7195663,
+          55.7447338
+        ]
+      },
+      "id": "node/3502990779"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3503033016",
+        "museum": "speciality",
+        "name": "Музей предпринимателей, меценатов и благотворителей",
+        "note": "В выходные музей работает только по предварительной договоренности",
+        "opening_hours": "Mo-Fr 13:00-18:00",
+        "phone": "+7 499 2375349",
+        "tourism": "museum",
+        "website": "http://muzeum.me/index.php"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6088853,
+          55.7246933
+        ]
+      },
+      "id": "node/3503033016"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3503058809",
+        "group_only": "yes",
+        "museum": "speciality",
+        "name": "Московский музей образования",
+        "note": "Только экскурсионное обслуживание по предварительной договоренности",
+        "opening_hours": "Mo-Su 11:00-17:00; Fr off; Th[1] off",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6298234,
+          55.7360348
+        ]
+      },
+      "id": "node/3503058809"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3503097494",
+        "fee": "yes",
+        "museum": "person",
+        "name": "Музей Игоря Талькова",
+        "opening_hours": "We-Sa 12:00-18:00; Su 12:00-17:00",
+        "tourism": "museum",
+        "website": "http://www.talkov.su/museum.php",
+        "wikidata": "Q4306133"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6262588,
+          55.7436562
+        ]
+      },
+      "id": "node/3503097494"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3503118696",
+        "museum": "local",
+        "name": "Экоцентр «Воробьёвы горы»",
+        "note": "Со вторника по пятницу проводятся экскурсии для организованных групп (школьных классов). Самостоятельных посетителей Экоцентр приглашает по выходным.",
+        "opening_hours": "Tu-Su 10:00-18:00",
+        "phone": "+7 495 2256592",
+        "tourism": "museum",
+        "website": "http://www.ecocenter-vg.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5774275,
+          55.7125565
+        ]
+      },
+      "id": "node/3503118696"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3503120479",
+        "access": "customers",
+        "level": "1",
+        "museum": "person",
+        "name": "Музей-кабинет П. Л. Капицы",
+        "name:en": "Peter Kapitza Memorial Museum-Study",
+        "name:ru": "Музей-кабинет П. Л. Капицы",
+        "start_date": "1985-04-08",
+        "tourism": "museum",
+        "website": "http://www.kapitza.ras.ru/museum/index.htm"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5732882,
+          55.709914
+        ]
+      },
+      "id": "node/3503120479"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3503130075",
+        "museum": "person",
+        "name": "Мемориальный кабинет-музей академика А.П. Виноградова",
+        "note": "Только экскурсионное обслуживание по предварительной договоренности",
+        "opening_hours": "Mo-Fr 10:00-18:00",
+        "phone": "+7 495 9397700",
+        "start_date": "1975-12-25",
+        "subject:wikidata": "Q907372",
+        "subject:wikipedia": "ru:Виноградов, Александр Павлович",
+        "tourism": "museum",
+        "website": "http://www.museum.ru/M1635"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5496523,
+          55.7053245
+        ]
+      },
+      "id": "node/3503130075"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3503152531",
+        "name": "Музей традиционных русских напитков",
+        "note": "Экскурсии проводятся только по предварительной записи",
+        "opening_hours": "Mo-Sa 09:00-18:00",
+        "phone": "+7 495 7853907",
+        "tourism": "museum",
+        "website": "https://www.ochakovo.ru/museum/",
+        "wikidata": "Q19910187",
+        "wikipedia": "ru:Музей традиционных русских напитков"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4347453,
+          55.6745198
+        ]
+      },
+      "id": "node/3503152531"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3504855620",
+        "fixme": "resurvey",
+        "name": "Родные истоки",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7458006,
+          55.7020943
+        ]
+      },
+      "id": "node/3504855620"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3504886574",
+        "museum": "military",
+        "name": "Победные дни России",
+        "source": "http://veshnyaki.org/publ/1-1-0-9",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8177448,
+          55.7202157
+        ]
+      },
+      "id": "node/3504886574"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3504985010",
+        "museum": "history",
+        "name": "Мытищинский историко-художественный музей",
+        "opening_hours": "We-Sa 09:00-17:00; Su 09:00-16:00; Fr[-1] off",
+        "phone": "+7 495 5865298",
+        "tourism": "museum",
+        "website": "http://www.museum.ru/m476"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7356398,
+          55.9112688
+        ]
+      },
+      "id": "node/3504985010"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3505168409",
+        "fee": "yes",
+        "name": "Музей лаковой миниатюры",
+        "note": "Групповые экскурсии",
+        "opening_hours": "Mo-Su 10:00-17:00",
+        "phone": "+7 495 5779955",
+        "tourism": "museum",
+        "website": "http://fedoskino.net/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5837115,
+          56.0552466
+        ]
+      },
+      "id": "node/3505168409"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3524071171",
+        "email": "pdls_mbuikmuzey@mosreg.ru",
+        "name": "Климовский историко-краеведческий музей",
+        "official_name": "МБУ «Климовский историко-краеведческий музей»",
+        "opening_hours": "Mo-Sa 08:00-18:00",
+        "phone": "8 (4967) 62-80-04",
+        "tourism": "museum",
+        "website": "http://икм-климовск.рф/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5374204,
+          55.3686638
+        ]
+      },
+      "id": "node/3524071171"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3554560005",
+        "alt_name": "Музей Анатолия Зверева",
+        "contact:facebook": "https://www.facebook.com/museumAZ",
+        "contact:phone": "+7 495 7305526",
+        "contact:website": "http://www.museum-az.com",
+        "fee": "yes",
+        "name": "Музей АЗ",
+        "name:en": "Anatoly Zverev Museum",
+        "opening_hours": "Tu-Su 12:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5938887,
+          55.7722158
+        ]
+      },
+      "id": "node/3554560005"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3617974593",
+        "name": "Выставочный зал",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4372707,
+          55.7825003
+        ]
+      },
+      "id": "node/3617974593"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3621783485",
+        "fee": "yes",
+        "museum": "military",
+        "name": "Открытая площадка военной техники 30-40-х гг. XX века",
+        "opening_hours": "Oct-Mar PH,Tu-Su 10:00-18:30; Apr-Sep PH,Tu-Su 10:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4996805,
+          55.7280694
+        ]
+      },
+      "id": "node/3621783485"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3629441192",
+        "name": "Выставка пожарного оборудования",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.867354,
+          55.9194516
+        ]
+      },
+      "id": "node/3629441192"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3642951585",
+        "name": "Школьный музей \"Рыцари в мундирах\"",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.025981,
+          55.7407574
+        ]
+      },
+      "id": "node/3642951585"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3670575655",
+        "name": "Картинная галерея",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.1446517,
+          56.1138793
+        ]
+      },
+      "id": "node/3670575655"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3670614109",
+        "name": "Музей подносов в Жостово",
+        "tourism": "museum",
+        "website": "https://zhostovo.ru/rus/museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6445656,
+          56.0074343
+        ]
+      },
+      "id": "node/3670614109"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3670659969",
+        "name": "Музей ЗАО «Объединение Гжель»",
+        "note": "Посетители обслуживаются только по предварительной записи. Есть мастер-классы - лепка и роспись.",
+        "phone": "+7 499 5538383",
+        "tourism": "museum",
+        "website": "http://www.gzhel.ru/dir/51"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.5080072,
+          55.5861923
+        ]
+      },
+      "id": "node/3670659969"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3744335329",
+        "addr:city": "Люберцы",
+        "museum": "local",
+        "name": "По ленинским местам",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8918359,
+          55.6837287
+        ]
+      },
+      "id": "node/3744335329"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3749077353",
+        "contact:phone": "+7 495 2338212",
+        "contact:website": "http://www.chocoandcacao.ru",
+        "museum": "food",
+        "name": "Музей шоколада",
+        "official_name": "Музей истории русского шоколада",
+        "opening_hours": "Tu-Su 11:00-19:00",
+        "short_name": "М. И. Р. Шоколада",
+        "tourism": "museum",
+        "wikidata": "Q21043170",
+        "wikipedia": "ru:Музей шоколада (Москва)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5939699,
+          55.770182
+        ]
+      },
+      "id": "node/3749077353"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3794298653",
+        "contact:website": "http://ruchess.ru/chess_in_museums/museums/museum_tsdsh",
+        "museum": "speciality",
+        "name": "Музей шахмат Российской шахматной федерации",
+        "tourism": "museum",
+        "wikidata": "Q18785984",
+        "wikipedia": "ru:Музей шахмат"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6004296,
+          55.7477911
+        ]
+      },
+      "id": "node/3794298653"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3865094589",
+        "museum": "history",
+        "name": "Музей истории зоопарка",
+        "name:de": "Museum der Geschichte des Zoos",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.575478,
+          55.7627819
+        ]
+      },
+      "id": "node/3865094589"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3876474244",
+        "contact:email": "0rub@15kop.ru",
+        "contact:website": "http://www.15kop.ru",
+        "museum": "history",
+        "name": "Музей советских игровых автоматов",
+        "name:de": "Museum der sowjetischen Arcade Maschinen",
+        "name:en": "Museum of Soviet arcade machines",
+        "opening_hours": "Tu-Su 10:00-21:00",
+        "start_date": "2007-04-13",
+        "tourism": "museum",
+        "wikidata": "Q16895567",
+        "wikipedia": "ru:Музей советских игровых автоматов"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6267796,
+          55.8337789
+        ]
+      },
+      "id": "node/3876474244"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3889873889",
+        "name": "Щёлковская художественная галерея",
+        "opening_hours": "Tu-Su 10:00-17:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9931053,
+          55.9201117
+        ]
+      },
+      "id": "node/3889873889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3890722601",
+        "name": "Дача-музей Маяковского",
+        "opening_hours": "Tu-Su 12:00-18:00",
+        "tourism": "museum",
+        "website": "http://www.акулова-гора.рф"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8139523,
+          56.0116259
+        ]
+      },
+      "id": "node/3890722601"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3923292385",
+        "museum": "agriculture",
+        "name": "Музей истории овощеводства защищённого грунта России",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.850529,
+          55.6604706
+        ]
+      },
+      "id": "node/3923292385"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3967634397",
+        "contact:email": "p-blagovest@yandex.ru",
+        "contact:fax": "+7 495 5568770",
+        "contact:phone": "+7 498 4829555",
+        "contact:website": "http://p-blagovest.ru/kollekciya-slonikov/",
+        "name": "Музей Слонов",
+        "opening_hours": "Mo-Su 10:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0866951,
+          55.6083994
+        ]
+      },
+      "id": "node/3967634397"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3967634398",
+        "contact:email": "p-blagovest@yandex.ru",
+        "contact:fax": "+7 495 5568770",
+        "contact:phone": "+7 498 4829555",
+        "contact:website": "http://p-blagovest.ru/musei-istoriya-Zhukovskogo/",
+        "name": "Музей авиации и космонавтики",
+        "opening_hours": "Mo-Su 10:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0867319,
+          55.6084387
+        ]
+      },
+      "id": "node/3967634398"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3967635880",
+        "contact:email": "p-blagovest@yandex.ru",
+        "contact:fax": "+7 495 5568770",
+        "contact:phone": "+7 498 4829555",
+        "contact:website": "http://p-blagovest.ru/istoriko-arheologicheskii-kabinet/",
+        "name": "Церковный историко-археологический кабинет",
+        "opening_hours": "Mo-Su 10:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0867723,
+          55.6084191
+        ]
+      },
+      "id": "node/3967635880"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3967637304",
+        "contact:email": "p-blagovest@yandex.ru",
+        "contact:fax": "+7 495 5568770",
+        "contact:phone": "+7 498 4829555",
+        "contact:website": "http://p-blagovest.ru/russkii-byt-narodnoe-tvorchestvo/",
+        "name": "Русский быт и народное творчество",
+        "opening_hours": "Mo-Su 10:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0868751,
+          55.6084103
+        ]
+      },
+      "id": "node/3967637304"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3967639961",
+        "contact:email": "p-blagovest@yandex.ru",
+        "contact:fax": "+7 495 5568770",
+        "contact:phone": "+7 498 4829555",
+        "contact:website": "http://p-blagovest.ru/musei-Teleshova/",
+        "name": "Музей Н.Д.Телешова",
+        "opening_hours": "Mo-Su 10:00-20:00",
+        "tourism": "museum",
+        "wikidata": "Q4454198",
+        "wikipedia": "ru:Телешов, Николай Дмитриевич"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0867949,
+          55.6083815
+        ]
+      },
+      "id": "node/3967639961"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3982039118",
+        "addr:housenumber": "9/13",
+        "addr:postcode": "115035",
+        "addr:street": "Черниговский переулок",
+        "museum": "food",
+        "name": "Музей пряника",
+        "opening_hours": "Mo-Su 10:00-20:00",
+        "phone": "+7 495 7228150",
+        "tourism": "museum",
+        "website": "http://музей-пряника.рф"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6102627,
+          55.7437685
+        ]
+      },
+      "id": "node/3982039118"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4088301220",
+        "museum": "person",
+        "name": "Мемориальная квартира-музей Е. Б. Вахтангова",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5878856,
+          55.7436859
+        ]
+      },
+      "id": "node/4088301220"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4097606933",
+        "name": "Музей отечественной военной истории",
+        "tourism": "museum",
+        "website": "http://www.kskdivniy.ru/museum/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.978932,
+          55.8256412
+        ]
+      },
+      "id": "node/4097606933"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4116418323",
+        "addr:housenumber": "3 с1",
+        "addr:postcode": "127015",
+        "addr:street": "Складочная улица",
+        "contact:email": "info@apple-museum.ru",
+        "contact:phone": "+7 915 1233527",
+        "contact:website": "http://apple-museum.ru",
+        "level": "2",
+        "museum": "technology",
+        "name": "Музей техники Apple",
+        "opening_hours": "Tu-Th 17:00-21:00; Sa,Su 12:00-18:00",
+        "tourism": "museum",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5902156,
+          55.8060829
+        ]
+      },
+      "id": "node/4116418323"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4118442289",
+        "contact:facebook": "https://www.facebook.com/esenin.museum",
+        "contact:instagram": "https://www.instagram.com/esenin.museum",
+        "contact:phone": "+7 495 9549764;+7 495 9581674;+7 495 9542077",
+        "contact:vk": "https://vk.com/esenin.museum",
+        "contact:website": "https://esenin-museum.ru/",
+        "contact:youtube": "https://www.youtube.com/user/eseninmuseum",
+        "museum": "person",
+        "name": "Московский государственный музей С. А. Есенина (филиал)",
+        "name:en": "The Yesenin Museum of Moscow",
+        "opening_hours": "We-Su 10:00-18:00; Th 13:00-21:00",
+        "tourism": "museum",
+        "wikidata": "Q4304081",
+        "wikipedia": "ru:Московский государственный музей С. А. Есенина"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6307776,
+          55.7266294
+        ]
+      },
+      "id": "node/4118442289"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4139540604",
+        "contact:phone": "+7 495 9531245",
+        "contact:website": "http://bakhrushin.theatre.ru/branches/mo",
+        "museum": "art",
+        "name": "Театральная галерея на Малой Ордынке",
+        "opening_hours": "We,Th 13:00-21:00; Fr-Su 12:00-19:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6258699,
+          55.7387307
+        ]
+      },
+      "id": "node/4139540604"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4197044090",
+        "addr:postcode": "129010",
+        "contact:phone": "+7 495 6081403",
+        "email": "museum-sk@mail.ru",
+        "museum": "local",
+        "name": "Садовое кольцо",
+        "name:de": "Gartenring",
+        "name:en": "Garden Ring",
+        "opening_hours": "Tu-We,Fr 10:00-18:00; Th 12:00-21:00; Sa-Su 11:00-18:00",
+        "tourism": "museum",
+        "website": "http://sadovoekoltso.com",
+        "wikidata": "Q30891205"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.632668,
+          55.7750692
+        ]
+      },
+      "id": "node/4197044090"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4250506199",
+        "name": "Музей оптических иллюзий",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6231656,
+          55.835162
+        ]
+      },
+      "id": "node/4250506199"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4268290189",
+        "contact:email": "musnaive@gmail.com",
+        "contact:phone": "+7 495 6085251",
+        "contact:website": "http://naive-museum.ru",
+        "museum": "art",
+        "name": "Музей русского лубка и наивного искусства",
+        "name:en": "Museum of russian lubok and naive art",
+        "opening_hours": "We,Fr 12:00-19:00; Th 12:00-21:00; Sa,Su 12:00-18:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7954339,
+          55.7960677
+        ]
+      },
+      "id": "node/4268290189"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4273939096",
+        "museum": "children",
+        "name": "Алисиум",
+        "opening_hours": "Tu-Fr 11:00-22:00; Sa-Su 12:00-22:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6049648,
+          55.761756
+        ]
+      },
+      "id": "node/4273939096"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4284641786",
+        "name": "Школьный музей \"Опалённая юность\"",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0959941,
+          55.6108461
+        ]
+      },
+      "id": "node/4284641786"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4308709106",
+        "contact:phone": "+7 495 6298552",
+        "museum": "person",
+        "name": "Музей — гуманитарный центр «Преодоление» имени Н.А.Островского",
+        "opening_hours": "Tu-Su 10:00-18:00; Th 13:00-21:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.607018,
+          55.7642483
+        ]
+      },
+      "id": "node/4308709106"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4311296093",
+        "name": "Музей оптических иллюзий",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5927836,
+          55.7503075
+        ]
+      },
+      "id": "node/4311296093"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4320799995",
+        "contact:website": "http://esenin-museum.ru",
+        "disused": "yes",
+        "museum": "person",
+        "name": "Московский государственный музей С. А. Есенина",
+        "tourism": "museum",
+        "wikidata": "Q4304081",
+        "wikipedia": "ru:Московский государственный музей С. А. Есенина"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6091568,
+          55.7821016
+        ]
+      },
+      "id": "node/4320799995"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4320816461",
+        "contact:email": "klyazma@esenin-museum.ru",
+        "contact:phone": "+7 495 4839515",
+        "contact:website": "http://esenin-museum.ru",
+        "museum": "person",
+        "name": "Московский государственный музей С.А. Есенина (филиал)",
+        "opening_hours": "Th 13:00-20:00; Fr-Su 11:00-18:00",
+        "tourism": "museum",
+        "wikidata": "Q4304081",
+        "wikipedia": "ru:Московский государственный музей С. А. Есенина"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.529104,
+          55.8932375
+        ]
+      },
+      "id": "node/4320816461"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4322816346",
+        "contact:email": "mlmc-kgp@mail.ru",
+        "contact:phone": "+7 499 1727791",
+        "contact:website": "http://www.mirpaustowskogo.ru",
+        "museum": "person",
+        "name": "Московский литературный музей-центр К. Г. Паустовского",
+        "name:en": "Moscow Literary Museum Centre of KG Paustovsky",
+        "official_name": "ГБУК г. Москвы «Московский литературный музей-центр К. Г. Паустовского»",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7888031,
+          55.6939222
+        ]
+      },
+      "id": "node/4322816346"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4322817538",
+        "contact:phone": "+7 495 3773593",
+        "museum": "food",
+        "name": "Музей мёда",
+        "opening_hours": "Tu-Su 10:00-17:30",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7881916,
+          55.6933643
+        ]
+      },
+      "id": "node/4322817538"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4322849512",
+        "contact:fax": "+7 495 9825743",
+        "contact:phone": "+7 495 9825797;+7 915 0276577",
+        "contact:website": "http://chokomuseum.ru",
+        "fee": "yes",
+        "museum": "food",
+        "name": "Музей истории шоколада и какао",
+        "opening_hours": "Mo-Su 09:30-17:30",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6593373,
+          55.7866193
+        ]
+      },
+      "id": "node/4322849512"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4330753486",
+        "name": "Музей крестьянского быта \"Жили-Были\"",
+        "name:en": "Russian Folk museum \"Zhili-Byli\"",
+        "phone": "+7 496 5429996",
+        "tourism": "museum",
+        "website": "https://m.vk.com/jili_bili_museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.1408596,
+          56.313199
+        ]
+      },
+      "id": "node/4330753486"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4385020794",
+        "name": "Мир тайн",
+        "name:ru": "Мир тайн",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6546088,
+          55.6228239
+        ]
+      },
+      "id": "node/4385020794"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4402371491",
+        "addr:housenumber": "48",
+        "addr:street": "Люблинская улица",
+        "internet_access": "wlan",
+        "museum": "art",
+        "name": "РОСИЗО",
+        "name:ru": "РОСИЗО",
+        "opening_hours": "Mo-Su 08:00-11:45,20:15-23:00",
+        "operator": "Министерство Культуры РФ",
+        "tourism": "museum",
+        "website": "http://rosizo.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7374812,
+          55.6808367
+        ]
+      },
+      "id": "node/4402371491"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4462006506",
+        "museum": "military",
+        "name": "Школьный музей 2-й Дивизии Народного Ополчения",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7236135,
+          55.7805004
+        ]
+      },
+      "id": "node/4462006506"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4491847389",
+        "contact:phone": "+7 495 6958346",
+        "contact:website": "http://www.sviatoslav-richter.ru",
+        "level": "16",
+        "museum": "person",
+        "name": "Мемориальная квартира Святослава Рихтера",
+        "opening_hours": "We-Sa 14:00-20:00; Su 12:00-18:00",
+        "reservation": "required",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.597407,
+          55.7599628
+        ]
+      },
+      "id": "node/4491847389"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4511029489",
+        "addr:postcode": "141731",
+        "name": "Музей истории города Лобня",
+        "name:ru": "Музей истории города Лобня",
+        "opening_hours": "Tu-Sa 10:00-18:00",
+        "tourism": "museum",
+        "website": "http://museum-lobnya.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4725621,
+          56.0238337
+        ]
+      },
+      "id": "node/4511029489"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4518520587",
+        "museum": "local",
+        "name": "Музей истории усадьбы Кузьминки",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.793434,
+          55.6900474
+        ]
+      },
+      "id": "node/4518520587"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4579285186",
+        "contact:phone": "+7 499 3216461",
+        "contact:website": "http://gup.mosmetro.ru/o-metropolitene/prof-center",
+        "layer": "-2",
+        "museum": "speciality",
+        "name": "Центр профориентации Московского метрополитена",
+        "note": "несмотря на название, это именно музей, см. сайт",
+        "opening_hours": "Mo-Su 10:00-18:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5405621,
+          55.7499753
+        ]
+      },
+      "id": "node/4579285186"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4618306013",
+        "name": "101-й километр",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7208639,
+          56.3954672
+        ]
+      },
+      "id": "node/4618306013"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4618311166",
+        "name": "Музей советских игровых автоматов «Ретро»",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7308448,
+          56.3975507
+        ]
+      },
+      "id": "node/4618311166"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4621388189",
+        "addr:housenumber": "8",
+        "addr:street": "Речная улица",
+        "email": "museum@zenit-kmz.ru",
+        "museum": "technology",
+        "name": "Музей ПАО КМЗ",
+        "name:en": "JSC KMZ museum",
+        "name:ru": "Музей ПАО КМЗ",
+        "opening_hours": "Mo-Fr 10:00-12:00",
+        "tourism": "museum",
+        "website": "https://www.zenit-kmz.com/museum/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3315264,
+          55.831234
+        ]
+      },
+      "id": "node/4621388189"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4625222504",
+        "museum": "local",
+        "name": "Районный краеведческий музей \"Ивановское\"",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.832787,
+          55.7724825
+        ]
+      },
+      "id": "node/4625222504"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4658944491",
+        "charge": "200₽",
+        "contact:email": "info@moscowmanege.ru",
+        "contact:phone": "+7 495 6835640;+7 495 6836196",
+        "contact:website": "http://moscowmanege.ru/ru/o-ploshhadke-rabochij-i-kolxoznica/",
+        "fee": "yes",
+        "museum": "history",
+        "name": "Выставочный центр «Рабочий и колхозница»",
+        "note": "Вынесено отдельной точкой, чтобы указать start_date начала работы музея, а не постройки здания",
+        "opening_hours": "12:00-21:00; 12:00-20:30 \"кассы открыты\"; Mo off",
+        "start_date": "2010-09-04",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6466116,
+          55.8281593
+        ]
+      },
+      "id": "node/4658944491"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4688642872",
+        "contact:phone": "+7 495 5614332",
+        "name": "Музей Дворцового села Ильинское",
+        "reservation": "required",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.2342337,
+          55.7584994
+        ]
+      },
+      "id": "node/4688642872"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4692951498",
+        "contact:phone": "+7 495 6905130",
+        "contact:website": "http://www.museum.ru/M402",
+        "museum": "person",
+        "name": "Мемориальный музей-квартира А. М. Горького",
+        "name:en": "Gorky Museum",
+        "name:ru": "Мемориальный музей-квартира А. М. Горького",
+        "opening_hours": "We-Su 11:00-17:30",
+        "tourism": "museum",
+        "wikidata": "Q16678355",
+        "wikipedia": "ru:Музей-квартира А. М. Горького (Москва)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5963004,
+          55.7582421
+        ]
+      },
+      "id": "node/4692951498"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4719450733",
+        "museum": "history",
+        "name": "Музей истории агрофирмы \"Белая Дача\"",
+        "opening_hours": "Mo-Fr 09:00-19:00; Sa-Su 09:00-15:00",
+        "tourism": "museum",
+        "website": "http://www.zya.ru/dosug/dosug_offers/?id_realty_object=48473"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8503854,
+          55.6604653
+        ]
+      },
+      "id": "node/4719450733"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4729018560",
+        "contact:website": "http://mgsu.ru/resources/MuzeyMisi-Mgsu/",
+        "museum": "architecture",
+        "start_date": "1972-12",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6939275,
+          55.8589937
+        ]
+      },
+      "id": "node/4729018560"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4736041824",
+        "museum": "person",
+        "name": "Дом-музей Зураба Церетели",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3230646,
+          55.6504912
+        ]
+      },
+      "id": "node/4736041824"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4749731883",
+        "contact:phone": "+7 967 1505287",
+        "museum": "speciality",
+        "name": "Музей ОСАО «Ингосстрах»",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6265752,
+          55.7430911
+        ]
+      },
+      "id": "node/4749731883"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4855090521",
+        "addr:postcode": "601010",
+        "name": "Киржачский районный историко-краеведческий и художественный музей",
+        "opening_hours": "Tu-Su 10:00-17:00",
+        "phone": "+74923723658",
+        "start_date": "1991",
+        "tourism": "museum",
+        "website": "http://kirzhach-muzeum.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8767914,
+          56.1634426
+        ]
+      },
+      "id": "node/4855090521"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4887671022",
+        "email": "info@tatintsian.com",
+        "museum": "art",
+        "name": "Галерея Гари Татинцяна",
+        "name:en": "Gary Tatinsian Gallery",
+        "name:ru": "Галерея Гари Татинцяна",
+        "opening_hours": "Tu-Fr 12:00-20:00; Sa 12:00-18:00",
+        "phone": "+7 495 6454404",
+        "tourism": "museum",
+        "website": "http://tatintsian.com",
+        "wikidata": "Q21857513",
+        "wikipedia": "ru:Галерея Гари Татинцяна"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6499987,
+          55.7500257
+        ]
+      },
+      "id": "node/4887671022"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4893434587",
+        "name": "Флигель \"Людская\"",
+        "start_date": "1870-ые",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9683171,
+          56.2339502
+        ]
+      },
+      "id": "node/4893434587"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4924657143",
+        "museum": "person",
+        "name": "Литературный музей им. Ф. И. Тютчева",
+        "note": "В помещении библиотеки",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9373718,
+          55.7961168
+        ]
+      },
+      "id": "node/4924657143"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4932922184",
+        "email": "muzey-mchs@yandex.ru",
+        "museum": "speciality",
+        "name": "Музейно-просветительский центр МЧС России",
+        "opening_hours": "Tu-Su 09:00-18:00",
+        "phone": "+7 495 9837770",
+        "tourism": "museum",
+        "website": "http://museum.mchs.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4709588,
+          55.7419942
+        ]
+      },
+      "id": "node/4932922184"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4968591074",
+        "museum": "local",
+        "name": "Школьный историко-краеведческий музей \"История образования в городе Реутове\"",
+        "start_date": "2007-02-27",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8477658,
+          55.7729008
+        ]
+      },
+      "id": "node/4968591074"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4988219028",
+        "addr:street": "Манежная улица",
+        "name": "Алмазный фонд",
+        "name:ca": "Fons de Diamants",
+        "name:en": "Diamond Fund",
+        "name:ru": "Алмазный фонд",
+        "name:zh": "钻石馆",
+        "opening_hours": "Fr-We 10:00-13:00,14:00-17:00",
+        "phone": "+7 495 6292036",
+        "tourism": "museum",
+        "website": "http://www.gokhran.ru",
+        "wikidata": "Q2628618",
+        "wikipedia": "ru:Алмазный фонд"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.613758,
+          55.749614
+        ]
+      },
+      "id": "node/4988219028"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4994579237",
+        "name": "РотФронт",
+        "tourism": "museum",
+        "website": "https://www.uniconf.ru/about/museums/rot-front/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6319684,
+          55.7339135
+        ]
+      },
+      "id": "node/4994579237"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5001122029",
+        "museum": "person",
+        "name": "Школьный музей С. М. Прокудина-Горского",
+        "start_date": "25/09/2016",
+        "tourism": "museum",
+        "website": "http://p-g-museum.org"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5694882,
+          55.7674857
+        ]
+      },
+      "id": "node/5001122029"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5015396706",
+        "museum": "person",
+        "name": "Музей-квартира Владимира Маяковского",
+        "name:en": "Vladimir Mayakovsky appartment museum",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5667123,
+          55.7626492
+        ]
+      },
+      "id": "node/5015396706"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5020038208",
+        "addr:city": "Москва",
+        "addr:housenumber": "4",
+        "addr:postcode": "109012",
+        "addr:street": "улица Ильинка",
+        "email": "vistavki@fashion-museum.ru",
+        "museum": "design",
+        "museum_type": "municipal",
+        "name": "Музей Моды",
+        "name:de": "Modemuseum, Museum und Ausstellungszentrum",
+        "name:en": "Fashion Museum",
+        "opening_hours": "Su,Tu 11:00-19:00; We,Sa 12:00-20:00; Th-Fr 13:00-21:00",
+        "phone": "+7 499 2704261",
+        "tourism": "museum",
+        "website": "http://fashion-museum.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6250488,
+          55.754494
+        ]
+      },
+      "id": "node/5020038208"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5022259604",
+        "level": "-1",
+        "museum": "history",
+        "name": "Подземный музей",
+        "name:en": "Underground Museum",
+        "name:ru": "Подземный музей",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6288121,
+          55.7500056
+        ]
+      },
+      "id": "node/5022259604"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5022284106",
+        "addr:housenumber": "10 к3",
+        "addr:street": "улица Миклухо-Маклая",
+        "museum": "history",
+        "name": "Музей истории РУДН",
+        "opening_hours": "Mo-Fr 10:00-13:00,14:00-19:00",
+        "phone": "+7 495 7873803 доб. 1152",
+        "tourism": "museum",
+        "website": "http://www.rudn.ru/?pagec=2833"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5033447,
+          55.6493583
+        ]
+      },
+      "id": "node/5022284106"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5040880586",
+        "museum": "railway",
+        "name": "Музей Московской окружной железной дороги",
+        "short_name": "Музей МОЖД",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5176004,
+          55.7668259
+        ]
+      },
+      "id": "node/5040880586"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5054946060",
+        "contact:phone": "+7 925 1311906",
+        "contact:website": "http://museumkadashi.com",
+        "museum": "local",
+        "name": "Кадашевская слобода",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6229033,
+          55.7430156
+        ]
+      },
+      "id": "node/5054946060"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5067441874",
+        "contact:website": "http://park.sokolniki.com/about/museum/",
+        "museum": "local",
+        "name": "Музей парка \"Сокольники\"",
+        "opening_hours": "Tu-Su 10:00-13:00, 14:00-17:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6767161,
+          55.7923649
+        ]
+      },
+      "id": "node/5067441874"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5073205785",
+        "addr:city": "Москва",
+        "addr:housenumber": "6Б",
+        "addr:street": "Саянская улица",
+        "contact:phone": "+7 495 3059180 ; +7 963 7163533",
+        "contact:website": "https://integratsiacc.ru/",
+        "name": "Культурный центр «Интеграция» на Саянской",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8277701,
+          55.7671229
+        ]
+      },
+      "id": "node/5073205785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5073205788",
+        "addr:housenumber": "8 к2",
+        "addr:postcode": "125009",
+        "museum": "person",
+        "name": "Музей-мастерская народного художника СССР Д.А. Налбандяна",
+        "name:en": "The Museum-Studio of people's painter of the USSR Dmitry Nalbandyan",
+        "opening_hours": "We-Su 12:00-19:00",
+        "phone": "+7 495 6292872",
+        "tourism": "museum",
+        "website": "http://mmoma.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6111323,
+          55.7626272
+        ]
+      },
+      "id": "node/5073205788"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5108493980",
+        "museum": "medicine",
+        "name": "Музей скорой помощи",
+        "name:ru": "Музей скорой помощи",
+        "official_name": "Музей скорой и неотложной медицинской помощи им. А. С. Пучкова",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6373166,
+          55.7737618
+        ]
+      },
+      "id": "node/5108493980"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5158007925",
+        "name": "Самоцветы мира",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5231492,
+          56.3457696
+        ]
+      },
+      "id": "node/5158007925"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5164523568",
+        "name": "Музейно-выставочный комплекс «Княжий двор»",
+        "tourism": "museum",
+        "website": "http://kdmuseum.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6467826,
+          55.8178132
+        ]
+      },
+      "id": "node/5164523568"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5177441732",
+        "contact:email": "museikino@museikino.ru",
+        "contact:facebook": "https://www.facebook.com/Museikino.ru/",
+        "contact:instagram": "https://www.instagram.com/museikino.ru/",
+        "contact:phone": "+7 495 7488684;+7 495 7488683",
+        "contact:vk": "https://vk.com/cinemuseum",
+        "contact:website": "http://www.museikino.ru/",
+        "museum": "cinema",
+        "name": "Музей кино",
+        "start_date": "2017-10-19",
+        "tourism": "museum",
+        "wikidata": "Q4146998",
+        "wikipedia": "ru:Государственный центральный музей кино"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6167881,
+          55.8396088
+        ]
+      },
+      "id": "node/5177441732"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5180914982",
+        "fee": "yes",
+        "museum": "food",
+        "name": "Музей шоколада",
+        "name:en": "Musuem of Chocolate",
+        "tourism": "museum",
+        "website": "http://www.muzeyshokolada.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7507778,
+          55.794583
+        ]
+      },
+      "id": "node/5180914982"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5181346005",
+        "addr:city": "Москва",
+        "addr:housenumber": "17",
+        "addr:postcode": "125009",
+        "addr:street": "Тверская улица",
+        "museum": "person",
+        "name": "Музей-квартира А. Б. Гольденвейзера",
+        "name:en": "Goldenweiser Memorial Apartment",
+        "tourism": "museum",
+        "website": "http://glinka.museum/contacts/muzey-kvartira-a-b-goldenveyzera-.php"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6070257,
+          55.7632313
+        ]
+      },
+      "id": "node/5181346005"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5181397887",
+        "addr:city": "Москва",
+        "addr:housenumber": "7",
+        "addr:postcode": "125009",
+        "addr:street": "Брюсов переулок",
+        "contact:phone": "+7 495 6056515-1176",
+        "contact:website": "https://music-museum.ru",
+        "museum": "person",
+        "name": "Музей-квартира Н.С. Голованова",
+        "name:en": "Golovanov Memorial Apartment",
+        "opening_hours": "Tu-Sa 11:00-19:00; Th,Fr 13:00-21:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6058437,
+          55.7583598
+        ]
+      },
+      "id": "node/5181397887"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5181722723",
+        "museum": "maritime",
+        "name": "Сокольники и Флот",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6871086,
+          55.7978096
+        ]
+      },
+      "id": "node/5181722723"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5233122349",
+        "name": "Дом-музей семьи А. И. Морозова",
+        "name:en": "Morozov family museum manor",
+        "phone": "+7 926 9149790",
+        "tourism": "museum",
+        "website": "http://дом-музей-морозова.рф"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4648385,
+          55.8809782
+        ]
+      },
+      "id": "node/5233122349"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5241838822",
+        "level": "3",
+        "name": "Чулковский школьный краеведческий музей",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.039431,
+          55.5636006
+        ]
+      },
+      "id": "node/5241838822"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5332088685",
+        "contact:phone": "+7 499 2416197",
+        "contact:website": "http://www.gctm.ru/branch/mmm/",
+        "museum": "person",
+        "name": "Музей-квартира актерской семьи М. В., А. А. Мироновых — А. С. Менакера",
+        "opening_hours": "We-Su 12:00-19:00; Th 13:00-21:00",
+        "reservation": "required",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5926681,
+          55.7463526
+        ]
+      },
+      "id": "node/5332088685"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5366587317",
+        "museum": "local",
+        "name": "Усадьба коломенского крестьянина",
+        "name:en": "Kolomenskoye peasant's farm",
+        "name:ru": "Усадьба коломенского крестьянина",
+        "opening_hours": "Tu-Su 10:00-18:00",
+        "operator": "Московский государственный объединённый музей-заповедник Коломенское",
+        "phone": "+7 499 7828917;+7 499 7828921",
+        "tourism": "museum",
+        "website": "http://www.mgomz.ru",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6706919,
+          55.6739135
+        ]
+      },
+      "id": "node/5366587317"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5366588722",
+        "museum": "local",
+        "name": "Усадьба кузнеца",
+        "name:en": "Smith’s Yard",
+        "name:ru": "Усадьба кузнеца",
+        "opening_hours": "Tu-Su 10:00-18:00",
+        "operator": "Московский государственный объединённый музей-заповедник Коломенское",
+        "phone": "+7 499 7828917;+7 499 7828921",
+        "tourism": "museum",
+        "website": "http://www.mgomz.ru",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6713871,
+          55.6748163
+        ]
+      },
+      "id": "node/5366588722"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5366770763",
+        "name": "Соколиный двор",
+        "name:en": "Falcon yard",
+        "name:ru": "Соколиный двор",
+        "opening_hours": "Tu-Su 10:00-18:00",
+        "operator": "Московский государственный объединённый музей-заповедник Коломенское",
+        "phone": "+7 499 7828917;+7 499 7828921",
+        "tourism": "museum",
+        "website": "http://www.mgomz.ru",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6808513,
+          55.671994
+        ]
+      },
+      "id": "node/5366770763"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5366770779",
+        "museum": "history",
+        "name": "Водяная мельница",
+        "name:en": "Water Mill on the Zhuzha River",
+        "name:ru": "Водяная мельница",
+        "opening_hours": "We-Fr 10:00-18:00; Sa 11:00-19:00; Su 10:00-18:00",
+        "operator": "Московский государственный объединённый музей-заповедник Коломенское",
+        "phone": "+7 499 7828917;+7 499 7828921",
+        "tourism": "museum",
+        "website": "http://www.mgomz.ru",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6802759,
+          55.6721094
+        ]
+      },
+      "id": "node/5366770779"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5366770786",
+        "museum": "person",
+        "name": "Голландский домик царя Петра I",
+        "name:en": "The House of Tsar Peter I from Holland",
+        "name:ru": "Голландский домик царя Петра I",
+        "opening_hours": "We-Fr 10:00-18:00; Sa 11:00-19:00; Su 10:00-18:00",
+        "operator": "Московский государственный объединённый музей-заповедник Коломенское",
+        "phone": "+7 499 7828917;+7 499 7828921",
+        "tourism": "museum",
+        "website": "http://www.mgomz.ru",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.679586,
+          55.6720674
+        ]
+      },
+      "id": "node/5366770786"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5371334147",
+        "contact:phone": "+7 985 7841049",
+        "contact:website": "https://www.jelezomuzey.com/",
+        "description": "Музей изделей из металла",
+        "name": "Железное царство",
+        "reservation": "required",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3022255,
+          55.8999164
+        ]
+      },
+      "id": "node/5371334147"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5384038246",
+        "name": "Дом-музей академика Н.Н. Семёнова",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.3924504,
+          56.0073173
+        ]
+      },
+      "id": "node/5384038246"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5409424523",
+        "museum": "art",
+        "name": "Музей акварели",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4819364,
+          55.6339478
+        ]
+      },
+      "id": "node/5409424523"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5471026913",
+        "museum": "local",
+        "name": "Школьный историко-краеведческий музей",
+        "start_date": "1995",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8566099,
+          55.749013
+        ]
+      },
+      "id": "node/5471026913"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5507326929",
+        "museum": "speciality",
+        "name": "Центральный музей МЧС России",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6222911,
+          55.7595451
+        ]
+      },
+      "id": "node/5507326929"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5527925431",
+        "contact:phone": "+7 499 1365656",
+        "contact:website": "http://www.art4.ru/",
+        "museum": "art",
+        "name": "Art4",
+        "opening_hours": "Mo-Fr 11:00-19:00",
+        "tourism": "museum",
+        "wikidata": "Q4306210",
+        "wikipedia": "ru:ART4.RU"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6029825,
+          55.7578439
+        ]
+      },
+      "id": "node/5527925431"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5538400321",
+        "addr:housenumber": "11/13 с1",
+        "addr:street": "Трёхпрудный переулок",
+        "museum": "person",
+        "name": "Музей-мастерская Людмилы Гурченко",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5949869,
+          55.7657047
+        ]
+      },
+      "id": "node/5538400321"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5543842449",
+        "contact:phone": "+7 495 6373135",
+        "contact:website": "http://mosmuseum.ru/association/gilyarovskogo/",
+        "museum": "person",
+        "name": "Центр Гиляровского",
+        "opening_hours": "Tu-Su 10:00-20:00; Th 11:00-21:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6153462,
+          55.763473
+        ]
+      },
+      "id": "node/5543842449"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5556451146",
+        "contact:phone": "+7 499 2516943",
+        "email": "museum_podpol19051906@mail.ru",
+        "inscription": "Оптовая торговля кавказскими фруктами Каландадзе",
+        "museum": "history",
+        "name": "Подпольная типография 1905-1906 гг.",
+        "opening_hours": "Tu-Su 10:00-18:00; Th,Sa 11:00-19:00",
+        "payment:cash": "yes",
+        "payment:coins": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "tourism": "museum",
+        "website": "https://www.sovrhistory.ru/subsidiarys/55548546925b59736836107d",
+        "wikidata": "Q4306081",
+        "wikipedia": "ru:Подпольная типография 1905—1906 гг."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5931482,
+          55.7817439
+        ]
+      },
+      "id": "node/5556451146"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5581175521",
+        "check_date": "2022-12-13",
+        "museum": "money",
+        "name": "Музей международного нумизматического клуба",
+        "tourism": "museum",
+        "website": "http://coinmuseum.ru/",
+        "wikidata": "Q30890091"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5973029,
+          55.7493962
+        ]
+      },
+      "id": "node/5581175521"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5590898889",
+        "name": "Школьный военно-исторический музей \"Наследие\"",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9717846,
+          55.8502595
+        ]
+      },
+      "id": "node/5590898889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5614559233",
+        "addr:city": "Москва",
+        "addr:housenumber": "7 к1",
+        "addr:postcode": "125599",
+        "addr:street": "улица Бусиновская Горка",
+        "museum": "military",
+        "name": "Музей танкистов и танкостроителей",
+        "operator": "ГБОУ СОШ г. Москвы \"Школа № 1125 имени Я.Н. Федоренко\"",
+        "tourism": "museum",
+        "website": "https://sch1125s.mskobr.ru/obwie_svedeniya/dva_muzeya/muzej_tankistov_i_tankostroitelej"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4913559,
+          55.8830411
+        ]
+      },
+      "id": "node/5614559233"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5630505421",
+        "addr:postcode": "119019",
+        "contact:phone": "+7 495 6975400",
+        "contact:website": "http://www.amshilov.ru/",
+        "email": "shilov_gallery@mail.ru",
+        "museum": "art",
+        "name": "Галерея Александра Шилова",
+        "name:en": "Alexander Shilov Art Gallery",
+        "name:ru": "Галерея Александра Шилова",
+        "opening_hours": "Tu-We,Fr-Su 11:00-19:00; Th 11:00-21:00",
+        "tourism": "museum",
+        "wikidata": "Q28667331",
+        "wikipedia": "ru:Галерея Александра Шилова"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.608298,
+          55.7490545
+        ]
+      },
+      "id": "node/5630505421"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5643612021",
+        "addr:housenumber": "73Ж",
+        "addr:postcode": "105187",
+        "addr:street": "Измайловское шоссе",
+        "email": "info@historyguns.ru",
+        "fee": "yes",
+        "internet_access": "wlan",
+        "museum": "military",
+        "name": "Музей оружия",
+        "name:en": "Museum of weapons",
+        "opening_hours": "Mo-Su 10:00-20:00",
+        "phone": "+7 926 5454145",
+        "tourism": "museum",
+        "website": "http://historyguns.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7492257,
+          55.7942758
+        ]
+      },
+      "id": "node/5643612021"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5647683845",
+        "museum": "history",
+        "name": "Музей Великий почин",
+        "official_name": "Музей \"Великий почин\" локомотивного депо \"Москва-сортировочная\"",
+        "phone": "+7-495-1717271",
+        "start_date": "1957",
+        "tourism": "museum",
+        "wikipedia": "ru:Великий почин"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7303982,
+          55.7612358
+        ]
+      },
+      "id": "node/5647683845"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5667413924",
+        "museum": "history",
+        "name": "Музей истории астрономии в Московском университете",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5681795,
+          55.7583623
+        ]
+      },
+      "id": "node/5667413924"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5676700486",
+        "contact:email": "museum@yandex-team.ru",
+        "contact:website": "https://yandex.ru/museum/",
+        "museum": "technology",
+        "name": "Яндекс",
+        "name:en": "Yandex",
+        "opening_hours": "Tu-Su 11:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5880185,
+          55.735018
+        ]
+      },
+      "id": "node/5676700486"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5682498988",
+        "addr:city": "Москва",
+        "addr:housenumber": "71",
+        "addr:street": "Коптевская улица",
+        "museum": "transport",
+        "name": "Музей автомобильных историй",
+        "opening_hours": "Mo-Su 10:00-20:00",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "phone": "+7 495 2867254",
+        "tourism": "museum",
+        "website": "https://autostory.pro/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5187161,
+          55.8319329
+        ]
+      },
+      "id": "node/5682498988"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5694079938",
+        "name": "Музей села и храма",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.5563216,
+          55.736464
+        ]
+      },
+      "id": "node/5694079938"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5748806571",
+        "museum": "person",
+        "name": "Дом-музей архитектора Фёдора Шехтеля",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3527923,
+          55.652924
+        ]
+      },
+      "id": "node/5748806571"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5754225235",
+        "contact:website": "http://www.museumrvio.ru/streltsy-chamber/",
+        "museum": "history",
+        "name": "Стрелецкие палаты",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6224044,
+          55.7411623
+        ]
+      },
+      "id": "node/5754225235"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5904789785",
+        "addr:housenumber": "15",
+        "addr:street": "Ленинградская улица",
+        "name": "Музей меди и латуни",
+        "opening_hours": "We-Su 09:00-17:00",
+        "phone": "+79612563020",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8709287,
+          56.159455
+        ]
+      },
+      "id": "node/5904789785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5906743571",
+        "addr:housenumber": "16",
+        "addr:street": "улица Солянка",
+        "contact:facebook": "facebook.com/SobranieMuseum/",
+        "contact:instagram": "@sobraniemuseum",
+        "contact:website": "https://mus-col.com/",
+        "email": "press@collection-museum.com",
+        "museum": "art",
+        "name": "Собрание",
+        "name:en": "Collection",
+        "official_name": "Музей \"Собрание\" Давида Якобашвили",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6419228,
+          55.7506478
+        ]
+      },
+      "id": "node/5906743571"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5908246786",
+        "contact:vk": "https://vk.com/muzem_tapan",
+        "contact:website": "https://www.armenianchurch.ru/tapan",
+        "museum": "ethnography",
+        "name": "Тапан",
+        "opening_hours": "Tu-Su 09:00-18:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6218994,
+          55.7878127
+        ]
+      },
+      "id": "node/5908246786"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5928928442",
+        "museum": "design",
+        "name": "Музей декоративной обуви \"Сапожок\"",
+        "tourism": "museum",
+        "website": "https://vk.com/public129531498"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7091866,
+          55.5503733
+        ]
+      },
+      "id": "node/5928928442"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5997597309",
+        "addr:housenumber": "24 к2",
+        "addr:street": "улица Серпуховский Вал",
+        "check_date": "2022-06-20",
+        "check_date:opening_hours": "2022-06-17",
+        "fee": "yes",
+        "museum": "art",
+        "name": "Музей авангарда на Шаболовке",
+        "name:ru": "Музей авангарда на Шаболовке",
+        "opening_hours": "Tu-Su 11:00-20:00",
+        "tourism": "museum",
+        "website": "http://avantgarde.center/museum",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6104745,
+          55.7129053
+        ]
+      },
+      "id": "node/5997597309"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6008487169",
+        "contact:website": "https://knigoluby.ru/",
+        "museum": "books",
+        "name": "Музей экслибриса и миниатюрной книги",
+        "opening_hours": "Mo-Fr 10:00-17:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6229448,
+          55.7609083
+        ]
+      },
+      "id": "node/6008487169"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6016427284",
+        "name": "Музей живой истории \"Велесово Городище\"",
+        "tourism": "museum",
+        "website": "https://vk.com/velesgorod"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0472427,
+          55.614841
+        ]
+      },
+      "id": "node/6016427284"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6050521001",
+        "name": "Во имя Родины",
+        "name:en": "Vo imya Rodiny",
+        "name:ru": "Во имя Родины",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4573976,
+          55.785707
+        ]
+      },
+      "id": "node/6050521001"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6050991659",
+        "name": "Школьный музей гвардейских авиаторов",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4797587,
+          55.8872489
+        ]
+      },
+      "id": "node/6050991659"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6054425459",
+        "museum": "person",
+        "name": "Государственный музей Л. Н. Толстого",
+        "tourism": "museum",
+        "wikidata": "Q19911795",
+        "wikipedia": "ru:Государственный музей Л. Н. Толстого"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5974458,
+          55.7423932
+        ]
+      },
+      "id": "node/6054425459"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6055217813",
+        "addr:housenumber": "2/3",
+        "addr:postcode": "109012",
+        "addr:street": "площадь Революции",
+        "check_date": "2022-07-19",
+        "email": "1812info@shm.ru",
+        "memorial:conflict": "Napoleonic_Wars",
+        "memorial:conflict:wikidata": "Q179250",
+        "museum": "war",
+        "name": "Музей Отечественной войны 1812 года",
+        "name:de": "Museum des Vaterländischen Krieges von 1812",
+        "name:en": "Museum of the Patriotic War of 1812",
+        "name:es": "Museo de la guerra patria 1812",
+        "name:fr": "Musée de la Campagne de Russie",
+        "name:ru": "Музей Отечественной войны 1812 года",
+        "name:zh": "1812年卫国战争博物馆",
+        "opening_hours": "Su-Th 10:00-18:00; Fr-Sa 10:00-21:00",
+        "operator": "Государственный Исторический Музей (ГИМ)",
+        "phone": "+7 495 6924019",
+        "tourism": "museum",
+        "website": "http://1812shm.ru/",
+        "wikidata": "Q4306169",
+        "wikipedia": "ru:Музей Отечественной войны 1812 года"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6186895,
+          55.756272
+        ]
+      },
+      "id": "node/6055217813"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6061084594",
+        "addr:housenumber": "1А",
+        "check_date": "2022-07-19",
+        "museum": "archaeological",
+        "name": "Музей археологии Москвы",
+        "name:be": "Музей археалогіі Масквы",
+        "name:de": "Museum für die Archäologie von Moskau",
+        "name:en": "Moscow Archaeology Museum",
+        "name:ru": "Музей археологии Москвы",
+        "tourism": "museum",
+        "wikidata": "Q21042388",
+        "wikipedia": "ru:Музей археологии Москвы"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6171913,
+          55.756382
+        ]
+      },
+      "id": "node/6061084594"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6181492324",
+        "museum": "history",
+        "name": "Музей истории Бутырской тюрьмы",
+        "tourism": "museum",
+        "website": "http://www.butyrka-sizo.ru/content/museum1/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5935465,
+          55.7837601
+        ]
+      },
+      "id": "node/6181492324"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6232167786",
+        "addr:full": "подъезд 14, кв. №173",
+        "addr:housenumber": "12 с8",
+        "museum": "person",
+        "name": "Музей-квартира Александра Солженицына",
+        "opening_hours": "We,Fr-Su 12:00-19:00; Th 14:00-21:00",
+        "phone": "+7 495 6920401",
+        "reservation": "required",
+        "tourism": "museum",
+        "website": "http://www.domrz.ru/solzhenitsyn-museum/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6094053,
+          55.7637514
+        ]
+      },
+      "id": "node/6232167786"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6294334620",
+        "contact:website": "http://www.maly.ru/yuzhin",
+        "museum": "person",
+        "name": "Мемориальный музей-квартира А.И. Сумбатова-Южина",
+        "opening_hours:signed": "no",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5985984,
+          55.7642796
+        ]
+      },
+      "id": "node/6294334620"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6303242526",
+        "museum": "person",
+        "name": "Мемориальная музей-квартира Г.М. Кржижановского",
+        "opening_hours": "Mo,We,Fr 10:00-18:00; Tu,Th,Sa 11:00-19:00",
+        "tourism": "museum",
+        "website": "http://www.sovr.ru/contact/krzhizhanovsky/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6333277,
+          55.7462895
+        ]
+      },
+      "id": "node/6303242526"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6307571438",
+        "email": "info@jewish-museum.ru",
+        "museum": "ethnography",
+        "name": "Еврейский музей и центр толерантности",
+        "name:en": "Jewish Museum and Tolerance Center",
+        "name:es": "museo judio y de la tolerancia",
+        "name:fr": "Musée juif et centre de tolérance",
+        "name:ru": "Еврейский музей и центр толерантности",
+        "opening_hours": "Su-Th 10:00-22:00; Fr 10:00-15:00",
+        "phone": "+7 495 6450550",
+        "tourism": "museum",
+        "website": "https://www.jewish-museum.ru/",
+        "wikidata": "Q4173165",
+        "wikipedia": "ru:Еврейский музей и центр толерантности"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6081055,
+          55.7892592
+        ]
+      },
+      "id": "node/6307571438"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6387808396",
+        "museum": "music",
+        "name": "Народный музей музыкальных инструментов",
+        "opening_hours": "Tu-Sa 10:00-22:00; Su 10:00-20:00",
+        "short_name": "НММИ",
+        "tourism": "museum",
+        "website": "http://musmuseum.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6022422,
+          55.7813261
+        ]
+      },
+      "id": "node/6387808396"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6516118385",
+        "name": "Сергиевская кухмистерская",
+        "opening_hours": "Mo-Su 10:00-18:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.1384469,
+          56.3121676
+        ]
+      },
+      "id": "node/6516118385"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6573803423",
+        "contact:phone": "+7 929 5898614",
+        "contact:website": "http://gunsmuseum.ru/",
+        "museum": "military",
+        "name": "Интерактивный музей оружия",
+        "opening_hours": "Tu-Th 12:00-19:00; Fr-Su 10:00-21:00",
+        "operator": "ИП Сергеева Н.Г.",
+        "tourism": "museum",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6118001,
+          55.7158004
+        ]
+      },
+      "id": "node/6573803423"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6595997373",
+        "name": "Музей Канала имени Москвы",
+        "tourism": "museum",
+        "website": "http://kim-online.ru/page/muzey-stroitelstva-kanala"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5263974,
+          56.2469861
+        ]
+      },
+      "id": "node/6595997373"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6603989145",
+        "museum": "person",
+        "name": "Дом-музей Героя Советского Союза Зайцева Ивана Петровича",
+        "tourism": "museum",
+        "website": "https://www.zaytsev.pro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6836264,
+          55.6217984
+        ]
+      },
+      "id": "node/6603989145"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6684329185",
+        "addr:housenumber": "4 с34",
+        "addr:postcode": "111033",
+        "addr:street": "Самокатная улица",
+        "museum": "transport",
+        "name": "Моторы Октября",
+        "name:ru": "Моторы Октября",
+        "official_name": "Автомузей \"Моторы октября\"",
+        "opening_hours": "Mo-Su 10:00-21:00",
+        "phone": "+7 495 9888040",
+        "tourism": "museum",
+        "website": "http://automuseum.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6753265,
+          55.7549098
+        ]
+      },
+      "id": "node/6684329185"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6863294798",
+        "name": "Концертно-выставочный зал",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6831326,
+          55.3213529
+        ]
+      },
+      "id": "node/6863294798"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6915780485",
+        "name": "Усадьба Дубровицы",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.492965,
+          55.4415955
+        ]
+      },
+      "id": "node/6915780485"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6977883849",
+        "contact:phone": "+7 985 9691404",
+        "fee": "yes",
+        "museum": "history",
+        "name": "Музей истории телесных наказаний",
+        "opening_hours": "Mo-Su 12:00-22:00",
+        "tourism": "museum",
+        "wikidata": "Q21641929"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5945939,
+          55.7502455
+        ]
+      },
+      "id": "node/6977883849"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6990743036",
+        "contact:facebook": "https://www.facebook.com/lesnayaskazka.moscow",
+        "fixme": "музей?",
+        "name": "Лесная сказка",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5475654,
+          55.5851973
+        ]
+      },
+      "id": "node/6990743036"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6990965187",
+        "contact:phone": "+7 977 8524629",
+        "museum": "history",
+        "name": "Музей Златоустовского монастыря",
+        "opening_hours": "Mo 18:00-20:00; Su 12:00-14:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6341096,
+          55.759046
+        ]
+      },
+      "id": "node/6990965187"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7048609399",
+        "name": "Музей памяти протоиерея Александра Меня",
+        "opening_hours": "We-Su 10:00-17:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.083507,
+          56.2825732
+        ]
+      },
+      "id": "node/7048609399"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7048609400",
+        "name": "Музей дороги",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0845732,
+          56.2824086
+        ]
+      },
+      "id": "node/7048609400"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7058162907",
+        "contact:phone": "+7 495 6955308",
+        "contact:website": "https://goslitmuz.ru/",
+        "fee": "yes",
+        "museum": "literature",
+        "name": "Государственный музей истории российской литературы имени В.И. Даля",
+        "opening_hours": "Tu-Su 11:00-18:00; We,Th 11:00-21:00",
+        "tourism": "museum",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5919278,
+          55.7358667
+        ]
+      },
+      "id": "node/7058162907"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7146957794",
+        "contact:phone": "+7 499 9789411",
+        "museum": "medicine",
+        "name": "Музей истории медицины МГМСУ",
+        "official_name": "Музей истории медицины Московского государственного медико-стоматологического университета имени А.И. Евдокимова",
+        "opening_hours": "Tu-Su 10:00-18:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6045181,
+          55.774989
+        ]
+      },
+      "id": "node/7146957794"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7147335439",
+        "contact:phone": "+7 495 6231694",
+        "museum": "speciality",
+        "name": "Музей истории органов внутренних дел Москвы",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6317868,
+          55.7672567
+        ]
+      },
+      "id": "node/7147335439"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7234611224",
+        "level": "4",
+        "museum": "history",
+        "name": "Музей истории Шереметьево",
+        "name:en": "Sheremetyevo History Museum",
+        "name:ru": "Музей истории Шереметьево",
+        "tourism": "museum",
+        "website": "https://www.svo.aero/en/services/in-airport/sheremetyevo-museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4152032,
+          55.9669493
+        ]
+      },
+      "id": "node/7234611224"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7576068785",
+        "email": "artfuture.gallery@ya.ru",
+        "museum": "art",
+        "name": "Art Future Gallery",
+        "name:en": "Art Future Gallery",
+        "opening_hours": "Mo-Su 10:00-22:00",
+        "operator": "ИП Манакин Е.В.",
+        "phone": "+7 925 8797212",
+        "tourism": "museum",
+        "website": "http://www.artfuture.space"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6237109,
+          55.633484
+        ]
+      },
+      "id": "node/7576068785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7644099785",
+        "museum": "military",
+        "name": "Музей ратной истории Москвы",
+        "name:en": "Museum Of Military History Of Moscow",
+        "opening_hours": "Mo-Su 09:00-19:00",
+        "phone": "+7 925 3093509",
+        "tourism": "museum",
+        "website": "http://castle.moscow"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6579223,
+          55.727832
+        ]
+      },
+      "id": "node/7644099785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7650608907",
+        "museum": "maritime",
+        "name": "Музей основания Российского флота",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7547611,
+          55.7941054
+        ]
+      },
+      "id": "node/7650608907"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7726606765",
+        "description": "Музей детской книжной иллюстрации. Отдел краеведческого музея",
+        "name": "Картинка",
+        "tourism": "museum",
+        "website": "http://muzeykartinka.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0079348,
+          55.7465785
+        ]
+      },
+      "id": "node/7726606765"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7734616141",
+        "contact:website": "https://museumofemotions.ru/",
+        "fee": "yes",
+        "name": "Музей эмоций",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6646063,
+          55.7590264
+        ]
+      },
+      "id": "node/7734616141"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7756949285",
+        "contact:website": "http://ussrmuseum.ru",
+        "level": "1",
+        "name": "Назад в СССР",
+        "name:en": "Back in USSR",
+        "opening_hours": "Mo-Su 11:00-18:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.85266,
+          55.73062
+        ]
+      },
+      "id": "node/7756949285"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7775674361",
+        "check_date": "2022-05-14",
+        "description": "Музей в пару залов",
+        "name": "Историко-краеведческий музей",
+        "tourism": "museum",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6775119,
+          55.3210753
+        ]
+      },
+      "id": "node/7775674361"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7797262065",
+        "addr:housenumber": "9",
+        "addr:postcode": "119049",
+        "addr:street": "улица Крымский Вал",
+        "email": "pgmuseum@park-gorkogo.com",
+        "fee": "no",
+        "museum": "local",
+        "name": "Музей Парка Горького",
+        "name:en": "Gorky Park Museum",
+        "opening_hours": "Tu-Su 11:00-22:00",
+        "phone": "+7 495 9950020",
+        "tourism": "museum",
+        "website": "https://park-gorkogo.com/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6037248,
+          55.731344
+        ]
+      },
+      "id": "node/7797262065"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7804955746",
+        "group_only": "yes",
+        "name": "Бункер-703",
+        "tourism": "museum",
+        "website": "https://bunker703.ru/",
+        "wikipedia": "ru:Бункер-703"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6302817,
+          55.7343444
+        ]
+      },
+      "id": "node/7804955746"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7810650304",
+        "contact:phone": "+7 995 1166611",
+        "contact:website": "https://dead-dolls.museum/",
+        "museum": "toys",
+        "name": "Музей мертвых кукол",
+        "opening_hours": "Mo-Su 10:00-22:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5922349,
+          55.7540547
+        ]
+      },
+      "id": "node/7810650304"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7824274685",
+        "addr:housenumber": "30",
+        "addr:postcode": "129090",
+        "museum": "history",
+        "name": "Музей Серебряного века",
+        "opening_hours": "Tu,Fr-Su 11:00-18:00; We-Th 11:00-21:00",
+        "phone": "+7 495 6808683",
+        "tourism": "museum",
+        "website": "http://goslitmuz.ru/museums/muzey-serebryanogo-veka/",
+        "wikidata": "Q54996298"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6330161,
+          55.778369
+        ]
+      },
+      "id": "node/7824274685"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7834237775",
+        "museum": "agriculture",
+        "museum_type": "institutional",
+        "name": "Музей истории индустриализации земледелия Имени В. П. Горячкина",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5569867,
+          55.8364541
+        ]
+      },
+      "id": "node/7834237775"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7849414871",
+        "name": "Федеральный музей профессионального образования",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.521758,
+          55.4341765
+        ]
+      },
+      "id": "node/7849414871"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7865868136",
+        "museum": "agriculture",
+        "museum_type": "institutional",
+        "name": "Музей животноводства имени Е. Ф. Лискуна",
+        "tourism": "museum",
+        "wikipedia": "ru:Музей животноводства имени Е. Ф. Лискуна"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.551527,
+          55.8320505
+        ]
+      },
+      "id": "node/7865868136"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7865915985",
+        "name": "Дом-музей",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6365746,
+          55.6531347
+        ]
+      },
+      "id": "node/7865915985"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7887532120",
+        "contact:email": "0rub@15kop.ru",
+        "contact:website": "http://www.15kop.ru",
+        "fixme": "resurvey",
+        "museum": "history",
+        "name": "Музей советских игровых автоматов",
+        "name:de": "Museum der sowjetischen Arcade Maschinen",
+        "name:en": "Museum of Soviet arcade machines",
+        "opening_hours": "Mo-Su 11:00-21:00",
+        "tourism": "museum",
+        "wikidata": "Q16895567",
+        "wikipedia": "ru:Музей советских игровых автоматов"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6237616,
+          55.7644078
+        ]
+      },
+      "id": "node/7887532120"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7996682886",
+        "addr:floor": "1",
+        "addr:housenumber": "51",
+        "addr:street": "Ленинградское шоссе",
+        "check_date": "2022-08-19",
+        "fixme": "name",
+        "level": "0",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4668975,
+          55.8514544
+        ]
+      },
+      "id": "node/7996682886"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8006259865",
+        "contact:email": "liskun@rgau-msha.ru",
+        "contact:vk": "https://vk.com/liskun_museum",
+        "contact:website": "https://www.timacad.ru/about/muzei/muzei-zhivotnovodstva-imeni-e-f-liskuna",
+        "museum": "agriculture",
+        "name": "Государственный музей животноводства им. Е. Ф. Лискуна",
+        "opening_hours": "Mo-Su 08:30-18:30",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5664871,
+          55.8358736
+        ]
+      },
+      "id": "node/8006259865"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8115503181",
+        "museum": "aerospace",
+        "name": "Центральный дом авиации и космонавтики",
+        "name:en": "Aviation and Space Museum",
+        "name:ru": "Центральный дом авиации и космонавтики",
+        "official_name": "Центральный дом авиации и космонавтики ДОСААФ России",
+        "opening_hours": "We-Su 10:00-18:00",
+        "operator": "ДОСААФ",
+        "phone": "+7 495 614-38-61",
+        "tourism": "museum",
+        "website": "http://aviacosmosdom.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5492632,
+          55.79734
+        ]
+      },
+      "id": "node/8115503181"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8117585723",
+        "museum": "maritime",
+        "name": "Школьный музей Соловецкой школы Юнг Северного флота",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8208983,
+          55.809034
+        ]
+      },
+      "id": "node/8117585723"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8189638010",
+        "name": "Музей люберецкого техникума",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8866717,
+          55.6812457
+        ]
+      },
+      "id": "node/8189638010"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8201211017",
+        "name": "Иней",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7645551,
+          55.6688251
+        ]
+      },
+      "id": "node/8201211017"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8209683163",
+        "contact:email": "museum@rkk.ru",
+        "contact:phone": "+7495744-1070",
+        "contact:website": "http://www.rkk-museum.ru",
+        "museum": "technology",
+        "name": "Радиомузей Валерия Громова",
+        "tourism": "museum",
+        "wikidata": "Q4387533"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6012011,
+          55.7805332
+        ]
+      },
+      "id": "node/8209683163"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8219364084",
+        "museum": "local",
+        "name": "Музей фабрики",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.689473,
+          55.7789187
+        ]
+      },
+      "id": "node/8219364084"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8299197617",
+        "addr:housenumber": "18",
+        "addr:postcode": "143363",
+        "addr:street": "КИЗ Полис",
+        "contact:vk": "https://vk.com/counthmetro",
+        "email": "goshankilo21@mail.ru",
+        "name": "Метро на даче",
+        "name:en": "Country Metro House",
+        "opening_hours": "Su, Th 11:00-19:00",
+        "phone": "+7 903 1089841",
+        "tourism": "museum",
+        "website": "https://metro-na-dache.clients.site"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.0412765,
+          55.5677351
+        ]
+      },
+      "id": "node/8299197617"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8490056217",
+        "name": "Усадьба Большие Вяземы",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.9899953,
+          55.6280057
+        ]
+      },
+      "id": "node/8490056217"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8638623717",
+        "internet_access": "wlan",
+        "museum": "food",
+        "name": "Музей истории русского шоколада Дижавни",
+        "opening_hours": "Mo-Su 09:00-20:00",
+        "phone": "+7 (495) 665-07-17",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3956743,
+          55.8933874
+        ]
+      },
+      "id": "node/8638623717"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8662419217",
+        "contact:website": "https://www.mzvm.ru/",
+        "museum": "children",
+        "name": "Музей восстания машин",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6089506,
+          55.7408357
+        ]
+      },
+      "id": "node/8662419217"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8664353717",
+        "museum": "medicine",
+        "name": "Российский музей медицины",
+        "opening_hours": "Mo-Fr 10:00-18:00",
+        "phone": "+74959177834",
+        "tourism": "museum",
+        "website": "https://medmuseum.ru/ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.649217,
+          55.7519588
+        ]
+      },
+      "id": "node/8664353717"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8839210222",
+        "contact:email": "info@tsar-maket.ru",
+        "contact:phone": "+7 495 2268711",
+        "contact:website": "https://tsar-maket.ru/",
+        "description": "Касса работает до 18:15",
+        "museum": "local",
+        "name": "Царь-макет",
+        "opening_hours": "Mo-Su 10:00-19:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6554626,
+          55.8171118
+        ]
+      },
+      "id": "node/8839210222"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8840921870",
+        "name": "Музей колоколов",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6318665,
+          55.85373
+        ]
+      },
+      "id": "node/8840921870"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9057239196",
+        "contact:website": "https://www.museum-vf.ru/",
+        "museum": "history",
+        "name": "Музей военной формы",
+        "opening_hours": "Tu-Su 10:00-19:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.591103,
+          55.7579563
+        ]
+      },
+      "id": "node/9057239196"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9159055539",
+        "contact:website": "http://zil-museum.ru/",
+        "fee": "no",
+        "museum": "transport",
+        "name": "Музей ЗиЛ",
+        "opening_hours": "PH,Tu-Su 10:00-19:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6758648,
+          55.7923604
+        ]
+      },
+      "id": "node/9159055539"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9200610269",
+        "contact:website": "http://portret.ru/",
+        "museum": "art",
+        "name": "Национальная портретная галерея",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.571075,
+          55.8419078
+        ]
+      },
+      "id": "node/9200610269"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9249562898",
+        "addr:city": "Подольск",
+        "addr:housenumber": "47",
+        "addr:street": "проспект Ленина",
+        "email": "immz-podolie@yandex.ru",
+        "name": "Дом-музей Ленина",
+        "phone": "8 (4967) 69-92-39",
+        "tourism": "museum",
+        "website": "https://www.музей-подолье.рф/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5574015,
+          55.4387226
+        ]
+      },
+      "id": "node/9249562898"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9325438931",
+        "contact:phone": "+7 495 276 38 81",
+        "contact:website": "https://museum.customs.gov.ru",
+        "fee": "no",
+        "museum": "speciality",
+        "name": "Центральный музей таможенной службы",
+        "opening_hours": "Tu-Th 10:00-17:00; Fr 10:00-16:00",
+        "reservation": "required",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.65443,
+          55.7758384
+        ]
+      },
+      "id": "node/9325438931"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9354087767",
+        "contact:website": "https://cryptography-museum.ru/",
+        "fee": "yes",
+        "museum": "technology",
+        "name": "Музей криптографии",
+        "opening_hours": "Tu-Su 12:00-20:00",
+        "tourism": "museum",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5975243,
+          55.8306367
+        ]
+      },
+      "id": "node/9354087767"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9366831219",
+        "museum": "person",
+        "name": "Музей Императора Николая II",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6707165,
+          55.7655563
+        ]
+      },
+      "id": "node/9366831219"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9397686740",
+        "level": "2",
+        "museum": "history",
+        "name": "Музей МХАТ",
+        "operator": "Музей Московского Художественного академического театра",
+        "operator:ref:inn": "7710125381",
+        "phone": "+7 495 6925187; +7 495 6928329; +7 495 6292442; +7 495 6505391",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6131501,
+          55.7599794
+        ]
+      },
+      "id": "node/9397686740"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9507780443",
+        "contact:phone": "+7-499-3409195",
+        "contact:website": "https://park-inno.ru/",
+        "fee": "yes",
+        "museum": "children",
+        "name": "ИнноПарк",
+        "opening_hours": "Tu-Fr 10:30-19:30; Sa,Su 10:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6790084,
+          55.7941917
+        ]
+      },
+      "id": "node/9507780443"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9526600833",
+        "contact:phone": "+7-495-9953550",
+        "contact:website": "http://museumsport.ru/",
+        "description": "Посещение по записи",
+        "fixme": "position",
+        "museum": "sport",
+        "name": "Музей спорта",
+        "opening_hours": "Tu-Sa 09:00-16:30; Su 09:00-15:30",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6695684,
+          55.7629682
+        ]
+      },
+      "id": "node/9526600833"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9610774317",
+        "contact:phone": "+7 929 515 82 94",
+        "contact:website": "https://www.tretyakovgallery.ru/exhibitions/o/muzey-pavla-i-sergeya-tretyakovykh",
+        "museum": "person",
+        "name": "Музей Павла и Сергея Третьяковых",
+        "opening_hours": "We-Su 10:00-18:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.611529,
+          55.7376273
+        ]
+      },
+      "id": "node/9610774317"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9620616847",
+        "addr:city": "Москва",
+        "addr:housenumber": "123100",
+        "addr:postcode": "123100",
+        "addr:street": "Студенецкий переулок",
+        "museum": "person",
+        "name": "Квартира В.В. Маяковского в Студенецком переулке",
+        "operator": "Государственный музей В.В. Маяковского",
+        "tourism": "museum",
+        "website": "https://muzeimayakovskogo.ru/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5565084,
+          55.7582262
+        ]
+      },
+      "id": "node/9620616847"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9620741549",
+        "addr:city": "Москва",
+        "addr:housenumber": "36",
+        "addr:street": "улица Красная Пресня",
+        "museum": "person",
+        "name": "Квартира на Большой Пресне",
+        "operator": "Государственный музей В.В. Маяковского",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5711201,
+          55.7611135
+        ]
+      },
+      "id": "node/9620741549"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9680858679",
+        "museum": "technology",
+        "name": "Музей городского хозяйства Москвы",
+        "opening_hours": "Tu-Sa 10:00-20:00; Su 10:00-17:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6296638,
+          55.8287672
+        ]
+      },
+      "id": "node/9680858679"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9688468309",
+        "museum": "person",
+        "name": "Мемориальный кабинет-музей Владимира Ивановича Вернадского",
+        "note": "Только экскурсионное обслуживание по предварительной договоренности",
+        "opening_hours": "Mo-Fr 10:00-18:00",
+        "phone": "+7 499 1378611",
+        "start_date": "1953-05-20",
+        "tourism": "museum",
+        "website": "http://www.museum.ru/M328"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5515852,
+          55.7054129
+        ]
+      },
+      "id": "node/9688468309"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9696551433",
+        "name": "Выставка раритетной мототехники",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.8255478,
+          55.5619769
+        ]
+      },
+      "id": "node/9696551433"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9775145261",
+        "fixme": "resurvey",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6051068,
+          55.6972825
+        ]
+      },
+      "id": "node/9775145261"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9788786351",
+        "group_only": "yes",
+        "museum": "speciality",
+        "name": "Комната воинской и трудовой славы",
+        "operator": "Главное управление МЧС России по городу Москве",
+        "start_date": "2022-05",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6821157,
+          55.7890225
+        ]
+      },
+      "id": "node/9788786351"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9905840317",
+        "contact:vk": "posusecam_museum8",
+        "description": "вт–ср: группы по предварительной записи",
+        "email": "info@posusecampro.ru",
+        "museum": "ethnography",
+        "name": "По сусекам",
+        "official_name": "Музей русского быта ПО СУСЕКАМ",
+        "opening_hours": "Th-Su 12:00-20:00",
+        "phone": "+7 916 676 43 68",
+        "tourism": "museum",
+        "website": "http://posusecam.ru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6108672,
+          55.7437693
+        ]
+      },
+      "id": "node/9905840317"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9927721938",
+        "museum": "war",
+        "name": "Музей боевой славы",
+        "tourism": "museum",
+        "website": "https://krizis-centr.ru/about/muzej-boevoj-slavy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5625241,
+          55.8218434
+        ]
+      },
+      "id": "node/9927721938"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9957821698",
+        "addr:city": "Зеленоград",
+        "addr:housenumber": "2 с4",
+        "addr:street": "площадь Шокина",
+        "name": "Музейно-выставочный центр им. А. И. Шокина",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.2136974,
+          55.9819604
+        ]
+      },
+      "id": "node/9957821698"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9978554504",
+        "contact:website": "https://rosizo.ru/",
+        "museum": "art",
+        "name": "РОСИЗО",
+        "opening_hours": "Tu-Su 11:00-20:00; Th-Sa 11:00-21:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6366483,
+          55.7567232
+        ]
+      },
+      "id": "node/9978554504"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10015992717",
+        "museum": "person",
+        "name": "Дом-музей и экспедиционный штаб Федора Конюхова",
+        "name:en": "House-Museum and Expeditionary Headquarters of Fyodor Konyukhov",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6437885,
+          55.7354622
+        ]
+      },
+      "id": "node/10015992717"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10059573799",
+        "description": "Ср,, сб, вс - с 15 до 18.",
+        "name": "Выставка предметов старинного русского быта",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7585391,
+          55.7725545
+        ]
+      },
+      "id": "node/10059573799"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10218526170",
+        "name": "Музей под небом",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4878614,
+          56.0174611
+        ]
+      },
+      "id": "node/10218526170"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10263479155",
+        "contact:telegram": "https://t.me/ecosborka",
+        "contact:vk": "https://vk.com/ecosborka",
+        "description": "Музей рециклинга и экологичного образа жизни знакомит посетителей с проблемой образования отходов и загрязнения окружающей среды.",
+        "email": "ecosborka@gmail.com",
+        "fee": "no",
+        "level": "-1",
+        "museum": "technology",
+        "name": "Музей рециклинга",
+        "opening_hours": "Mo-Fr 14:00-21:00; Sa-Su 11:00-20:00",
+        "phone": "+7 499 4904258",
+        "tourism": "museum",
+        "website": "https://ecosborka.ru/muzej-reciklinga"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.640206,
+          55.7618065
+        ]
+      },
+      "id": "node/10263479155"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10572977039",
+        "contact:phone": "+7 495 6958064",
+        "museum": "person",
+        "name": "Мемориальный музей-квартира Тимирязева Климента Аркадьевича",
+        "tourism": "museum",
+        "wikipedia": "ru:Музей-квартира Тимирязева"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6095016,
+          55.754143
+        ]
+      },
+      "id": "node/10572977039"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10689567676",
+        "name": "Музей спортивной славы Зеленограда",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.2042593,
+          56.0065765
+        ]
+      },
+      "id": "node/10689567676"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10782130900",
+        "name": "Музей транспорта Москвы",
+        "tourism": "museum",
+        "website": "https://mtmuseum.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6259184,
+          55.5933792
+        ]
+      },
+      "id": "node/10782130900"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10796949181",
+        "contact:website": "https://www.domrz.ru/exposition/",
+        "museum": "history",
+        "name": "Музей русского зарубежья",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6508734,
+          55.7427959
+        ]
+      },
+      "id": "node/10796949181"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10809105347",
+        "name": "Музей Зеленограда",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.2183564,
+          55.9922323
+        ]
+      },
+      "id": "node/10809105347"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10829439699",
+        "name": "Динамо",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5606148,
+          55.7894162
+        ]
+      },
+      "id": "node/10829439699"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10951499311",
+        "museum": "military",
+        "name": "Боевые Снаряды ВМФ",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.1197164,
+          55.7495075
+        ]
+      },
+      "id": "node/10951499311"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10971892284",
+        "name": "Музей истории ВДНХ",
+        "opening_hours": "Tu-Su 11:00-20:00",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6380477,
+          55.826609
+        ]
+      },
+      "id": "node/10971892284"
+    }
+  ]
+}

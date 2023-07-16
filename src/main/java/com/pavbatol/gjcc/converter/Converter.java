@@ -118,7 +118,7 @@ public class Converter {
                 return;
             }
             log.info(loadingFieldsWayData.getAllFields() || loadingFieldsWayData.getSpecifiedFields() ?
-                    "Execution time: {} sec" : "Execution time with field selection: {} sec"
+                            "Execution time: {} sec" : "Execution time with field selection: {} sec"
                     , (System.currentTimeMillis() - startTime) / 1000.0);
         }
     }
@@ -227,8 +227,7 @@ public class Converter {
 
                     // Duplicated ID
                     if (!featureIds.add(featureValue)) {
-                        while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
-                        }
+                        skipObject(jsonParser);
                         return ReturnStatus.OK;
                     }
 
@@ -311,6 +310,14 @@ public class Converter {
         builder.append(newCsvLine);
 
         return ReturnStatus.OK;
+    }
+
+    private void skipObject(JsonParser jsonParser) throws IOException {
+        while (true) {
+            if (jsonParser.nextToken() == JsonToken.END_OBJECT) {
+                break;
+            }
+        }
     }
 
     private boolean getBoolean(boolean defaultValue, Boolean source) {
